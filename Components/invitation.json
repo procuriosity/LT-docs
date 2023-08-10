@@ -1,0 +1,40 @@
+{
+  "title": "invitation",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Invitation identifier"
+    },
+    "date": {
+      "type": "string",
+      "description": "Invitation status. ({YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z)",
+      "format": "date-time",
+      "example": "2022-07-22T10:01:26Z"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "pending",
+        "cancelled"
+      ],
+      "description": "Invitation status"
+    },
+    "tenderers": {
+      "type": "array",
+      "description": "Reference to the tenderer",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

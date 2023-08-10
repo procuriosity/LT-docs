@@ -1,0 +1,515 @@
+{
+  "title": "Purchase Order",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "ocid": {
+      "type": "string",
+      "example": "ocds-b3wdp1-MD-1648217030862-PO-1648218544839",
+      "description": "Purchase Order identifier"
+    },
+    "id": {
+      "type": "string",
+      "example": "ocds-t1s2t3-MD-1650264738816-PO-1650279227902-1650279229117",
+      "description": "Purchase Order release identifier"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Purchase Order publishing date.({YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z)",
+      "example": "2022-07-22T10:01:26Z"
+    },
+    "tag": {
+      "type": "array",
+      "description": "Tags can be used to filter releases and to understand the kind of information that releases might contain.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "language": {
+      "type": "string",
+      "description": "Purchase Order language"
+    },
+    "initiationType": {
+      "type": "string",
+      "description": "Process initial type"
+    },
+    "parties": {
+      "type": "array",
+      "description": "Organization references elsewhere in the release are used to refer back to this entries in this list.",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "./organisation.json"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "details": {
+                "type": "object",
+                "description": "Additional classification information about parties",
+                "properties": {
+                  "typeOfSupplier": {
+                    "type": "array",
+                    "description": "Specifying whether this Entity is natural person or a legal entity",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "company",
+                        "individual"
+                      ]
+                    }
+                  },
+                  "mainEconomicActivities": {
+                    "type": "array",
+                    "description": "Information about main economic activitiy of the company",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "scheme": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "uri": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  },
+                  "scale": {
+                    "type": "string",
+                    "enum": [
+                      "micro",
+                      "sme",
+                      "large"
+                    ]
+                  },
+                  "permits": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "scheme": {
+                          "type": "string"
+                        },
+                        "url": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "permitDetails": {
+                          "type": "object",
+                          "properties": {
+                            "issuedBy": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "issuedThought": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "validityPeriod": {
+                              "type": "object",
+                              "properties": {
+                                "startDate": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                  "example": "2022-07-22T10:01:26Z"
+                                },
+                                "endDate": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                  "example": "2022-07-22T10:01:26Z"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "bankAccounts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "description": {
+                          "type": "string"
+                        },
+                        "bankName": {
+                          "type": "string"
+                        },
+                        "address": {
+                          "$ref": "./address.json"
+                        },
+                        "identifier": {
+                          "type": "object",
+                          "properties": {
+                            "scheme": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "accountIdentification": {
+                          "type": "object",
+                          "properties": {
+                            "scheme": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "additionalAccountIdentifiers": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "scheme": {
+                                "type": "string"
+                              },
+                              "id": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "legalForm": {
+                    "type": "object",
+                    "properties": {
+                      "scheme": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "uri": {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "contracts": {
+      "type": "array",
+      "description": "The set of award decisions related to this procurement project",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Contract identifier"
+          },
+          "awardId": {
+            "type": "string",
+            "description": "The award.id against which contract is being issued."
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Contract generation date.({YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z)",
+            "example": "2022-07-22T10:01:26Z"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "cancelled"
+            ],
+            "description": "Awarded Contract current status"
+          },
+          "statusDetails": {
+            "type": "string",
+            "enum": [
+              "contractProject",
+              "empty"
+            ],
+            "description": "Details of the status"
+          },
+          "agreedMetrics": {
+            "type": "array",
+            "description": "Contract Agreed Metrics list",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "observations": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "notes": {
+                        "type": "string"
+                      },
+                      "unit": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "scheme": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "tender": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique object identifier"
+        },
+        "classification": {
+          "type": "object",
+          "description": "Procedure categorization",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "scheme": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            }
+          }
+        },
+        "procurementMethod": {
+          "type": "string",
+          "description": "Purchase Order procurement method",
+          "enum": [
+            "selective"
+          ]
+        },
+        "procurementMethodDetails": {
+          "type": "string",
+          "description": "Additional detail on the procurement method used."
+        },
+        "mainProcurementCategory": {
+          "type": "string",
+          "enum": [
+            "goods",
+            "works",
+            "services"
+          ],
+          "description": "The primary category describing the main object of contracting process"
+        },
+        "lots": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Lot identifier"
+              },
+              "internalId": {
+                "type": "string",
+                "description": "Lot internal identifier"
+              },
+              "title": {
+                "type": "string",
+                "description": "Lot title"
+              },
+              "description": {
+                "type": "string",
+                "description": "Lot summary description"
+              },
+              "placeOfPerformance": {
+                "type": "object",
+                "description": "Place where lot will be performed",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "$ref": "./address.json"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "additionalProcurementCategories": {
+          "type": "array",
+          "description": "Additional category",
+          "items": {
+            "type": "string",
+            "enum": [
+              "goods",
+              "works",
+              "services"
+            ]
+          }
+        }
+      }
+    },
+    "awards": {
+      "type": "array",
+      "description": "Information from the award phase of the contracting process. There can be more than one award per contracting process e.g. because the contract is split among different providers, or because it is a standing offer.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The award.id against which contract is being issued."
+          },
+          "value": {
+            "type": "object",
+            "description": "Award total value",
+            "properties": {
+              "amount": {
+                "type": "number",
+                "description": "Amount as a number."
+              },
+              "currency": {
+                "type": "string",
+                "description": "Award currency"
+              }
+            }
+          },
+          "relatedLots": {
+            "type": "array",
+            "description": "Connection with Lot",
+            "items": {
+              "type": "string"
+            }
+          },
+          "suppliers": {
+            "type": "array",
+            "description": "Reference to the suppliers awarded",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "documents": {
+            "type": "array",
+            "items": {
+              "$ref": "./document.json"
+            }
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "./item.json"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "additionalClassifications": {
+                      "type": "array",
+                      "description": "Item additional classification",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "The classification code taken from the scheme."
+                          },
+                          "scheme": {
+                            "type": "string",
+                            "description": "The scheme or codelist from which the classification code is taken."
+                          },
+                          "description": {
+                            "type": "string",
+                            "description": "A textual description or title for the classification code."
+                          }
+                        }
+                      }
+                    },
+                    "documents": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "./document.json"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "relatedProcesses": {
+      "type": "array",
+      "description": "Links to other stages of Contract Process",
+      "items": {
+        "$ref": "./relatedProcess.json"
+      }
+    }
+  }
+}

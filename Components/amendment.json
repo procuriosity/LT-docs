@@ -1,0 +1,68 @@
+{
+  "title": "amendment",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Amendment identifier"
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1,
+      "description": "An explanation for the amendment."
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the changes"
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "$ref": "./document.json"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "active",
+        "cancelled"
+      ],
+      "description": "Amendment current status"
+    },
+    "date": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Date amendment was created.({YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z)",
+      "format": "date-time",
+      "example": "2022-07-22T10:01:26Z"
+    },
+    "type": {
+      "type": "string",
+      "description": "Amendment type"
+    },
+    "relatesTo": {
+      "type": "string",
+      "enum": [
+        "tender",
+        "lot"
+      ],
+      "description": "To which entity amendment is related"
+    },
+    "relatedItem": {
+      "type": "string",
+      "description": "Connection with Item"
+    },
+    "amendsReleaseID": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Amendment Release identifier"
+    },
+    "releaseID": {
+      "type": "string",
+      "description": "Release identifier"
+    }
+  }
+}

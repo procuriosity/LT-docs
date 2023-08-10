@@ -1,0 +1,301 @@
+{
+  "title": "Aggregated Plan",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "ocid": {
+      "type": "string",
+      "minLength": 1,
+      "example": "ocds-t1s2t3-MD-1648653606375-AP-1648653606375",
+      "description": "Aggregated Plan identifier"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "example": "ocds-t1s2t3-MD-1648653606375-AP-1648653606375-1648653679070",
+      "description": "Aggregated Plan Release identifier"
+    },
+    "date": {
+      "type": "string",
+      "minLength": 1,
+      "format": "date-time",
+      "description": "Aggregated Plan date.({YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z)",
+      "example": "2022-07-22T10:01:26Z"
+    },
+    "tag": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "language": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Aggregated Plan language"
+    },
+    "initiationType": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Process initial type",
+      "enum": [
+        "tender"
+      ]
+    },
+    "parties": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "description": "Organization references elsewhere in the release are used to refer back to this entries in this list.",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "./organisation.json"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "details": {
+                "type": "object",
+                "description": "Additional classification information about parties",
+                "properties": {
+                  "typeOfBuyer": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "BODY_PUBLIC",
+                      "EU_INSTITUTION",
+                      "MINISTRY",
+                      "NATIONAL_AGENCY",
+                      "REGIONAL_AGENCY",
+                      "REGIONAL_AUTHORITY"
+                    ]
+                  },
+                  "mainGeneralActivity": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "DEFENCE",
+                      "ECONOMIC_AND_FINANCIAL_AFFAIRS",
+                      "EDUCATION",
+                      "ENVIRONMENT",
+                      "GENERAL_PUBLIC_SERVICES",
+                      "HEALTH",
+                      "HOUSING_AND_COMMUNITY_AMENITIES",
+                      "PUBLIC_ORDER_AND_SAFETY",
+                      "RECREATION_CULTURE_AND_RELIGION",
+                      "SOCIAL_PROTECTION"
+                    ]
+                  },
+                  "mainSectoralActivity": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "AIRPORT_RELATED_ACTIVITIES",
+                      "ELECTRICITY",
+                      "EXPLORATION_EXTRACTION_COAL_OTHER_SOLID_FUEL",
+                      "EXPLORATION_EXTRACTION_GAS_OIL",
+                      "PORT_RELATED_ACTIVITIES",
+                      "POSTAL_SERVICES",
+                      "PRODUCTION_TRANSPORT_DISTRIBUTION_GAS_HEAT",
+                      "RAILWAY_SERVICES",
+                      "URBAN_RAILWAY_TRAMWAY_TROLLEYBUS_BUS_SERVICES",
+                      "WATER"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "tender": {
+      "type": "object",
+      "description": "The activities undertaken in order to enter into a contract.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Unique object identifier",
+          "format": "uuid"
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "planned"
+          ],
+          "description": "Aggregated Plan current status"
+        },
+        "statusDetails": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "aggregated"
+          ],
+          "description": "Details of the status"
+        },
+        "items": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "allOf": [
+              {
+                "$ref": "./item.json"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "deliveryAddress": {
+                    "$ref": "./address.json"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "lots": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Lot identifier"
+              },
+              "internalId": {
+                "type": "string",
+                "description": "Lot internal identifier"
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Lot title"
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Lot summary description"
+              },
+              "status": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Lot current status",
+                "enum": [
+                  "planning"
+                ]
+              },
+              "statusDetails": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Details of the status",
+                "enum": [
+                  "empty"
+                ]
+              },
+              "placeOfPerformance": {
+                "type": "object",
+                "description": "Place where lot will be performed",
+                "properties": {
+                  "address": {
+                    "$ref": "./address.json"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tenderPeriod": {
+          "type": "object",
+          "description": "The period when Contract Notice is open for bids.",
+          "properties": {
+            "startDate": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2022-07-22T10:01:26Z",
+              "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+            }
+          }
+        },
+        "hasEnquiries": {
+          "type": "boolean",
+          "description": "Indicating whether any enquiries were received"
+        },
+        "documents": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "allOf": [
+              {
+                "$ref": "./document.json"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "relatedLots": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "submissionMethod": {
+          "type": "array",
+          "description": "The methods by which bids are submitted",
+          "items": {
+            "type": "string",
+            "enum": [
+              "electronicSubmission"
+            ]
+          }
+        },
+        "submissionMethodDetails": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Any detailed or further information on the submission method."
+        },
+        "submissionMethodRationale": {
+          "type": "array",
+          "description": "The rationale for the submission",
+          "items": {
+            "type": "string"
+          }
+        },
+        "requiresElectronicCatalogue": {
+          "type": "boolean"
+        }
+      }
+    },
+    "hasPreviousNotice": {
+      "type": "boolean",
+      "description": "Is there a previous publication concerning this procedure"
+    },
+    "purposeOfNotice": {
+      "type": "object",
+      "description": "Is the nature of this notice is a call for competition",
+      "properties": {
+        "isACallForCompetition": {
+          "type": "boolean"
+        }
+      }
+    },
+    "relatedProcesses": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "description": "Links to other stages of Contract Process",
+      "items": {
+        "$ref": "./relatedProcess.json"
+      }
+    }
+  }
+}

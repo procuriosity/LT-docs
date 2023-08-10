@@ -1,0 +1,97 @@
+{
+  "title": "qualification",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Qualification identifier"
+    },
+    "date": {
+      "type": "string",
+      "description": "Qualification date.({YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z)",
+      "example": "2022-07-22T10:01:26Z",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "active",
+        "unsuccessful"
+      ],
+      "description": "Qualification current status"
+    },
+    "statusDetails": {
+      "type": "string",
+      "enum": [
+        "awaiting",
+        "consideration",
+        "active",
+        "unsuccessful",
+        "basedOnHumanDecision"
+      ],
+      "description": "Details of the status"
+    },
+    "relatedSubmission": {
+      "type": "string"
+    },
+    "internalId": {
+      "type": "string",
+      "description": "Qualification internal identifier"
+    },
+    "description": {
+      "type": "string",
+      "description": "Qualification description"
+    },
+    "documents": {
+      "type": "array",
+      "description": "Qualification documents",
+      "items": {
+        "$ref": "./document.json"
+      }
+    },
+    "requirementResponses": {
+      "type": "object",
+      "description": "Qualification requirement response",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "relatedTenderer": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        },
+        "requirement": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        },
+        "responder": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "scoring": {
+      "type": "number",
+      "description": "Calculated coefficient"
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "title": "award",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Award identifier"
+    },
+    "internalId": {
+      "type": "string",
+      "description": "Award internal identifier"
+    },
+    "description": {
+      "type": "string",
+      "description": "Award description"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "active",
+        "unsuccessful"
+      ],
+      "description": "Award current status"
+    },
+    "title": {
+      "type": "string",
+      "description": "Award issuing reason"
+    },
+    "statusDetails": {
+      "type": "string",
+      "enum": [
+        "empty",
+        "active",
+        "unsuccessful",
+        "awaiting",
+        "consideration",
+        "lotCancelled",
+        "lackOfSubmissions",
+        "lackOfQualifications",
+        "noOffersReceived",
+        "basedOnHumanDecision"
+      ],
+      "description": "Details of the status"
+    },
+    "date": {
+      "type": "string",
+      "description": "The date of the contract award.({YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z)",
+      "format": "date-time",
+      "example": "2022-07-22T10:01:26Z"
+    },
+    "value": {
+      "type": "object",
+      "description": "Award total value",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "description": "Amount as a number."
+        },
+        "currency": {
+          "type": "string",
+          "description": "Award currency"
+        }
+      }
+    },
+    "suppliers": {
+      "type": "array",
+      "description": "Reference to the suppliers awarded",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "$ref": "./document.json"
+      }
+    },
+    "relatedLots": {
+      "type": "array",
+      "description": "Connection with Lot",
+      "items": {
+        "type": "string"
+      }
+    },
+    "relatedBid": {
+      "type": "string",
+      "description": "Connection with bid"
+    }
+  }
+}

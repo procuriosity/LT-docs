@@ -1,0 +1,570 @@
+{
+  "title": "Multi-Stage",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Multi-Stage Release identifier"
+    },
+    "ocid": {
+      "type": "string",
+      "example": "ocds-b3wdp1-MD-1648217030862",
+      "description": "Contract Process identifier "
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Contract Process publishing date.({YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z)",
+      "example": "2022-07-22T10:01:26Z"
+    },
+    "tag": {
+      "type": "array",
+      "description": "Tags can be used to filter releases and to understand the kind of information that releases might contain.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "language": {
+      "type": "string",
+      "description": "Contract Process language"
+    },
+    "initiationType": {
+      "type": "string",
+      "enum": [
+        "tender"
+      ],
+      "description": "Process initial type"
+    },
+    "planning ": {
+      "type": "object",
+      "description": "Information from the planning phase of the contracting process. This includes information related to the process of deciding what to contract, when and how.",
+      "properties": {
+        "budget": {
+          "type": "object",
+          "description": "Details of the budget that funds Contracting Process",
+          "properties": {
+            "description": {
+              "type": "string",
+              "description": "Budget description"
+            },
+            "amount": {
+              "type": "object",
+              "description": "The amount reserved in the budget for contracting process.",
+              "properties": {
+                "amount": {
+                  "type": "number",
+                  "description": "Amount that is being used"
+                },
+                "currency": {
+                  "type": "string",
+                  "description": "The currency of the budget"
+                }
+              }
+            },
+            "isEuropeanUnionFunded": {
+              "type": "boolean",
+              "description": "If EU provides money"
+            },
+            "budgetBreakdown": {
+              "type": "array",
+              "description": "Is used to express a multi-source budget",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "Budget Breakdown Identifier"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "amount": {
+                    "type": "object",
+                    "description": "Part of original amount",
+                    "properties": {
+                      "amount": {
+                        "type": "number"
+                      },
+                      "currency": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "period": {
+                    "type": "object",
+                    "description": "Period of time when money are available",
+                    "properties": {
+                      "startDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2022-07-22T10:01:26Z",
+                        "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+                      },
+                      "endDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2022-07-22T10:01:26Z",
+                        "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+                      }
+                    }
+                  },
+                  "sourceParty": {
+                    "type": "object",
+                    "description": "Funder information",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "europeanUnionFunding": {
+                    "type": "object",
+                    "properties": {
+                      "projectIdentifier": {
+                        "type": "string"
+                      },
+                      "projectName": {
+                        "type": "string",
+                        "description": "Name of this project"
+                      },
+                      "uri": {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "rationale": {
+          "type": "string",
+          "description": "The rationale for the procurement provided\n"
+        }
+      }
+    },
+    "tender": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique object identifier",
+          "format": "uuid"
+        },
+        "title": {
+          "type": "string",
+          "description": "Contract Process title"
+        },
+        "description": {
+          "type": "string",
+          "description": "Contract Process summary description"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "active",
+            "complete",
+            "cancelled",
+            "unsuccessful"
+          ],
+          "description": "Contract Process current status"
+        },
+        "statusDetails": {
+          "type": "string",
+          "enum": [
+            "empty",
+            "suspended",
+            "clarification",
+            "tendering",
+            "awarding",
+            "auction"
+          ],
+          "description": "Details of the status"
+        },
+        "value": {
+          "type": "object",
+          "description": "The total upper estimated value of the procurement. ",
+          "properties": {
+            "amount": {
+              "type": "number",
+              "description": "Amount as a number."
+            },
+            "currency": {
+              "type": "string",
+              "description": "Contract Process currency"
+            }
+          }
+        },
+        "procurementMethod": {
+          "type": "string",
+          "description": "Contract Process procurement method",
+          "enum": [
+            "openTender"
+          ]
+        },
+        "procurementMethodDetails": {
+          "type": "string",
+          "enum": [
+            "microValue",
+            "smallValue",
+            "openTender"
+          ],
+          "description": "Additional details on the procurement method used. "
+        },
+        "procurementMethodRationale": {
+          "type": "string",
+          "description": "Rationale for the chosen procurement method"
+        },
+        "mainProcurementCategory": {
+          "type": "string",
+          "enum": [
+            "goods",
+            "works",
+            "services"
+          ],
+          "description": "Category describing the main object of procurement "
+        },
+        "additionalProcurementCategories": {
+          "type": "string",
+          "description": "Additional category",
+          "enum": [
+            "goods",
+            "works",
+            "services"
+          ]
+        },
+        "hasEnquiries": {
+          "type": "boolean",
+          "description": "Indicating whether any enquiries were received"
+        },
+        "eligibilityCriteria": {
+          "type": "string",
+          "description": "A description of any eligibility criteria for potential suppliers."
+        },
+        "contractPeriod": {
+          "type": "object",
+          "description": "Contract Process operation period.",
+          "properties": {
+            "startDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+              "example": "2022-07-22T10:01:26Z"
+            },
+            "endDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+              "example": "2022-07-22T10:01:26Z"
+            }
+          }
+        },
+        "procuringEntity": {
+          "type": "object",
+          "description": "Reference to the entity managing the procurement. ",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            }
+          }
+        },
+        "acceleratedProcedure": {
+          "type": "object",
+          "description": "Accelerated procedure indicator",
+          "properties": {
+            "isAcceleratedProcedure": {
+              "type": "boolean"
+            }
+          }
+        },
+        "classification": {
+          "type": "object",
+          "description": "Procedure categorization",
+          "properties": {
+            "scheme": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            }
+          }
+        },
+        "designContest": {
+          "type": "object",
+          "description": "Information about the organization of a design contest",
+          "properties": {
+            "serviceContractAward": {
+              "type": "boolean"
+            }
+          }
+        },
+        "electronicWorkflows": {
+          "type": "object",
+          "properties": {
+            "useOrdering": {
+              "type": "boolean",
+              "description": "A True/False field to indicate if electronic ordering will be used. Required by the EU."
+            },
+            "usePayment": {
+              "type": "boolean",
+              "description": "A True/False field to indicate if electronic payment will be used. Required by the EU."
+            },
+            "acceptInvoicing": {
+              "type": "boolean",
+              "description": "A True/False field to indicate if electronic invoicing will be accepted. Required by the EU"
+            }
+          }
+        },
+        "jointProcurement": {
+          "type": "object",
+          "description": "The contract involves joint procurement. In the case of joint procurement involving different countries, state applicable national procurement law.",
+          "properties": {
+            "isJointProcurement": {
+              "type": "boolean"
+            }
+          }
+        },
+        "legalBasis": {
+          "type": "string",
+          "description": "The legal basis of the procedure"
+        },
+        "procedureOutsourcing": {
+          "type": "object",
+          "description": "Indicator of procedure being managed by other agents",
+          "properties": {
+            "procedureOutsourced": {
+              "type": "boolean"
+            }
+          }
+        },
+        "dynamicPurchasingSystem": {
+          "type": "object",
+          "description": "The procurement involves the setting up of a dynamic purchasing system",
+          "properties": {
+            "hasDynamicPurchasingSystem": {
+              "type": "boolean"
+            }
+          }
+        },
+        "procurementMethodAdditionalInfo": {
+          "type": "string",
+          "description": "Additional information about procurement method"
+        },
+        "framework": {
+          "type": "object",
+          "description": "Framework procedure indicator",
+          "properties": {
+            "isAFramework": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "parties": {
+      "type": "array",
+      "description": "Organization references elsewhere in the release are used to refer back to this entries in this list.",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "./organisation.json"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "details": {
+                "type": "object",
+                "description": "Additional classification information about parties",
+                "properties": {
+                  "typeOfSupplier": {
+                    "type": "string",
+                    "enum": [
+                      "company",
+                      "individual"
+                    ],
+                    "description": "Specifying whether this Entity is natural person  or a legal entity"
+                  },
+                  "mainEconomicActivities": {
+                    "type": "array",
+                    "description": "Information about main economic activitiy of the company",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "scheme": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "uri": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  },
+                  "scale": {
+                    "type": "string"
+                  },
+                  "permits": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "scheme": {
+                          "type": "string"
+                        },
+                        "url": {
+                          "type": "string"
+                        },
+                        "permitDetails": {
+                          "type": "object",
+                          "properties": {
+                            "issuedBy": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "name\t": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "issuedThought": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "validityPeriod": {
+                              "type": "object",
+                              "properties": {
+                                "startDate": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "example": "2022-07-22T10:01:26Z",
+                                  "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+                                },
+                                "endDate": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "example": "2022-07-22T10:01:26Z",
+                                  "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "bankAccounts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "description": {
+                          "type": "string"
+                        },
+                        "bankName": {
+                          "type": "string"
+                        },
+                        "address": {
+                          "$ref": "./address.json"
+                        },
+                        "identifier": {
+                          "type": "object",
+                          "properties": {
+                            "scheme": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "accountIdentification": {
+                          "type": "object",
+                          "properties": {
+                            "scheme": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "additionalAccountIdentifiers": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "scheme": {
+                                "type": "string"
+                              },
+                              "id": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "legalForm": {
+                    "type": "object",
+                    "properties": {
+                      "scheme": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "uri": {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "relatedProcesses": {
+      "type": "array",
+      "description": "Links to other stages of Contract Process",
+      "items": {
+        "$ref": "./relatedProcess.json"
+      }
+    }
+  }
+}

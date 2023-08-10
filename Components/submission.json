@@ -1,0 +1,121 @@
+{
+  "title": "submission",
+  "type": "object",
+  "properties": {
+    "details": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Submission identifier"
+          },
+          "date": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Submission date.({YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z)",
+            "format": "date-time",
+            "example": "2022-07-22T10:01:26Z"
+          },
+          "status": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "pending",
+              "disqualified",
+              "valid",
+              "withdrawn"
+            ],
+            "description": "Submission status"
+          },
+          "candidates": {
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "description": "Reference to the candidates",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "documents": {
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+              "$ref": "./document.json"
+            }
+          },
+          "requirementResponses": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                },
+                "requirement": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "relatedCandidate": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "evidences": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "relatedDocument": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

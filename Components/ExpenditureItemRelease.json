@@ -1,0 +1,268 @@
+{
+  "title": "ExpenditureItem",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "ocid": {
+      "type": "string",
+      "description": "Expenditure Item identifier"
+    },
+    "id": {
+      "type": "string",
+      "example": "ocds-b3wdp1-MD-1648667574668",
+      "description": "Expenditure Item Release identifier"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date Expenditure Item is published.({YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z)",
+      "example": "2022-07-22T10:01:26Z"
+    },
+    "tag": {
+      "type": "array",
+      "description": "Tags can be used to filter releases and to understand the kind of information that releases might contain.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "language": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Expenditure Item language"
+    },
+    "initiationType": {
+      "type": "string",
+      "minLength": 1,
+      "enum": [
+        "tender"
+      ],
+      "description": "Process initial type"
+    },
+    "tender": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "format": "uuid",
+          "description": "Unique object identifier"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Expenditure Item title "
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "planning",
+            "planned"
+          ],
+          "description": "Expenditure Item status"
+        },
+        "items": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "allOf": [
+              {
+                "$ref": "./item.json"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "deliveryAddress": {
+                    "$ref": "./address.json"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "mainProcurementCategory": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "goods",
+            "works",
+            "services"
+          ],
+          "description": "Category describing the main object of procurement"
+        },
+        "classification": {
+          "type": "object",
+          "description": "Procedure categorization",
+          "properties": {
+            "scheme": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The scheme or codelist from which the classification code is taken."
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The classification code taken from the scheme."
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "description": "A textual description or title for the classification code."
+            }
+          }
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Expenditure Item summary description"
+        }
+      }
+    },
+    "buyer": {
+      "type": "object",
+      "description": "Reference to the entity whose budget will be used to pay for goods",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Used to cross-reference the entry in the parties section"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Field that repeats the name given in the parties section"
+        }
+      }
+    },
+    "parties": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "description": "Organization references elsewhere in the release are used to refer back to this entries in this list.",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "./organisation.json"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "details": {
+                "type": "object",
+                "description": "Additional classification information about parties",
+                "properties": {
+                  "typeOfBuyer": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "BODY_PUBLIC",
+                      "EU_INSTITUTION",
+                      "MINISTRY",
+                      "NATIONAL_AGENCY",
+                      "REGIONAL_AGENCY",
+                      "REGIONAL_AUTHORITY"
+                    ]
+                  },
+                  "mainGeneralActivity": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "DEFENCE",
+                      "ECONOMIC_AND_FINANCIAL_AFFAIRS",
+                      "EDUCATION",
+                      "ENVIRONMENT",
+                      "GENERAL_PUBLIC_SERVICES",
+                      "HEALTH",
+                      "HOUSING_AND_COMMUNITY_AMENITIES",
+                      "PUBLIC_ORDER_AND_SAFETY",
+                      "RECREATION_CULTURE_AND_RELIGION",
+                      "SOCIAL_PROTECTION"
+                    ]
+                  },
+                  "mainSectoralActivity": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "AIRPORT_RELATED_ACTIVITIES",
+                      "ELECTRICITY",
+                      "EXPLORATION_EXTRACTION_COAL_OTHER_SOLID_FUEL",
+                      "EXPLORATION_EXTRACTION_GAS_OIL",
+                      "PORT_RELATED_ACTIVITIES",
+                      "POSTAL_SERVICES",
+                      "PRODUCTION_TRANSPORT_DISTRIBUTION_GAS_HEAT",
+                      "RAILWAY_SERVICES",
+                      "URBAN_RAILWAY_TRAMWAY_TROLLEYBUS_BUS_SERVICES",
+                      "WATER"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "planning": {
+      "type": "object",
+      "properties": {
+        "budget": {
+          "type": "object",
+          "description": "Details of the budget that funds contracting process",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Budget Identifier"
+            },
+            "period": {
+              "type": "object",
+              "description": "The start and end date when money should be available",
+              "properties": {
+                "startDate": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                  "example": "2022-07-22T10:01:26Z"
+                },
+                "endDate": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                  "example": "2022-07-22T10:01:26Z"
+                }
+              }
+            },
+            "amount": {
+              "type": "object",
+              "description": "The value reserved in the budget for contracting process.",
+              "properties": {
+                "amount": {
+                  "type": "number",
+                  "description": "Amount as a number."
+                },
+                "currency": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "The currency of the amount"
+                }
+              }
+            }
+          }
+        },
+        "rationale": {
+          "type": "string",
+          "description": "The rationale for the procurement"
+        }
+      }
+    },
+    "relatedProcesses": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "description": "Links to other stages of Contract Process",
+      "items": {
+        "$ref": "./relatedProcess.json"
+      }
+    }
+  }
+}

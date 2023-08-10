@@ -1,0 +1,50 @@
+{
+  "title": "relatedProcess",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "format": "uuid",
+      "description": "A system identifier for relationship"
+    },
+    "relationship": {
+      "type": "array",
+      "description": "Relationship type",
+      "items": {
+        "type": "string",
+        "enum": [
+          "parent",
+          "planning",
+          "contract",
+          "aggregatePlanning",
+          "framework",
+          "x_demand",
+          "x_preAwardCatalogRequest",
+          "x_scope",
+          "x_establishment",
+          "x_expenditureItem",
+          "x_fundingSource",
+          "x_evaluation",
+          "x_contracting"
+        ]
+      }
+    },
+    "scheme": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The identification scheme"
+    },
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Related process identifier "
+    },
+    "uri": {
+      "type": "string",
+      "minLength": 1,
+      "format": "uri",
+      "description": "Release or record package containing the identified related process"
+    }
+  }
+}

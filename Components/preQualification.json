@@ -1,0 +1,41 @@
+{
+  "title": "preQualification",
+  "type": "object",
+  "properties": {
+    "period": {
+      "type": "object",
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2022-07-22T10:01:26Z",
+          "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2022-07-22T10:01:26Z",
+          "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+        }
+      }
+    },
+    "qualificationPeriod": {
+      "type": "object",
+      "description": "Qualification evaluation period",
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2022-07-22T10:01:26Z",
+          "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2022-07-22T10:01:26Z",
+          "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+        }
+      }
+    }
+  }
+}

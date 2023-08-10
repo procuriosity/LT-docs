@@ -1,0 +1,622 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Public Point",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://host:9111"
+    }
+  ],
+  "paths": {
+    "/budgets/{cpid}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Expenditure Item identifier "
+        }
+      ],
+      "get": {
+        "summary": "Receiving Budgets record package",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "uri": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "Records package link"
+                    },
+                    "version": {
+                      "type": "string",
+                      "example": "1.1",
+                      "description": "Version of the published data OCDS standard"
+                    },
+                    "extensions": {
+                      "type": "array",
+                      "description": "Links to the list of used extensions",
+                      "items": {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    },
+                    "publisher": {
+                      "type": "object",
+                      "description": "Information about the system that published Record Package",
+                      "required": [
+                        "name",
+                        "uri"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "uri": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    },
+                    "license": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "Data license link"
+                    },
+                    "publicationPolicy": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "Link to the Publication Policy that is being used"
+                    },
+                    "publishedDate": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "The date on which the information contained in the release was first recorded in, or published by, any system.({YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z)",
+                      "example": "2022-07-22T10:01:26Z"
+                    },
+                    "packages": {
+                      "type": "array",
+                      "description": "Link to all packages that are in Record Package",
+                      "items": {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    },
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "anyOf": [
+                          {
+                            "properties": {
+                              "ocid": {
+                                "type": "string",
+                                "example": "ocds-b3wdp1-MD-1648667574668",
+                                "description": "Expenditure Item"
+                              },
+                              "compiledRelease": {
+                                "$ref": "./Components/ExpenditureItemRelease.json"
+                              }
+                            },
+                            "required": [
+                              "ocid",
+                              "compiledRelease"
+                            ]
+                          },
+                          {
+                            "properties": {
+                              "ocid": {
+                                "type": "string",
+                                "example": "ocds-b3wdp1-MD-1648667574668-FS-1648667627803",
+                                "description": "Finance Source"
+                              },
+                              "compiledRelease": {
+                                "$ref": "./Components/FinancialSourceRelease.json"
+                              }
+                            },
+                            "required": [
+                              "ocid",
+                              "compiledRelease"
+                            ]
+                          }
+                        ],
+                        "type": "object"
+                      }
+                    }
+                  },
+                  "required": [
+                    "uri",
+                    "version",
+                    "extensions",
+                    "publisher",
+                    "license",
+                    "publicationPolicy",
+                    "publishedDate",
+                    "packages",
+                    "records"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-budgets-cpid",
+        "description": "",
+        "tags": [
+          "Budgets"
+        ]
+      }
+    },
+    "/tenders/{cpid}": {
+      "get": {
+        "summary": "Receiving Tenders record package",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "uri": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "Records package link"
+                    },
+                    "version": {
+                      "type": "string",
+                      "example": "1.1",
+                      "description": "Version of the published data OCDS standard"
+                    },
+                    "extensions": {
+                      "type": "array",
+                      "description": "Links to the list of used extensions ",
+                      "items": {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    },
+                    "publisher": {
+                      "type": "object",
+                      "description": "Information about the system that published Record Package",
+                      "required": [
+                        "name",
+                        "uri"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "uri": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    },
+                    "license": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "Data license link"
+                    },
+                    "publicationPolicy": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "Link to the Publication Policy that is being used  "
+                    },
+                    "publishedDate": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "The date on which the information contained in the release was first recorded in, or published by, any system.({YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z)",
+                      "example": "2022-07-22T10:01:26Z"
+                    },
+                    "packages": {
+                      "type": "array",
+                      "description": "Link to all packages that are in Record Package ",
+                      "items": {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    },
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "anyOf": [
+                          {
+                            "description": "Plan",
+                            "properties": {
+                              "ocid": {
+                                "type": "string",
+                                "example": "ocds-b3wdp1-MD-1648217030862-PN-1648217030862"
+                              },
+                              "compiledRelease": {
+                                "$ref": "./Components/PlanRelease.json"
+                              }
+                            },
+                            "required": [
+                              "ocid",
+                              "compiledRelease"
+                            ]
+                          },
+                          {
+                            "description": "Aggregated Plan",
+                            "properties": {
+                              "ocid": {
+                                "type": "string",
+                                "example": "ocds-t1s2t3-MD-1648653606375-AP-1648653606375"
+                              },
+                              "compiledRelease": {
+                                "$ref": "./Components/AggregatedPlanRelease.json"
+                              }
+                            },
+                            "required": [
+                              "ocid",
+                              "compiledRelease"
+                            ]
+                          },
+                          {
+                            "description": "Multi-Stage",
+                            "properties": {
+                              "ocid": {
+                                "type": "string",
+                                "example": "ocds-b3wdp1-MD-1648217030862"
+                              },
+                              "compiledRelease": {
+                                "$ref": "./Components/MultiStageRelease.json"
+                              }
+                            },
+                            "required": [
+                              "ocid",
+                              "compiledRelease"
+                            ]
+                          },
+                          {
+                            "description": "Multi-Stage (FA)",
+                            "properties": {
+                              "ocid": {
+                                "type": "string",
+                                "example": "ocds-b3wdp1-MD-1648217030862"
+                              },
+                              "compiledRelease": {
+                                "$ref": "./Components/MultiStageFARelease.json"
+                              }
+                            },
+                            "required": [
+                              "ocid",
+                              "compiledRelease"
+                            ]
+                          },
+                          {
+                            "description": "Open Tender",
+                            "properties": {
+                              "ocid": {
+                                "type": "string",
+                                "example": "ocds-b3wdp1-MD-1648217030862-EV-1648218544839"
+                              },
+                              "compiledRelease": {
+                                "$ref": "./Components/OpenTenderRelease.json"
+                              }
+                            },
+                            "required": [
+                              "ocid",
+                              "compiledRelease"
+                            ]
+                          },
+                          {
+                            "description": " Negotiation Tender",
+                            "properties": {
+                              "ocid": {
+                                "type": "string",
+                                "example": "ocds-t1s2t3-MD-1650633302550-NP-1650633325456"
+                              },
+                              "compiledRelease": {
+                                "$ref": "./Components/NegotiationTenderRelease.json"
+                              }
+                            },
+                            "required": [
+                              "ocid",
+                              "compiledRelease"
+                            ]
+                          },
+                          {
+                            "description": "Selective Tender",
+                            "properties": {
+                              "ocid": {
+                                "type": "string",
+                                "example": "ocds-b3wdp1-MD-1649940369472-TP-1649942252637"
+                              },
+                              "compiledRelease": {
+                                "$ref": "./Components/SelectiveTenderRelease.json"
+                              }
+                            },
+                            "required": [
+                              "ocid",
+                              "compiledRelease"
+                            ]
+                          },
+                          {
+                            "description": "Mini Competition",
+                            "properties": {
+                              "ocid": {
+                                "type": "string",
+                                "example": "ocds-t1s2t3-MD-1650354962597-MC-1650361678697"
+                              },
+                              "compiledRelease": {
+                                "$ref": "./Components/MiniCompetitionRelease.json"
+                              }
+                            },
+                            "required": [
+                              "ocid",
+                              "compiledRelease"
+                            ]
+                          },
+                          {
+                            "description": "Direct Call Off",
+                            "properties": {
+                              "ocid": {
+                                "type": "string",
+                                "example": "ocds-t1s2t3-MD-1650354962597-CO-1650361678697"
+                              },
+                              "compiledRelease": {
+                                "$ref": "./Components/DirectCallOffRelease.json"
+                              }
+                            },
+                            "required": [
+                              "ocid",
+                              "compiledRelease"
+                            ]
+                          },
+                          {
+                            "description": "Request For Price Quotation",
+                            "properties": {
+                              "ocid": {
+                                "type": "string",
+                                "example": "ocds-t1s2t3-MD-1650354962597-RQ-1650361678697"
+                              },
+                              "compiledRelease": {
+                                "$ref": "./Components/RequestForPriceQuotationRelease.json"
+                              }
+                            },
+                            "required": [
+                              "ocid",
+                              "compiledRelease"
+                            ]
+                          },
+                          {
+                            "description": "Framework Establishment",
+                            "properties": {
+                              "ocid": {
+                                "type": "string",
+                                "example": "ocds-t1s2t3-MD-1648653606375-FE-1648653678759"
+                              },
+                              "compiledRelease": {
+                                "$ref": "./Components/FrameworkEstablishmentRelease.json"
+                              }
+                            },
+                            "required": [
+                              "ocid",
+                              "compiledRelease"
+                            ]
+                          },
+                          {
+                            "description": "Pre-award Catalog ",
+                            "properties": {
+                              "ocid": {
+                                "type": "string",
+                                "example": "ocds-t1s2t3-MD-1648653606375-PC-1648653678759"
+                              },
+                              "compiledRelease": {
+                                "$ref": "./Components/PreAwardCatalogRelease.json"
+                              }
+                            },
+                            "required": [
+                              "ocid",
+                              "compiledRelease"
+                            ]
+                          },
+                          {
+                            "description": "Contract",
+                            "properties": {
+                              "ocid": {
+                                "type": "string",
+                                "example": "ocds-b3wdp1-MD-1648217030862-AC-1648218544839"
+                              },
+                              "compiledRelease": {
+                                "$ref": "./Components/ContractRelease.json"
+                              }
+                            },
+                            "required": [
+                              "ocid",
+                              "compiledRelease"
+                            ]
+                          },
+                          {
+                            "description": "Purchase Order",
+                            "properties": {
+                              "ocid": {
+                                "type": "string",
+                                "example": "ocds-b3wdp1-MD-1648217030862-PO-1648218544839"
+                              },
+                              "compiledRelease": {
+                                "$ref": "./Components/PurchaseOrderRelease.json"
+                              }
+                            },
+                            "required": [
+                              "ocid",
+                              "compiledRelease"
+                            ]
+                          }
+                        ],
+                        "type": "object"
+                      }
+                    }
+                  },
+                  "required": [
+                    "uri",
+                    "version",
+                    "extensions",
+                    "publisher",
+                    "license",
+                    "publicationPolicy",
+                    "publishedDate",
+                    "packages",
+                    "records"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-new",
+        "tags": [
+          "Tenders"
+        ],
+        "description": ""
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process Identifier "
+        }
+      ]
+    },
+    "/tenders": {
+      "get": {
+        "summary": "List",
+        "tags": [
+          "Tenders"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "ocid": {
+                            "type": "string",
+                            "example": "ocds-b3wdp1-MD-1639639376417"
+                          },
+                          "date": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                            "example": "2022-07-22T10:01:26Z"
+                          }
+                        },
+                        "required": [
+                          "ocid",
+                          "date"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "operationId": "",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "offset"
+          }
+        ]
+      }
+    },
+    "/budgets": {
+      "get": {
+        "summary": "List",
+        "tags": [
+          "Budgets"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "ocid": {
+                            "type": "string",
+                            "example": "ocds-b3wdp1-MD-1639639376417"
+                          },
+                          "date": {
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2022-07-22T10:01:26Z",
+                            "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+                          }
+                        },
+                        "required": [
+                          "ocid",
+                          "date"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "operationId": "",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "offset"
+          }
+        ]
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "tags": [
+    {
+      "name": "Budgets"
+    },
+    {
+      "name": "Tenders"
+    }
+  ]
+}

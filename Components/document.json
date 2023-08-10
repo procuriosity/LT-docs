@@ -1,0 +1,68 @@
+{
+  "title": "document",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "System identifier for document. "
+    },
+    "documentType": {
+      "type": "string",
+      "enum": [
+        "regulatoryDocument",
+        "awardNotice",
+        "contractDraft",
+        "winningBid",
+        "complaints",
+        "bidders",
+        "conflictOfInterest",
+        "submissionDocuments",
+        "contractArrangements",
+        "x_qualificationDocuments",
+        "x_eligibilityDocuments",
+        "x_technicalDocuments",
+        "notice",
+        "contractNotice",
+        "contractSchedule",
+        "contractAnnexe",
+        "subContract",
+        "contractSummary",
+        "tenderNotice",
+        "biddingDocuments",
+        "technicalSpecifications",
+        "evaluationCriteria",
+        "clarifications",
+        "eligibilityCriteria",
+        "riskProvisions",
+        "billOfQuantity",
+        "procurementPlan",
+        "illustration",
+        "cancellationDetails",
+        "evaluationReports",
+        "shortlistedFirms",
+        "contractGuarantees"
+      ],
+      "description": "A classification of the document described"
+    },
+    "title": {
+      "type": "string",
+      "description": "Document title."
+    },
+    "description": {
+      "type": "string",
+      "description": "Document short description"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "A direct link to the document or attachment. "
+    },
+    "datePublished": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date on which the document was first published.({YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z)",
+      "example": "2022-07-22T10:01:26Z"
+    }
+  }
+}

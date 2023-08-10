@@ -1,0 +1,281 @@
+{
+  "title": "Multi-Stage(FA)",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "ocid": {
+      "type": "string",
+      "example": "ocds-b3wdp1-MD-1648217030862",
+      "description": "Contract Process identifier"
+    },
+    "id": {
+      "type": "string",
+      "example": "ocds-b3wdp1-MD-1648217030862-1650362043301",
+      "description": "Multi-Stage Release identifier"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Contract Process publishing date.({YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z)",
+      "example": "2022-07-22T10:01:26Z"
+    },
+    "tag": {
+      "type": "array",
+      "description": "Tags can be used to filter releases and to understand the kind of information that releases might contain.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "language": {
+      "type": "string",
+      "description": "Contract Process language"
+    },
+    "initiationType": {
+      "type": "string",
+      "enum": [
+        "tender"
+      ],
+      "description": "Process initial type"
+    },
+    "tender": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique object identifier"
+        },
+        "title": {
+          "type": "string",
+          "description": "Contract Process title"
+        },
+        "description": {
+          "type": "string",
+          "description": "Contract Process summary description"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "active",
+            "complete",
+            "cancelled",
+            "unsuccessful",
+            "planning"
+          ],
+          "description": "Contract Process current status"
+        },
+        "statusDetails": {
+          "type": "string",
+          "enum": [
+            "establishment",
+            "empty",
+            "suspended",
+            "clarification",
+            "tendering",
+            "awarding",
+            "auction",
+            "qualification",
+            "lackOfSubmissions",
+            "qualificationStandStill",
+            "lackOfQualifications"
+          ],
+          "description": "Details of the status"
+        },
+        "value": {
+          "type": "object",
+          "description": "The total upper estimated value of the procurement.",
+          "properties": {
+            "amount": {
+              "type": "number",
+              "description": "Amount as a number."
+            },
+            "currency": {
+              "type": "string",
+              "description": "Contract Process currency"
+            }
+          }
+        },
+        "procurementMethod": {
+          "type": "string",
+          "enum": [
+            "selective"
+          ],
+          "description": "Contract Process procurement method"
+        },
+        "procurementMethodDetails": {
+          "type": "string",
+          "description": "Additional details on the procurement method used.",
+          "enum": [
+            "CF",
+            "OF",
+            "ClosedFA",
+            "OpenFA"
+          ]
+        },
+        "procurementMethodRationale": {
+          "type": "string",
+          "description": "Rationale for the chosen procurement method"
+        },
+        "mainProcurementCategory": {
+          "type": "string",
+          "enum": [
+            "goods",
+            "works",
+            "services"
+          ],
+          "description": "Category describing the main object of procurement"
+        },
+        "additionalProcurementCategories": {
+          "type": "string",
+          "description": "Additional category",
+          "enum": [
+            "goods",
+            "works",
+            "services"
+          ]
+        },
+        "hasEnquiries": {
+          "type": "boolean",
+          "description": "Indicating whether any enquiries were received"
+        },
+        "eligibilityCriteria": {
+          "type": "string",
+          "description": "A description of any eligibility criteria for potential suppliers."
+        },
+        "contractPeriod": {
+          "type": "object",
+          "description": "Contract Process operation period.",
+          "properties": {
+            "startDate": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2022-07-22T10:01:26Z",
+              "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+            },
+            "endDate": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2022-07-22T10:01:26Z",
+              "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+            }
+          }
+        },
+        "procuringEntity": {
+          "type": "object",
+          "description": "Reference to the entity managing the procurement.",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            }
+          }
+        },
+        "acceleratedProcedure": {
+          "type": "object",
+          "description": "Accelerated procedure indicator",
+          "properties": {
+            "isAcceleratedProcedure": {
+              "type": "boolean"
+            }
+          }
+        },
+        "classification": {
+          "type": "object",
+          "description": "Procedure categorization",
+          "properties": {
+            "scheme": {
+              "type": "string",
+              "description": "The scheme or codelist from which the classification code is taken."
+            },
+            "id": {
+              "type": "string",
+              "description": "The classification code taken from the scheme."
+            },
+            "description": {
+              "type": "string",
+              "description": "A textual description or title for the classification code."
+            }
+          }
+        },
+        "designContest": {
+          "type": "object",
+          "description": "Information about the organization of a design contest",
+          "properties": {
+            "serviceContractAward": {
+              "type": "boolean"
+            }
+          }
+        },
+        "electronicWorkflows": {
+          "type": "object",
+          "properties": {
+            "useOrdering": {
+              "type": "boolean",
+              "description": "A True/False field to indicate if electronic ordering will be used. Required by the EU."
+            },
+            "usePayment": {
+              "type": "boolean",
+              "description": "A True/False field to indicate if electronic payment will be used. Required by the EU."
+            },
+            "acceptInvoicing": {
+              "type": "boolean",
+              "description": "A True/False field to indicate if electronic invoicing will be accepted. Required by the EU"
+            }
+          }
+        },
+        "jointProcurement": {
+          "type": "object",
+          "description": "The contract involves joint procurement. In the case of joint procurement involving different countries, state applicable national procurement law.",
+          "properties": {
+            "isJointProcurement": {
+              "type": "boolean"
+            }
+          }
+        },
+        "legalBasis": {
+          "type": "string",
+          "description": "The legal basis of the procedure"
+        },
+        "procedureOutsourcing": {
+          "type": "object",
+          "description": "Indicator of procedure being managed by other agents",
+          "properties": {
+            "procedureOutsourced": {
+              "type": "boolean"
+            }
+          }
+        },
+        "dynamicPurchasingSystem": {
+          "type": "object",
+          "description": "The procurement involves the setting up of a dynamic purchasing system",
+          "properties": {
+            "hasDynamicPurchasingSystem": {
+              "type": "boolean"
+            }
+          }
+        },
+        "procurementMethodAdditionalInfo": {
+          "type": "string",
+          "description": "Additional information about procurement method"
+        },
+        "framework": {
+          "type": "object",
+          "description": "Framework procedure indicator",
+          "properties": {
+            "isAFramework": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "relatedProcesses": {
+      "type": "array",
+      "description": "Links to other stages of Contract Process",
+      "items": {
+        "$ref": "./relatedProcess.json"
+      }
+    }
+  }
+}

@@ -1,0 +1,1046 @@
+{
+  "title": "OpenTender",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "example": "ocds-b3wdp1-MD-1648217030862-EV-1648218544839",
+      "description": "Contract Notice release identifier"
+    },
+    "ocid": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Contract Notice identifier",
+      "example": "ocds-b3wdp1-MD-1649940369472-EV-1649942252637"
+    },
+    "date": {
+      "type": "string",
+      "minLength": 1,
+      "format": "date-time",
+      "description": "Contract Notice publishing date.({YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z)",
+      "example": "2022-07-22T10:01:26Z"
+    },
+    "tag": {
+      "type": "array",
+      "description": "Tags can be used to filter releases and to understand the kind of information that releases might contain.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "language": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Contract Notice language"
+    },
+    "initiationType": {
+      "type": "string",
+      "minLength": 1,
+      "enum": [
+        "tender"
+      ],
+      "description": "Process initial type"
+    },
+    "tender": {
+      "type": "object",
+      "description": "The activities undertaken in order to enter into a contract.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Unique object identifier",
+          "format": "uuid"
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "active",
+            "unsuccessful",
+            "cancelled"
+          ],
+          "description": "Contract Notice current status"
+        },
+        "statusDetails": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "tendering",
+            "clarification",
+            "awarding",
+            "suspended",
+            "empty",
+            "auction"
+          ],
+          "description": "Details of the status"
+        },
+        "criteria": {
+          "type": "array",
+          "description": "A list of criteria on which either bidders or items will be judged, evaluated or assessed.",
+          "items": {
+            "$ref": "./criteria.json"
+          }
+        },
+        "conversions": {
+          "type": "array",
+          "description": "A list of applicable numerical weightings for the criteria used or the options allowed.",
+          "items": {
+            "$ref": "./conversion.json"
+          }
+        },
+        "items": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "$ref": "./item.json"
+          }
+        },
+        "lots": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "allOf": [
+              {
+                "$ref": "./lot.json"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "hasOptions": {
+                    "type": "boolean"
+                  },
+                  "options": {
+                    "type": "array",
+                    "description": "Opportunity for additional purchases",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "description": {
+                          "type": "string"
+                        },
+                        "period": {
+                          "type": "object",
+                          "properties": {
+                            "durationInDays": {
+                              "type": "number"
+                            },
+                            "startDate": {
+                              "type": "string",
+                              "format": "date-time",
+                              "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                              "example": "2022-07-22T10:01:26Z"
+                            },
+                            "endDate": {
+                              "type": "string",
+                              "format": "date-time",
+                              "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                              "example": "2022-07-22T10:01:26Z"
+                            },
+                            "maxExtentDate": {
+                              "type": "string",
+                              "format": "date-time",
+                              "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                              "example": "2022-07-22T10:01:26Z"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "hasRecurrence": {
+                    "type": "boolean"
+                  },
+                  "recurrence": {
+                    "type": "object",
+                    "description": "Relaunching of the contract",
+                    "properties": {
+                      "dates": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "startDate": {
+                              "type": "string",
+                              "format": "date-time",
+                              "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                              "example": "2022-07-22T10:01:26Z"
+                            }
+                          }
+                        }
+                      },
+                      "description": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "hasRenewal": {
+                    "type": "boolean"
+                  },
+                  "renewal": {
+                    "type": "object",
+                    "description": "Options for the renewal of contracts.",
+                    "properties": {
+                      "description": {
+                        "type": "string"
+                      },
+                      "minimumRenewals": {
+                        "type": "number",
+                        "description": "The number of times a contract can be renewed"
+                      },
+                      "maximumRenewals": {
+                        "type": "number"
+                      },
+                      "period": {
+                        "type": "object",
+                        "properties": {
+                          "durationInDays": {
+                            "type": "number"
+                          },
+                          "startDate": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                            "example": "2022-07-22T10:01:26Z"
+                          },
+                          "endDate": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                            "example": "2022-07-22T10:01:26Z"
+                          },
+                          "maxExtentDate": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                            "example": "2022-07-22T10:01:26Z"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "lotGroups": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "description": "Where the buyer reserves the right to combine lots, or wishes to specify the total value for a group of lots, a lot group is used to capture this information.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "optionToCombine": {
+                "type": "boolean",
+                "description": "The buyer reserves the right to combine the lots in this group when awarding a contract."
+              }
+            }
+          }
+        },
+        "tenderPeriod": {
+          "type": "object",
+          "description": "The period when Contract Notice is open for bids. ",
+          "properties": {
+            "startDate": {
+              "type": "string",
+              "minLength": 1,
+              "format": "date-time",
+              "example": "2022-07-22T10:01:26Z",
+              "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+            },
+            "endDate": {
+              "type": "string",
+              "minLength": 1,
+              "format": "date-time",
+              "example": "2022-07-22T10:01:26Z",
+              "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+            }
+          }
+        },
+        "enquiryPeriod": {
+          "type": "object",
+          "description": "The period during which potential bidders may submit enquiries for clarification. ",
+          "properties": {
+            "startDate": {
+              "type": "string",
+              "minLength": 1,
+              "format": "date-time",
+              "example": "2022-07-22T10:01:26Z",
+              "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+            },
+            "endDate": {
+              "type": "string",
+              "minLength": 1,
+              "format": "date-time",
+              "example": "2022-07-22T10:01:26Z",
+              "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+            }
+          }
+        },
+        "auctionPeriod": {
+          "type": "object",
+          "description": "Auction start date",
+          "properties": {
+            "startDate": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2022-07-22T10:01:26Z",
+              "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+            },
+            "endDate": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2022-07-22T10:01:26Z",
+              "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+            }
+          }
+        },
+        "hasEnquiries": {
+          "type": "boolean",
+          "description": "If any enquiries were received during the Contract process. "
+        },
+        "enquiries": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "$ref": "./enquiry.json"
+          }
+        },
+        "amendments": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "description": "A tender/lot amendment is a formal change to the tender/lot",
+          "items": {
+            "$ref": "./amendment.json"
+          }
+        },
+        "documents": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "$ref": "./document.json"
+          }
+        },
+        "awardCriteria": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Award criteria for the procurement",
+          "enum": [
+            "priceOnly",
+            "ratedCriteria",
+            "qualityOnly",
+            "costOnly"
+          ]
+        },
+        "awardCriteriaDetails": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Any detailed or further information on the award or selection criteria.",
+          "enum": [
+            "automated",
+            "manual"
+          ]
+        },
+        "submissionMethod": {
+          "type": "array",
+          "description": "The methods by which bids are submitted",
+          "items": {
+            "type": "string",
+            "enum": [
+              "electronicSubmission"
+            ]
+          }
+        },
+        "awardPeriod": {
+          "type": "object",
+          "description": "The period for decision making regarding the contract award.",
+          "properties": {
+            "startDate": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2022-07-22T10:01:26Z",
+              "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+            },
+            "endDate": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2022-07-22T10:01:26Z",
+              "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+            }
+          }
+        },
+        "submissionMethodDetails": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Any detailed or further information on the submission method. "
+        },
+        "submissionMethodRationale": {
+          "type": "array",
+          "description": "The rationale for the submission",
+          "items": {
+            "type": "string"
+          }
+        },
+        "procurementMethodModalities": {
+          "type": "array",
+          "description": "The set of modalities applied under this procurement project",
+          "items": {
+            "type": "string",
+            "enum": [
+              "electronicAuctions"
+            ]
+          }
+        },
+        "requiresElectronicCatalogue": {
+          "type": "boolean"
+        },
+        "electronicAuctions": {
+          "type": "object",
+          "properties": {
+            "details": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "Auction identifier"
+                  },
+                  "relatedLot": {
+                    "type": "string",
+                    "description": "Connection with lot"
+                  },
+                  "auctionPeriod": {
+                    "type": "object",
+                    "description": "Auction start date",
+                    "properties": {
+                      "startDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                        "example": "2022-07-22T10:01:26Z"
+                      }
+                    }
+                  },
+                  "electronicAuctionModalities": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "url": {
+                          "type": "string",
+                          "format": "uri",
+                          "description": "Link to the auction for viewers"
+                        },
+                        "eligibleMinimumDifference": {
+                          "type": "object",
+                          "description": "Minimum auction step",
+                          "properties": {
+                            "amount": {
+                              "type": "number",
+                              "description": "Amount of the step"
+                            },
+                            "currency": {
+                              "type": "string",
+                              "description": "Currency of the step"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "electronicAuctionResult": {
+                    "type": "array",
+                    "description": "Electronic auction result values",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "relatedBid": {
+                          "type": "string"
+                        },
+                        "value": {
+                          "type": "object",
+                          "properties": {
+                            "amount": {
+                              "type": "number"
+                            },
+                            "currency": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "electronicAuctionProgress": {
+                    "type": "array",
+                    "description": "Electronic auction in progress changes",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "period": {
+                          "type": "object",
+                          "properties": {
+                            "startDate": {
+                              "type": "string",
+                              "format": "date-time",
+                              "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                              "example": "2022-07-22T10:01:26Z"
+                            },
+                            "endDate": {
+                              "type": "string",
+                              "format": "date-time",
+                              "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                              "example": "2022-07-22T10:01:26Z"
+                            }
+                          }
+                        },
+                        "breakdown": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "relatedBid": {
+                                "type": "string"
+                              },
+                              "status": {
+                                "type": "string"
+                              },
+                              "dateMet": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                "example": "2022-07-22T10:01:26Z"
+                              },
+                              "value": {
+                                "type": "object",
+                                "properties": {
+                                  "amount": {
+                                    "type": "number"
+                                  },
+                                  "currency": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "amount",
+                                  "currency"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "mainProcurementCategory": {
+          "type": "string",
+          "enum": [
+            "goods",
+            "works",
+            "services"
+          ]
+        },
+        "classification": {
+          "type": "object",
+          "properties": {
+            "scheme": {
+              "type": "string",
+              "enum": [
+                "CPV"
+              ]
+            },
+            "id": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            }
+          }
+        },
+        "targets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "relatesTo": {
+                "type": "string",
+                "enum": [
+                  "item",
+                  "lot",
+                  "tender"
+                ]
+              },
+              "relatedItem": {
+                "type": "string"
+              },
+              "observations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "period": {
+                      "type": "object",
+                      "properties": {
+                        "startDate": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-07-22T10:01:26Z",
+                          "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+                        },
+                        "endDate": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2022-07-22T10:01:26Z",
+                          "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+                        }
+                      }
+                    },
+                    "measure": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "integer"
+                        },
+                        {
+                          "type": "boolean"
+                        }
+                      ]
+                    },
+                    "unit": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "dimensions": {
+                      "type": "object",
+                      "properties": {
+                        "requirementClassIdPR": {
+                          "type": "string"
+                        },
+                        "metricType": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "notes": {
+                      "type": "string"
+                    },
+                    "relatedRequirementId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "milestones": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "hasPreviousNotice": {
+      "type": "boolean",
+      "description": "Is there a previous publication concerning this procedure"
+    },
+    "purposeOfNotice": {
+      "type": "object",
+      "description": "Is the nature of this notice is a call for competition",
+      "properties": {
+        "isACallForCompetition": {
+          "type": "boolean"
+        }
+      }
+    },
+    "relatedProcesses": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "description": "Links to other stages of Contract Process",
+      "items": {
+        "$ref": "./relatedProcess.json"
+      }
+    },
+    "parties": {
+      "type": "array",
+      "description": "Organization references elsewhere in the release are used to refer back to this entries in this list.",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "./organisation.json"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "details": {
+                "type": "object",
+                "description": "Additional classification information about parties",
+                "properties": {
+                  "typeOfSupplier": {
+                    "type": "string",
+                    "enum": [
+                      "company",
+                      "individual"
+                    ],
+                    "description": "Specifying whether this Entity is natural person  or a legal entity"
+                  },
+                  "mainEconomicActivities": {
+                    "type": "array",
+                    "description": "Information about main economic activitiy of the company",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "scheme": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "uri": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  },
+                  "scale": {
+                    "type": "string",
+                    "enum": [
+                      "micro",
+                      "sme",
+                      "large"
+                    ]
+                  },
+                  "permits": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "scheme": {
+                          "type": "string"
+                        },
+                        "url": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "permitDetails": {
+                          "type": "object",
+                          "properties": {
+                            "issuedBy": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "issuedThought": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "validityPeriod": {
+                              "type": "object",
+                              "properties": {
+                                "startDate": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                  "example": "2022-07-22T10:01:26Z"
+                                },
+                                "endDate": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                  "example": "2022-07-22T10:01:26Z"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "bankAccounts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "description": {
+                          "type": "string"
+                        },
+                        "bankName": {
+                          "type": "string"
+                        },
+                        "address": {
+                          "$ref": "./address.json"
+                        },
+                        "identifier": {
+                          "type": "object",
+                          "properties": {
+                            "scheme": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "accountIdentification": {
+                          "type": "object",
+                          "properties": {
+                            "scheme": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "additionalAccountIdentifiers": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "scheme": {
+                                "type": "string"
+                              },
+                              "id": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "legalForm": {
+                    "type": "object",
+                    "properties": {
+                      "scheme": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "uri": {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "contracts": {
+      "type": "array",
+      "description": "The set of award decisions related to this procurement project",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Contract award notice (CAN) identifier"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date the Contract award notice (CAN) was signed.{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+            "example": "2022-07-22T10:01:26Z"
+          },
+          "awardId": {
+            "type": "string",
+            "description": "Connection with Award"
+          },
+          "relatedLots": {
+            "type": "array",
+            "description": "Connection with Lot",
+            "items": {
+              "type": "string"
+            }
+          },
+          "documents": {
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+              "$ref": "./document.json"
+            }
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "active",
+              "unsuccessful",
+              "cancelled"
+            ],
+            "description": "Contract award notice (CAN) current status"
+          },
+          "statusDetails": {
+            "type": "string",
+            "enum": [
+              "contractProject",
+              "withdrawnQualificationProtocol",
+              "issuing",
+              "issued",
+              "approved",
+              "execution",
+              "unsuccessful",
+              "empty",
+              "active"
+            ],
+            "description": "Details of the status"
+          }
+        }
+      }
+    },
+    "bids": {
+      "$ref": "./bid.json"
+    },
+    "awards": {
+      "type": "array",
+      "description": "Information from the award phase of the contracting process. There can be more than one award per contracting process e.g. because the contract is split among different providers, or because it is a standing offer.",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "./award.json"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "weightedValue": {
+                "type": "object",
+                "description": "The normalized price value calculated",
+                "properties": {
+                  "amount": {
+                    "type": "number"
+                  },
+                  "currency": {
+                    "type": "string"
+                  }
+                }
+              },
+              "requirementResponses": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "example": "401651e3-c6d2-4080-a199-d4fefeab0a89",
+                      "description": "Requirement response identifier"
+                    },
+                    "value": {
+                      "type": "boolean",
+                      "description": "Requirement value\n"
+                    },
+                    "requirement": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "description": "Identifier of the requirement on which response was given"
+                        }
+                      }
+                    },
+                    "responder": {
+                      "type": "object",
+                      "description": "Who gives requirement response",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "relatedTenderer": {
+                      "type": "object",
+                      "description": "Connection with the tenderer",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

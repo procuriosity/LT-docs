@@ -1,0 +1,175 @@
+{
+  "title": "organisation",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "System organization identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Organization name "
+    },
+    "identifier": {
+      "type": "object",
+      "description": "Organization identifier",
+      "properties": {
+        "scheme": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "legalName": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "additionalIdentifiers": {
+      "type": "array",
+      "description": "Organization additional identifier",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "legalName": {
+            "type": "string"
+          },
+          "scheme": {
+            "type": "string"
+          },
+          "uri": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    "address": {
+      "$ref": "./address.json"
+    },
+    "contactPoint": {
+      "type": "object",
+      "description": "Contact details",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "telephone": {
+          "type": "string"
+        },
+        "faxNumber": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "roles": {
+      "type": "array",
+      "description": "Organization role",
+      "items": {
+        "type": "string",
+        "enum": [
+          "supplier",
+          "payee",
+          "buyer",
+          "procuringEntity",
+          "centralPurchasingBody",
+          "client",
+          "candidate",
+          "invitedCandidate"
+        ]
+      }
+    },
+    "persones": {
+      "type": "array",
+      "description": "Information about responsible persones",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string",
+            "description": "Titles that are used before surnames or full names as a sign of respect",
+            "enum": [
+              "Mr.",
+              "Mrs.",
+              "Ms."
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "identifier": {
+            "type": "object",
+            "properties": {
+              "scheme": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "uri": {
+                "type": "string",
+                "format": "uri"
+              }
+            }
+          },
+          "businessFunctions": {
+            "type": "array",
+            "description": "Position",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "authority",
+                    "contactPoint"
+                  ]
+                },
+                "jobTitle": {
+                  "type": "string"
+                },
+                "period": {
+                  "type": "object",
+                  "properties": {
+                    "startDate": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                      "example": "2022-07-22T10:01:26Z"
+                    }
+                  }
+                },
+                "documents": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "./document.json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

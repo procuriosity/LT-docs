@@ -1,0 +1,191 @@
+{
+  "title": "criteria",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Criteria identifier"
+    },
+    "title": {
+      "type": "string",
+      "description": "Criteria title"
+    },
+    "classification": {
+      "type": "object",
+      "properties": {
+        "scheme": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "description": {
+      "type": "string",
+      "description": "Criteria description"
+    },
+    "relatesTo": {
+      "type": "string",
+      "enum": [
+        "lot",
+        "item",
+        "tender",
+        "qualification",
+        "tenderer"
+      ]
+    },
+    "relatedItem": {
+      "type": "string",
+      "description": "Connection with item"
+    },
+    "requirementGroups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "requirements": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "active"
+                  ]
+                },
+                "title": {
+                  "type": "string"
+                },
+                "dataType": {
+                  "type": "string",
+                  "enum": [
+                    "integer",
+                    "string",
+                    "boolean",
+                    "number"
+                  ]
+                },
+                "description": {
+                  "type": "string"
+                },
+                "period": {
+                  "type": "object",
+                  "properties": {
+                    "startDate": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                      "example": "2022-07-22T10:01:26Z"
+                    },
+                    "endDate": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                      "example": "2022-07-22T10:01:26Z"
+                    }
+                  }
+                },
+                "datePublished": {
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "2022-07-22T10:01:26Z",
+                  "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+                },
+                "expectedValue": {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "boolean"
+                    }
+                  ]
+                },
+                "minValue": {
+                  "oneOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "integer"
+                    }
+                  ]
+                },
+                "maxValue": {
+                  "oneOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "integer"
+                    }
+                  ]
+                },
+                "eligibleEvidences": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "reference",
+                          "document"
+                        ]
+                      },
+                      "relatedDocument": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "source": {
+      "type": "string",
+      "description": "Criteria source",
+      "enum": [
+        "procuringEntity"
+      ]
+    }
+  }
+}

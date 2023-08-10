@@ -1,0 +1,590 @@
+{
+  "title": "Framework Establishment",
+  "type": "object",
+  "properties": {
+    "ocid": {
+      "type": "string",
+      "minLength": 1,
+      "example": "ocds-t1s2t3-MD-1648653606375-FE-1648653678759",
+      "description": "Framework Establishment identifier"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "example": "ocds-t1s2t3-MD-1648653606375-FE-1648653678759-1648653907291",
+      "description": "Framework Establishment Release identifier"
+    },
+    "date": {
+      "type": "string",
+      "minLength": 1,
+      "format": "date-time",
+      "description": "Framework Establishment publishing date.({YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z)",
+      "example": "2022-07-22T10:01:26Z"
+    },
+    "tag": {
+      "type": "array",
+      "description": "Tags can be used to filter releases and to understand the kind of information that releases might contain.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "initiationType": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Process initial type"
+    },
+    "language": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Framework Establishment language"
+    },
+    "parties": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "description": "Organization references elsewhere in the release are used to refer back to this entries in this list.",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "./organisation.json"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "details": {
+                "type": "object",
+                "description": "Additional classification information about parties",
+                "properties": {
+                  "typeOfBuyer": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "BODY_PUBLIC",
+                      "EU_INSTITUTION",
+                      "MINISTRY",
+                      "NATIONAL_AGENCY",
+                      "REGIONAL_AGENCY",
+                      "REGIONAL_AUTHORITY"
+                    ]
+                  },
+                  "mainGeneralActivity": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "DEFENCE",
+                      "ECONOMIC_AND_FINANCIAL_AFFAIRS",
+                      "EDUCATION",
+                      "ENVIRONMENT",
+                      "GENERAL_PUBLIC_SERVICES",
+                      "HEALTH",
+                      "HOUSING_AND_COMMUNITY_AMENITIES",
+                      "PUBLIC_ORDER_AND_SAFETY",
+                      "RECREATION_CULTURE_AND_RELIGION",
+                      "SOCIAL_PROTECTION"
+                    ]
+                  },
+                  "mainSectoralActivity": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "AIRPORT_RELATED_ACTIVITIES",
+                      "ELECTRICITY",
+                      "EXPLORATION_EXTRACTION_COAL_OTHER_SOLID_FUEL",
+                      "EXPLORATION_EXTRACTION_GAS_OIL",
+                      "PORT_RELATED_ACTIVITIES",
+                      "POSTAL_SERVICES",
+                      "PRODUCTION_TRANSPORT_DISTRIBUTION_GAS_HEAT",
+                      "RAILWAY_SERVICES",
+                      "URBAN_RAILWAY_TRAMWAY_TROLLEYBUS_BUS_SERVICES",
+                      "WATER"
+                    ]
+                  },
+                  "mainEconomicActivities": {
+                    "type": "array",
+                    "description": "Information about main economic activitiy of the company",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "scheme": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "uri": {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      }
+                    }
+                  },
+                  "bankAccounts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "description": {
+                          "type": "string"
+                        },
+                        "bankName": {
+                          "type": "string"
+                        },
+                        "address": {
+                          "$ref": "./address.json"
+                        },
+                        "identifier": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "scheme": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "accountIdentification": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "scheme": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "additionalAccountIdentifiers": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "scheme": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "legalForm": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "scheme": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "uri": {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    }
+                  },
+                  "scale": {
+                    "type": "string",
+                    "enum": [
+                      "micro",
+                      "sme",
+                      "large"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "tender": {
+      "type": "object",
+      "description": "The activities undertaken in order to enter into a contract.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "format": "uuid",
+          "description": "Unique object identifier"
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "active",
+            "unsuccessful",
+            "cancelled"
+          ],
+          "description": "Framework Establishment current status"
+        },
+        "statusDetails": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "evaluation",
+            "tendering",
+            "clarification",
+            "awarding",
+            "suspended",
+            "empty",
+            "auction",
+            "qualification",
+            "lackOfSubmissions",
+            "qualificationStandStill",
+            "lackOfQualifications"
+          ],
+          "description": "Details of the status"
+        },
+        "criteria": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "description": "A list of criteria on which either bidders or items will be judged, evaluated or assessed.",
+          "items": {
+            "$ref": "./criteria.json"
+          }
+        },
+        "otherCriteria": {
+          "type": "object",
+          "properties": {
+            "qualificationSystemMethods": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "automated",
+                  "manual"
+                ]
+              }
+            },
+            "reductionCriteria": {
+              "type": "string",
+              "minLength": 1,
+              "enum": [
+                "scoring",
+                "none"
+              ]
+            }
+          }
+        },
+        "enquiryPeriod": {
+          "type": "object",
+          "description": "The period during which potential bidders may submit enquiries for clarification.",
+          "properties": {
+            "startDate": {
+              "type": "string",
+              "minLength": 1,
+              "format": "date-time",
+              "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+              "example": "2022-07-22T10:01:26Z"
+            },
+            "endDate": {
+              "type": "string",
+              "minLength": 1,
+              "format": "date-time",
+              "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+              "example": "2022-07-22T10:01:26Z"
+            }
+          }
+        },
+        "hasEnquiries": {
+          "type": "boolean",
+          "description": "Wheather any enquiries were received "
+        },
+        "documents": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "$ref": "./document.json"
+          }
+        },
+        "submissionMethod": {
+          "type": "array",
+          "description": "The methods by which bids are submitted",
+          "items": {
+            "type": "string",
+            "enum": [
+              "electronicSubmission"
+            ]
+          }
+        },
+        "submissionMethodDetails": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Any detailed or further information on the submission method."
+        },
+        "submissionMethodRationale": {
+          "type": "array",
+          "description": "The rationale for the submission",
+          "items": {
+            "type": "string"
+          }
+        },
+        "requiresElectronicCatalogue": {
+          "type": "boolean"
+        },
+        "secondStage": {
+          "type": "object",
+          "description": "Describes the second stage of a two-stage procedure.It has two fields to describe the limits on the number of candidates to be invited.",
+          "properties": {
+            "minimumCandidates": {
+              "type": "number"
+            },
+            "maximumCandidates": {
+              "type": "number"
+            }
+          }
+        },
+        "enquiries": {
+          "type": "array",
+          "items": {
+            "$ref": "./enquiry.json"
+          }
+        }
+      }
+    },
+    "contracts": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "description": "The set of award decisions related to this procurement project",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Contract award notice (CAN) identifier"
+          },
+          "date": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The date the Contract award notice (CAN) was signed.({YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z)",
+            "example": "2022-07-22T10:01:26Z",
+            "format": "date-time"
+          },
+          "internalId": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Contract internal identifier"
+          },
+          "status": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Contract award notice (CAN) current status",
+            "enum": [
+              "pending",
+              "cancelled",
+              "active",
+              "unsuccessful"
+            ]
+          },
+          "statusDetails": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Details of the status",
+            "enum": [
+              "contractProject",
+              "withdrawnQualificationProtocol",
+              "issuing",
+              "issued",
+              "approved",
+              "execution",
+              "unsuccessful",
+              "empty",
+              "active"
+            ]
+          },
+          "isFrameworkOrDynamic": {
+            "type": "boolean"
+          },
+          "documents": {
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "System identifier for document."
+                },
+                "documentType": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Document classification",
+                  "enum": [
+                    "evaluationReports"
+                  ]
+                },
+                "url": {
+                  "type": "string",
+                  "minLength": 1,
+                  "format": "uri",
+                  "description": "A direct link to the document or attachment."
+                },
+                "datePublished": {
+                  "type": "string",
+                  "minLength": 1,
+                  "format": "date-time",
+                  "description": "The date on which the document was first published.({YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z)",
+                  "example": "2022-07-22T10:01:26Z"
+                }
+              }
+            }
+          },
+          "dateSigned": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Date contract is signed.({YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z)",
+            "example": "2022-07-22T10:01:26Z"
+          },
+          "confirmationRequests": {
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "type": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "relatesTo": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "relatedItem": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "source": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requests": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "relatedOrganization": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "name": {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "confirmationResponses": {
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "requestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "type": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "value": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "relatedPerson": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "submissions": {
+      "$ref": "./submission.json"
+    },
+    "qualifications": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "description": "Information from the qualification phase of the contracting process. There can be more than one qualification per contracting process",
+      "items": {
+        "$ref": "./qualification.json"
+      }
+    },
+    "hasPreviousNotice": {
+      "type": "boolean"
+    },
+    "purposeOfNotice": {
+      "type": "object",
+      "description": "Is the nature of this notice is a call for competition",
+      "properties": {
+        "isACallForCompetition": {
+          "type": "boolean"
+        }
+      }
+    },
+    "relatedProcesses": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "description": "Links to other stages of Framework Establishment",
+      "items": {
+        "$ref": "./relatedProcess.json"
+      }
+    },
+    "preQualification": {
+      "$ref": "./preQualification.json"
+    }
+  }
+}

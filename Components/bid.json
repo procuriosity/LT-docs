@@ -1,0 +1,163 @@
+{
+  "title": "bid",
+  "type": "object",
+  "properties": {
+    "details": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Bid identifier"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Bid submission date.({YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z)",
+            "example": "2022-07-22T10:01:26Z"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "valid",
+              "disqualified"
+            ],
+            "description": "Bid current status"
+          },
+          "statusDetails": {
+            "type": "string",
+            "enum": [
+              "archived",
+              "valid",
+              "disqualified"
+            ]
+          },
+          "requirementResponses": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "Requirement response identifier"
+                },
+                "value": {
+                  "type": "string",
+                  "description": "Requirement value "
+                },
+                "requirement": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "Identifier of the requirement on which response was given"
+                    }
+                  }
+                },
+                "relatedTenderer": {
+                  "type": "object",
+                  "description": "Who gives requirement response",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "evidences": {
+                  "type": "array",
+                  "description": "Response evidences",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "relatedDocument": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "period": {
+                  "type": "object",
+                  "properties": {
+                    "startDate": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2022-07-22T10:01:26Z",
+                      "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+                    },
+                    "endDate": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2022-07-22T10:01:26Z",
+                      "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "tenderers": {
+            "type": "array",
+            "description": "Reference to tenderers",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "value": {
+            "type": "object",
+            "description": "Bid total value",
+            "properties": {
+              "amount": {
+                "type": "number",
+                "description": "Amount as a number."
+              },
+              "currency": {
+                "type": "string",
+                "description": "Bid currency"
+              }
+            }
+          },
+          "documents": {
+            "type": "array",
+            "items": {
+              "$ref": "./document.json"
+            }
+          },
+          "relatedLots": {
+            "type": "array",
+            "description": "Connection with lot",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

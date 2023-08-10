@@ -1,0 +1,197 @@
+{
+  "title": "FinancialSource",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Finance Source Release identifier"
+    },
+    "ocid": {
+      "type": "string",
+      "minLength": 1,
+      "example": "ocds-b3wdp1-MD-1648667574668-FS-1648667627803",
+      "description": "Finance Source identifier"
+    },
+    "date": {
+      "type": "string",
+      "minLength": 1,
+      "format": "date-time",
+      "description": "Date Finance Source is published.({YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z)",
+      "example": "2022-07-22T10:01:26Z"
+    },
+    "tag": {
+      "type": "array",
+      "description": "Tags can be used to filter releases and to understand the kind of information that releases might contain.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "initiationType": {
+      "type": "string",
+      "minLength": 1,
+      "enum": [
+        "tender"
+      ],
+      "description": "Process initial type"
+    },
+    "tender": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "format": "uuid",
+          "description": "Unique object identifier"
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "active",
+            "planning"
+          ],
+          "description": "Finance Source current status"
+        },
+        "statusDetails": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "empty"
+          ],
+          "description": "Details of the status"
+        }
+      }
+    },
+    "parties": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "description": "Organization references elsewhere in the release are used to refer back to this entries in this list.",
+      "items": {
+        "$ref": "./organisation.json"
+      }
+    },
+    "planning": {
+      "type": "object",
+      "properties": {
+        "rationale": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The rationale for the procurement"
+        },
+        "budget": {
+          "type": "object",
+          "description": "Details of the budget that funds contracting process",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Budget Identifier"
+            },
+            "description": {
+              "type": "string",
+              "description": "Budget description"
+            },
+            "period": {
+              "type": "object",
+              "description": "Finance Source operation period",
+              "properties": {
+                "startDate": {
+                  "type": "string",
+                  "minLength": 1,
+                  "format": "date-time",
+                  "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                  "example": "2022-07-22T10:01:26Z"
+                },
+                "endDate": {
+                  "type": "string",
+                  "minLength": 1,
+                  "format": "date-time",
+                  "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                  "example": "2022-07-22T10:01:26Z"
+                }
+              }
+            },
+            "amount": {
+              "type": "object",
+              "description": "All Finance Sources amount ",
+              "properties": {
+                "amount": {
+                  "type": "number"
+                },
+                "currency": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "isEuropeanUnionFunded": {
+              "type": "boolean",
+              "description": "If EU provides money"
+            },
+            "europeanUnionFunding": {
+              "type": "object",
+              "properties": {
+                "projectName": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "projectIdentifier": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uri": {
+                  "type": "string",
+                  "minLength": 1,
+                  "format": "uri"
+                }
+              }
+            },
+            "verified": {
+              "type": "boolean"
+            },
+            "sourceEntity": {
+              "type": "object",
+              "description": "Entities that provide money ",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "project": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The name of the project through which this contracting process is funded"
+            },
+            "projectID": {
+              "type": "string",
+              "minLength": 1,
+              "description": "An external identifier for the project"
+            },
+            "uri": {
+              "type": "string",
+              "minLength": 1,
+              "format": "uri"
+            }
+          }
+        }
+      }
+    },
+    "relatedProcesses": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "description": "Links to other stages of Contract Process",
+      "items": {
+        "$ref": "./relatedProcess.json"
+      }
+    }
+  }
+}

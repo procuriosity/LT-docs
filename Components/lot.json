@@ -1,0 +1,203 @@
+{
+  "title": "lot",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Lot identifier"
+    },
+    "internalId": {
+      "type": "string",
+      "description": "Lot internal identifier"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Lot title"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Lot summary description "
+    },
+    "status": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Lot current status",
+      "enum": [
+        "planning",
+        "active",
+        "complete",
+        "unsuccessful",
+        "cancelled"
+      ]
+    },
+    "statusDetails": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Details of the status",
+      "enum": [
+        "empty",
+        "awarded"
+      ]
+    },
+    "value": {
+      "type": "object",
+      "description": "Lot total upper estimated value",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "description": "Amount as a number."
+        },
+        "currency": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Lot currency"
+        }
+      }
+    },
+    "contractPeriod": {
+      "type": "object",
+      "description": "Lot delivery period.",
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "minLength": 1,
+          "format": "date-time",
+          "example": "2022-07-22T10:01:26Z",
+          "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+        },
+        "endDate": {
+          "type": "string",
+          "minLength": 1,
+          "format": "date-time",
+          "example": "2022-07-22T10:01:26Z",
+          "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+        }
+      }
+    },
+    "placeOfPerformance": {
+      "type": "object",
+      "description": "Place where lot will be performed",
+      "properties": {
+        "address": {
+          "$ref": "./address.json"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "awardCriteria": {
+      "type": "object",
+      "properties": {
+        "weightingDescription": {
+          "type": "string",
+          "enum": [
+            "ISZF",
+            "ARGITEK",
+            "KUIPER_2"
+          ]
+        },
+        "criteria": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "quality",
+                  "cost",
+                  "price"
+                ]
+              },
+              "numbers": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "number": {
+                      "type": "number"
+                    },
+                    "weight": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "contractTerms": {
+      "type": "object",
+      "properties": {
+        "contractType": {
+          "type": "string",
+          "enum": [
+            "fixedRate",
+            "fixedPrice",
+            "fixedPriceWithRevision",
+            "fixedRateWithRevision",
+            "variableRate"
+          ]
+        },
+        "financialTermsDetails": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "relatesTo": {
+                "type": "string",
+                "enum": [
+                  "lot",
+                  "item"
+                ]
+              },
+              "relatedItem": {
+                "type": "string"
+              },
+              "measure": {
+                "type": "number"
+              },
+              "unit": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              },
+              "classification": {
+                "type": "object",
+                "properties": {
+                  "termType": {
+                    "type": "string",
+                    "enum": [
+                      "vatRates",
+                      "revisionPercentage"
+                    ]
+                  }
+                }
+              },
+              "relatedRequirementId": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

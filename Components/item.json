@@ -1,0 +1,64 @@
+{
+  "title": "item",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Item identifier"
+    },
+    "internalId": {
+      "type": "string",
+      "description": "Item internal identifier"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Item description"
+    },
+    "classification": {
+      "type": "object",
+      "description": "Item primary classification",
+      "properties": {
+        "scheme": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The scheme or codelist from which the classification code is taken."
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The classification code taken from the scheme."
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "A textual description or title for the classification code."
+        }
+      }
+    },
+    "quantity": {
+      "type": "number",
+      "description": "The number of units to be provided."
+    },
+    "unit": {
+      "type": "object",
+      "description": "A description of the unit in which the supplies, services or works are provided (e.g. hours, kilograms)",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "relatedLot": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Connection with the lot"
+    }
+  }
+}
