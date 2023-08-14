@@ -4081,6 +4081,411 @@
         ]
       }
     },
+    "/publish/ted/{cpid}/{ocid}/{notice}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Planning Notice identifier"
+        },
+        {
+          "schema": {
+            "type": "integer"
+          },
+          "name": "notice",
+          "in": "path",
+          "required": true,
+          "description": "notice number"
+        }
+      ],
+      "post": {
+        "summary": "Publish In TED",
+        "operationId": "post-publish-ted",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "description": "sent PIN/PN record for publish in TED"
+      }
+    },
+    "/do/enquiry/{cpid}/{ocid}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Planning Notice identifier"
+        }
+      ],
+      "post": {
+        "summary": "Enquiry",
+        "operationId": "post-do-enquiry-cpid-ocid",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "description": "Request identifier"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "enquiry": {
+                    "type": "object",
+                    "required": [
+                      "title",
+                      "description",
+                      "author"
+                    ],
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "description": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "relatedLot": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "author": {
+                        "type": "object",
+                        "required": [
+                          "name",
+                          "identifier",
+                          "address",
+                          "details",
+                          "contactPoint"
+                        ],
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "identifier": {
+                            "type": "object",
+                            "required": [
+                              "scheme",
+                              "id",
+                              "legalName"
+                            ],
+                            "properties": {
+                              "scheme": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "id": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "legalName": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "uri": {
+                                "type": "string",
+                                "minLength": 1
+                              }
+                            }
+                          },
+                          "additionalIdentifiers": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "minItems": 1,
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "scheme": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "id": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "legalName": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "uri": {
+                                  "type": "string",
+                                  "minLength": 1
+                                }
+                              },
+                              "required": [
+                                "scheme",
+                                "id",
+                                "legalName"
+                              ]
+                            }
+                          },
+                          "address": {
+                            "type": "object",
+                            "required": [
+                              "streetAddress",
+                              "addressDetails"
+                            ],
+                            "properties": {
+                              "streetAddress": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "postalCode": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "addressDetails": {
+                                "type": "object",
+                                "required": [
+                                  "country",
+                                  "region",
+                                  "locality"
+                                ],
+                                "properties": {
+                                  "country": {
+                                    "type": "object",
+                                    "required": [
+                                      "id"
+                                    ],
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "minLength": 1
+                                      }
+                                    }
+                                  },
+                                  "region": {
+                                    "type": "object",
+                                    "required": [
+                                      "id"
+                                    ],
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "minLength": 1
+                                      }
+                                    }
+                                  },
+                                  "locality": {
+                                    "type": "object",
+                                    "required": [
+                                      "scheme",
+                                      "id",
+                                      "description"
+                                    ],
+                                    "properties": {
+                                      "scheme": {
+                                        "type": "string",
+                                        "minLength": 1
+                                      },
+                                      "id": {
+                                        "type": "string",
+                                        "minLength": 1
+                                      },
+                                      "description": {
+                                        "type": "string",
+                                        "minLength": 1
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "details": {
+                            "type": "object",
+                            "required": [
+                              "scale"
+                            ],
+                            "properties": {
+                              "scale": {
+                                "type": "string",
+                                "minLength": 1,
+                                "enum": [
+                                  "micro",
+                                  "sme",
+                                  "large"
+                                ]
+                              }
+                            }
+                          },
+                          "contactPoint": {
+                            "type": "object",
+                            "required": [
+                              "name",
+                              "email",
+                              "telephone"
+                            ],
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "email": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "telephone": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "faxNumber": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "url": {
+                                "type": "string",
+                                "minLength": 1
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "enquiry"
+                ]
+              }
+            }
+          }
+        },
+        "tags": [
+          "1.Tenders"
+        ],
+        "description": "submitting a question to PN/PIN"
+      }
+    },
+    "/do/enquiry/{cpid}/{ocid}/{enquiryId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Planning Notice identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "enquiryId",
+          "in": "path",
+          "required": true,
+          "description": "Enquiry identifier"
+        }
+      ],
+      "post": {
+        "summary": "Answer",
+        "operationId": "post-do-enquiry-cpid-ocid-enquiryId",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "description": "Request identifier",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "description": "Enquiry token",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "enquiry": {
+                    "type": "object",
+                    "properties": {
+                      "answer": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "answer"
+                    ]
+                  }
+                },
+                "required": [
+                  "enquiry"
+                ]
+              }
+            }
+          }
+        },
+        "tags": [
+          "1.Tenders"
+        ]
+      }
+    },
     "/cancel/plan/{cpid}/{ocid}": {
       "parameters": [
         {
@@ -4134,47 +4539,6 @@
         "tags": [
           "Plans"
         ]
-      }
-    },
-    "/publish/ted/{cpid}/{ocid}/{notice}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cpid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Process identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "ocid",
-          "in": "path",
-          "required": true,
-          "description": "Planning Notice identifier"
-        },
-        {
-          "schema": {
-            "type": "integer"
-          },
-          "name": "notice",
-          "in": "path",
-          "required": true,
-          "description": "notice number"
-        }
-      ],
-      "post": {
-        "summary": "Publish In TED",
-        "operationId": "post-publish-ted",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        },
-        "description": "sent PIN/PN record for publish in TED"
       }
     }
   },
