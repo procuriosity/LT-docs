@@ -3242,6 +3242,17 @@
     }
   },
   "components": {
-    "schemas": {}
-  }
+    "schemas": {},
+    "securitySchemes": {
+      "access token": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [
+    {
+      "access token": []
+    }
+  ]
 }

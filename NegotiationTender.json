@@ -1695,6 +1695,15 @@
             "in": "query",
             "name": "entityId",
             "description": "entity identifier (CAN)"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "description": "Request identifier",
+            "required": true
           }
         ]
       }

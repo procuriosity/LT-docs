@@ -4074,7 +4074,8 @@
               },
               "examples": {}
             }
-          }
+          },
+          "description": ""
         },
         "tags": [
           "Plans"
@@ -4119,7 +4120,23 @@
             "description": "Accepted"
           }
         },
-        "description": "sent PIN/PN record for publish in TED"
+        "description": "sent PIN/PN record for publish in TED",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "description": "Request identifier",
+            "required": true
+          }
+        ],
+        "security": [
+          {
+            "accessToken": []
+          }
+        ]
       }
     },
     "/do/enquiry/{cpid}/{ocid}": {
