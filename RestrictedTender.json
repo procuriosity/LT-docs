@@ -6861,6 +6861,15 @@
             "name": "auctionId",
             "required": true,
             "description": "Auction identifier"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "required": true,
+            "description": "Request identifier"
           }
         ],
         "requestBody": {
