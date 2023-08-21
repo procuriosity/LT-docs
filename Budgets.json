@@ -2,7 +2,11 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Budgets",
-    "version": "1.0"
+    "version": "1.0",
+    "contact": {
+      "name": "uStudio"
+    },
+    "description": "description of the budgets endpoints"
   },
   "servers": [
     {
@@ -587,7 +591,7 @@
           }
         },
         "tags": [
-          "Budgets"
+          "1.Budgets"
         ]
       }
     },
@@ -879,7 +883,7 @@
           }
         },
         "tags": [
-          "Budgets"
+          "1.Budgets"
         ]
       }
     },
@@ -924,7 +928,7 @@
           }
         ],
         "tags": [
-          "Budgets"
+          "1.Budgets"
         ]
       }
     },
@@ -970,7 +974,7 @@
           }
         ],
         "tags": [
-          "Budgets"
+          "1.Budgets"
         ]
       }
     },
@@ -1475,7 +1479,7 @@
           }
         ],
         "tags": [
-          "Budgets"
+          "1.Budgets"
         ]
       },
       "parameters": [
@@ -1995,7 +1999,7 @@
         },
         "description": "Update Funding Source ",
         "tags": [
-          "Budgets"
+          "1.Budgets"
         ]
       },
       "parameters": [
@@ -2036,7 +2040,7 @@
   ],
   "tags": [
     {
-      "name": "Budgets"
+      "name": "1.Budgets"
     }
   ]
 }

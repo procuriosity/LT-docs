@@ -2,7 +2,11 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Framework",
-    "version": "1.0"
+    "version": "1.0",
+    "contact": {
+      "name": "uStudio"
+    },
+    "description": "description of the framework endpoints"
   },
   "servers": [
     {
@@ -3098,7 +3102,7 @@
                       },
                       "value": {
                         "type": "number",
-                        "example": "Also can be other type: boolean, string, integer "
+                        "description": "Also can be other type: boolean, string, integer"
                       },
                       "relatedTenderer": {
                         "type": "object",
@@ -11316,13 +11320,13 @@
   },
   "tags": [
     {
-      "name": "1.Plan"
+      "name": "1.Plans"
     },
     {
-      "name": "2.Tender"
+      "name": "2.Tenders"
     },
     {
-      "name": "3.Contract"
+      "name": "3.Contracts"
     }
   ],
   "security": [

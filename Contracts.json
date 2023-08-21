@@ -1,11 +1,12 @@
 {
   "openapi": "3.0.0",
-  "x-stoplight": {
-    "id": "ebbj11c70ofps"
-  },
   "info": {
     "title": "Contracts",
-    "version": "1.0"
+    "version": "1.0",
+    "contact": {
+      "name": "uStudio"
+    },
+    "description": "description of the contracts endpoints"
   },
   "servers": [
     {
@@ -94,7 +95,7 @@
           }
         },
         "tags": [
-          "2.Contracts"
+          "1.Contracts"
         ]
       }
     },
@@ -1631,9 +1632,6 @@
             "required": true
           }
         ],
-        "tags": [
-          "2.Contracts"
-        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -3112,7 +3110,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "1.Contracts"
+        ]
       }
     },
     "/issue/contract/{cpid}/{ocid}": {
@@ -3164,9 +3165,6 @@
             "description": "Contract token"
           }
         ],
-        "tags": [
-          "2.Contracts"
-        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -3196,17 +3194,13 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "1.Contracts"
+        ]
       }
     },
     "/launch/contract/{cpid}/{ocid}": {
-      "summary": "Contract Activation",
-      "operationId": "post-launch-contract-cpid-ocid",
-      "responses": {
-        "202": {
-          "description": "Accepted"
-        }
-      },
       "parameters": [
         {
           "schema": {
@@ -3225,19 +3219,57 @@
           "name": "X-TOKEN",
           "description": "Contract token",
           "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Awarded Contract identifier"
         }
-      ],
-      "tags": [
-        "2.Contracts"
       ],
       "post": {
         "summary": "Activate Contract",
         "operationId": "post-launch-contract-cpid-ocid",
         "responses": {
-          "200": {
-            "description": "OK"
+          "202": {
+            "description": "Accepted"
           }
-        }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "required": true,
+            "description": "Request identifier"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "required": true,
+            "description": "Contract token"
+          }
+        ],
+        "tags": [
+          "1.Contracts"
+        ]
       }
     }
   },
@@ -3253,6 +3285,11 @@
   "security": [
     {
       "access token": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "1.Contracts"
     }
   ]
 }

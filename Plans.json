@@ -2,7 +2,11 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Plans",
-    "version": "1.0"
+    "version": "1.0",
+    "contact": {
+      "name": "uStudio"
+    },
+    "description": "description of the plans endpoints"
   },
   "servers": [
     {
@@ -1719,7 +1723,7 @@
         },
         "description": "",
         "tags": [
-          "Plans"
+          "1.Plans"
         ]
       }
     },
@@ -3659,7 +3663,7 @@
         },
         "description": "",
         "tags": [
-          "Plans"
+          "1.Plans"
         ]
       },
       "parameters": []
@@ -4078,7 +4082,7 @@
           "description": ""
         },
         "tags": [
-          "Plans"
+          "1.Plans"
         ]
       }
     },
@@ -4136,6 +4140,9 @@
           {
             "accessToken": []
           }
+        ],
+        "tags": [
+          "1.Plans"
         ]
       }
     },
@@ -4407,10 +4414,10 @@
             }
           }
         },
+        "description": "submitting a question to PN/PIN",
         "tags": [
-          "1.Tenders"
-        ],
-        "description": "submitting a question to PN/PIN"
+          "1.Plans"
+        ]
       }
     },
     "/do/enquiry/{cpid}/{ocid}/{enquiryId}": {
@@ -4499,7 +4506,7 @@
           }
         },
         "tags": [
-          "1.Tenders"
+          "1.Plans"
         ]
       }
     },
@@ -4554,7 +4561,7 @@
           }
         ],
         "tags": [
-          "Plans"
+          "1.Plans"
         ]
       }
     }
@@ -4575,7 +4582,7 @@
   ],
   "tags": [
     {
-      "name": "Plans"
+      "name": "1.Plans"
     }
   ]
 }

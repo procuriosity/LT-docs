@@ -2,7 +2,11 @@
   "openapi": "3.0.0",
   "info": {
     "title": "NegotiationTender",
-    "version": "1.0"
+    "version": "1.0",
+    "contact": {
+      "name": "uStudio"
+    },
+    "description": "description of the negotiation tender endpoints"
   },
   "servers": [
     {
@@ -33,7 +37,7 @@
       ],
       "post": {
         "summary": "Create Negotiation Tender From PN",
-        "operationId": "post-do-cn-cpid-ocid",
+        "operationId": "post-do-cn-from-pn-cpid-ocid",
         "responses": {
           "202": {
             "description": "Accepted"
@@ -1401,7 +1405,7 @@
       ],
       "post": {
         "summary": "Create Negotiation Tender From PIN",
-        "operationId": "post-do-cn-cpid-ocid",
+        "operationId": "post-do-cn-from-pin-cpid-ocid",
         "responses": {
           "202": {
             "description": "Accepted"
@@ -1705,6 +1709,9 @@
             "description": "Request identifier",
             "required": true
           }
+        ],
+        "tags": [
+          "1.Tenders"
         ]
       }
     },
@@ -4213,7 +4220,7 @@
           }
         ],
         "tags": [
-          "2.Contracts"
+          "1.Tenders"
         ],
         "requestBody": {
           "content": {
@@ -4243,11 +4250,8 @@
                         ]
                       },
                       "value": {
-                        "type": [
-                          "string",
-                          "boolean"
-                        ],
-                        "minLength": 1
+                        "type": "string",
+                        "description": "Also can be other type: boolean"
                       },
                       "relatedPerson": {
                         "type": "object",
@@ -4451,7 +4455,7 @@
           }
         ],
         "tags": [
-          "1.Tenders"
+          "2.Contracts"
         ]
       }
     },
@@ -4527,7 +4531,7 @@
           }
         ],
         "tags": [
-          "2.Contracts"
+          "1.Tenders"
         ]
       }
     },

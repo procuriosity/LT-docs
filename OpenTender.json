@@ -2,7 +2,11 @@
   "openapi": "3.0.0",
   "info": {
     "title": "OpenTender",
-    "version": "1.0"
+    "version": "1.0",
+    "contact": {
+      "name": "uStudio"
+    },
+    "description": "description of the open tender endpoints"
   },
   "servers": [
     {
@@ -33,7 +37,7 @@
       ],
       "post": {
         "summary": "Create Open Tender From PN",
-        "operationId": "post-do-cn-cpid-ocid",
+        "operationId": "post-do-cn-from-pn-cpid-ocid",
         "responses": {
           "202": {
             "description": "Accepted"
@@ -1672,7 +1676,7 @@
       ],
       "post": {
         "summary": "Create Open Tender from PIN",
-        "operationId": "post-do-cn-cpid-ocid",
+        "operationId": "post-do-cn-from-pin-cpid-ocid",
         "responses": {
           "202": {
             "description": "Accepted"
@@ -2772,6 +2776,9 @@
           {
             "accessToken": []
           }
+        ],
+        "tags": [
+          "1.Tenders"
         ]
       }
     },
@@ -4935,9 +4942,6 @@
         "responses": {
           "202": {
             "description": "Accepted"
-          },
-          "": {
-            "description": ""
           }
         },
         "parameters": [
@@ -5038,12 +5042,8 @@
                               "type": "string"
                             },
                             "value": {
-                              "type": [
-                                "string",
-                                "number",
-                                "integer",
-                                "boolean"
-                              ]
+                              "type": "string",
+                              "description": "Also can be other type: boolean, number, integer"
                             },
                             "requirement": {
                               "type": "object",
@@ -5364,7 +5364,7 @@
       ],
       "post": {
         "summary": "Award Qualification",
-        "operationId": "post-do-award-cpid-ocid-awardId",
+        "operationId": "post-award-qualification-cpid-ocid-awardId",
         "responses": {
           "202": {
             "description": "Accepted"
@@ -5457,7 +5457,7 @@
       ],
       "post": {
         "summary": "Pre-evaluate award",
-        "operationId": "post-do-award-cpid-ocid-awardId",
+        "operationId": "post-pre-evaluate-award-cpid-ocid-awardId",
         "responses": {
           "202": {
             "description": "Accepted"
@@ -5601,7 +5601,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "1.Tenders"
+        ]
       }
     },
     "/do/evaluation/award/{cpid}/{ocid}/{awardId}": {
@@ -5636,7 +5639,7 @@
       ],
       "post": {
         "summary": "Evaluate Award",
-        "operationId": "post-do-award-cpid-ocid-awardId",
+        "operationId": "post-evaluate-award-cpid-ocid-awardId",
         "responses": {
           "202": {
             "description": "Accepted"
@@ -6202,9 +6205,6 @@
             "description": "Who gives response"
           }
         ],
-        "tags": [
-          "2.Contracts"
-        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -6233,11 +6233,8 @@
                         ]
                       },
                       "value": {
-                        "type": [
-                          "string",
-                          "boolean"
-                        ],
-                        "minLength": 1
+                        "type": "string",
+                        "description": "Also can be other type: boolean"
                       },
                       "relatedPerson": {
                         "type": "object",
@@ -6379,7 +6376,10 @@
               }
             }
           }
-        }
+        },
+        "tags": [
+          "1.Tenders"
+        ]
       }
     },
     "/complete/confirmationStage/contract/{cpid}/{ocid}/{contractId}": {
@@ -6454,7 +6454,7 @@
           }
         ],
         "tags": [
-          "2.Contracts"
+          "1.Tenders"
         ]
       }
     }
@@ -6476,9 +6476,6 @@
   "tags": [
     {
       "name": "1.Tenders"
-    },
-    {
-      "name": "2.Contracts"
     }
   ]
 }

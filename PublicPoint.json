@@ -2,7 +2,11 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Public Point",
-    "version": "1.0"
+    "version": "1.0",
+    "contact": {
+      "name": "uStudio"
+    },
+    "description": "description of the public point endpoints"
   },
   "servers": [
     {
@@ -151,7 +155,7 @@
         "operationId": "get-budgets-cpid",
         "description": "",
         "tags": [
-          "Budgets"
+          "1.Budgets"
         ]
       }
     },
@@ -474,9 +478,9 @@
             }
           }
         },
-        "operationId": "get-new",
+        "operationId": "get-tenders-cpid",
         "tags": [
-          "Tenders"
+          "2.Tenders"
         ],
         "description": ""
       },
@@ -496,7 +500,7 @@
       "get": {
         "summary": "List",
         "tags": [
-          "Tenders"
+          "2.Tenders"
         ],
         "responses": {
           "200": {
@@ -537,7 +541,7 @@
             }
           }
         },
-        "operationId": "",
+        "operationId": "get-tenders",
         "parameters": [
           {
             "schema": {
@@ -553,7 +557,7 @@
       "get": {
         "summary": "List",
         "tags": [
-          "Budgets"
+          "1.Budgets"
         ],
         "responses": {
           "200": {
@@ -594,7 +598,7 @@
             }
           }
         },
-        "operationId": "",
+        "operationId": "get-budgets",
         "parameters": [
           {
             "schema": {
@@ -613,10 +617,13 @@
   },
   "tags": [
     {
-      "name": "Budgets"
+      "name": "1.Budgets"
     },
     {
-      "name": "Tenders"
+      "name": "2.Tenders"
+    },
+    {
+      "name": "3.Contracts"
     }
   ]
 }
