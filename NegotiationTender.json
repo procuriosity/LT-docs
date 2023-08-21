@@ -1452,7 +1452,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "tender": {
@@ -1768,7 +1767,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "amendment": {
@@ -1874,7 +1872,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "amendment": {
@@ -2191,7 +2188,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "award": {
@@ -3863,7 +3859,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "award": {
@@ -4071,7 +4066,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "contract": {

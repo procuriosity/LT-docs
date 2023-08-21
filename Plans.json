@@ -1718,8 +1718,7 @@
                 ]
               }
             }
-          },
-          "description": ""
+          }
         },
         "description": "create pn",
         "tags": [
@@ -3722,7 +3721,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "planning": {
@@ -4078,8 +4076,7 @@
               },
               "examples": {}
             }
-          },
-          "description": ""
+          }
         },
         "tags": [
           "1.Plans"
@@ -4482,7 +4479,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "enquiry": {

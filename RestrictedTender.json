@@ -1761,7 +1761,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "preQualification": {
@@ -2062,7 +2061,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "planning": {
@@ -2845,7 +2843,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "enquiry": {
@@ -3139,7 +3136,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "enquiry": {
@@ -3221,7 +3217,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "amendment": {
@@ -3327,7 +3322,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "amendment": {
@@ -3617,7 +3611,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "submission": {
@@ -4518,7 +4511,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "requirementResponse": {
@@ -4851,7 +4843,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "qualification": {
@@ -5126,7 +5117,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "tender": {
@@ -5230,7 +5220,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "bid": {
@@ -6668,7 +6657,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "bid": {
@@ -6984,7 +6972,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "award": {
@@ -7192,7 +7179,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "contract": {

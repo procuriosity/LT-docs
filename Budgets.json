@@ -992,7 +992,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "tender": {
@@ -1464,8 +1463,7 @@
               },
               "examples": {}
             }
-          },
-          "description": ""
+          }
         },
         "description": "Create Funding Source",
         "parameters": [
@@ -1528,7 +1526,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "tender": {
