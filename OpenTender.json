@@ -1682,7 +1682,7 @@
             "description": "Accepted"
           }
         },
-        "description": "create CN on PN for pmd =  OT, TEST_OT , SV, TEST_SV, MV, TEST_MV",
+        "description": "create CN on PIN for pmd =  OT, TEST_OT , SV, TEST_SV, MV, TEST_MV",
         "parameters": [
           {
             "schema": {
@@ -2711,7 +2711,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "update cn"
       }
     },
     "/publish/ted/{cpid}/{ocid}/{notice}": {
@@ -2752,7 +2753,7 @@
             "description": "Accepted"
           }
         },
-        "description": "sent tender, CAN for publish in TED",
+        "description": "sent cn, CAN for publish in TED",
         "parameters": [
           {
             "schema": {
@@ -3053,7 +3054,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "create enquiry"
       }
     },
     "/do/enquiry/{cpid}/{ocid}/{enquiryId}": {
@@ -3143,7 +3145,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "add answer"
       }
     },
     "/cancel/tender/{cpid}/{ocid}": {
@@ -3259,7 +3262,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "cancel cn"
       }
     },
     "/cancel/lot/{cpid}/{ocid}/{lotId}": {
@@ -3384,7 +3388,8 @@
         ],
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "cancel lot"
       }
     },
     "/confirm/amendment/{cpid}/{ocid}/{amendmentId}": {
@@ -3465,7 +3470,7 @@
         "tags": [
           "1.Tenders"
         ],
-        "description": "Confirmation of the created amendment to cancel the tender/lot/CAN"
+        "description": "Confirmation of the created amendment to cancel the cn/lot/can"
       }
     },
     "/cancel/amendment/{cpid}/{ocid}/{amendmentId}": {
@@ -3546,7 +3551,7 @@
         "tags": [
           "1.Tenders"
         ],
-        "description": "Cancellation of the created amendment to cancel the tender/lot/CAN"
+        "description": "Cancellation of the created amendment to cancel the cn/lot/can"
       }
     },
     "/do/bid/{cpid}/{ocid}": {
@@ -3578,7 +3583,7 @@
             "description": "Accepted"
           }
         },
-        "description": "",
+        "description": "create bid",
         "parameters": [
           {
             "schema": {
@@ -4606,7 +4611,8 @@
         ],
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "withdraw bid"
       }
     },
     "/do/declaration/{cpid}/{ocid}/{awardId}": {
@@ -4840,7 +4846,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "add declare"
       }
     },
     "/do/consideration/{cpid}/{ocid}/{awardId}": {
@@ -4903,7 +4910,8 @@
         ],
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "award consideration"
       }
     },
     "/update/award/{cpid}/{ocid}/{awardId}": {
@@ -5198,7 +5206,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "update award"
       }
     },
     "/do/document/bid/{cpid}/{ocid}/{bidId}": {
@@ -5329,7 +5338,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "update documents of bid"
       }
     },
     "/do/qualification/award/{cpid}/{ocid}/{awardId}": {
@@ -5422,7 +5432,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "award qualification"
       }
     },
     "/do/pre-evaluation/award/{cpid}/{ocid}/{awardId}": {
@@ -5515,7 +5526,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "pre-evaluate award"
       }
     },
     "/do/protocol/intermediate/{cpid}/{ocid}/{lotId}": {
@@ -5604,7 +5616,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "intermediate protocol"
       }
     },
     "/do/evaluation/award/{cpid}/{ocid}/{awardId}": {
@@ -5747,7 +5760,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "evaluate award"
       }
     },
     "/do/protocol/{cpid}/{ocid}/{lotId}": {
@@ -5810,7 +5824,8 @@
         ],
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "create protocol for lot"
       }
     },
     "/cancel/can/{cpid}/{ocid}/{canId}": {
@@ -5946,7 +5961,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "cancel can"
       }
     },
     "/do/confirmation/can/{cpid}/{ocid}/{canId}": {
@@ -6009,7 +6025,8 @@
         ],
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "confirm negative can"
       }
     },
     "/do/document/can/{cpid}/{ocid}/{canId}": {
@@ -6122,7 +6139,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "update documents of can"
       }
     },
     "/do/confirmation/{entity}/{cpid}/{ocid}/{entityId}": {
@@ -6379,7 +6397,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "create conf.response"
       }
     },
     "/complete/confirmationStage/contract/{cpid}/{ocid}/{contractId}": {
@@ -6455,7 +6474,8 @@
         ],
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "start next conf.step"
       }
     }
   },

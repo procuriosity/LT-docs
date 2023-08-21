@@ -153,7 +153,7 @@
           }
         },
         "operationId": "get-budgets-cpid",
-        "description": "",
+        "description": "get some budget info",
         "tags": [
           "1.Budgets"
         ]
@@ -482,7 +482,7 @@
         "tags": [
           "2.Tenders"
         ],
-        "description": ""
+        "description": "get some cn info"
       },
       "parameters": [
         {
@@ -550,7 +550,8 @@
             "in": "query",
             "name": "offset"
           }
-        ]
+        ],
+        "description": "get info about all CN's"
       }
     },
     "/budgets": {
@@ -607,7 +608,8 @@
             "in": "query",
             "name": "offset"
           }
-        ]
+        ],
+        "description": "get info about all budgets"
       },
       "parameters": []
     }

@@ -96,7 +96,8 @@
         },
         "tags": [
           "1.Contracts"
-        ]
+        ],
+        "description": "create contract"
       }
     },
     "/do/contract/{cpid}/{ocidContract}": {
@@ -3113,7 +3114,8 @@
         },
         "tags": [
           "1.Contracts"
-        ]
+        ],
+        "description": "update contract"
       }
     },
     "/issue/contract/{cpid}/{ocid}": {
@@ -3197,7 +3199,8 @@
         },
         "tags": [
           "1.Contracts"
-        ]
+        ],
+        "description": "issue contract"
       }
     },
     "/launch/contract/{cpid}/{ocid}": {
@@ -3269,7 +3272,8 @@
         ],
         "tags": [
           "1.Contracts"
-        ]
+        ],
+        "description": "activate contract"
       }
     }
   },

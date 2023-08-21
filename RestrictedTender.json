@@ -2730,7 +2730,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "update cn"
       }
     },
     "/publish/ted/{cpid}/{ocid}/{notice}": {
@@ -3072,7 +3073,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "add enquiry"
       }
     },
     "/do/enquiry/{cpid}/{ocid}/{enquiryId}": {
@@ -3162,7 +3164,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "add answer"
       }
     },
     "/cancel/tender/{cpid}/{ocid}": {
@@ -3278,7 +3281,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "cancel tender (create ammendment for cancel)"
       }
     },
     "/cancel/lot/{cpid}/{ocid}/{lotId}": {
@@ -3403,7 +3407,8 @@
         ],
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "cancel lot (create ammendment for cancel)"
       }
     },
     "/confirm/amendment/{cpid}/{ocid}/{amendmentId}": {
@@ -4383,7 +4388,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "create submission"
       }
     },
     "/cancel/submission/{cpid}/{ocid}/{submissionId}": {
@@ -4446,7 +4452,8 @@
         ],
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "withdraw submission"
       }
     },
     "/do/declaration/qualification/{cpid}/{ocid}/{qualificationId}": {
@@ -4714,7 +4721,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "make qualification declare"
       }
     },
     "/do/consideration/qualification/{cpid}/{ocid}/{qualificationId}": {
@@ -4777,7 +4785,8 @@
         ],
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "qualification consideration"
       }
     },
     "/do/qualification/{cpid}/{ocid}/{qualification}": {
@@ -4915,7 +4924,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "qualification"
       }
     },
     "/do/protocol/qualification/{cpid}/{ocid}": {
@@ -4969,7 +4979,8 @@
         ],
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "qualification protocol"
       }
     },
     "/apply/protocol/{cpid}/{ocid}": {
@@ -5023,7 +5034,8 @@
         ],
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "apply qualifcation protocol"
       }
     },
     "/cancel/protocol/{cpid}/{ocid}": {
@@ -5077,7 +5089,8 @@
         ],
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "withdraw qualification protocol"
       }
     },
     "/do/secondStage/{cpid}/{ocid}": {
@@ -5168,7 +5181,8 @@
         ],
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "start second stage of cn"
       }
     },
     "/do/bid/{cpid}/{ocid}": {
@@ -5200,7 +5214,7 @@
             "description": "Accepted"
           }
         },
-        "description": "",
+        "description": "create bid",
         "parameters": [
           {
             "schema": {
@@ -6228,7 +6242,8 @@
         ],
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "cancel bid"
       }
     },
     "/do/consideration/{cpid}/{ocid}/{awardId}": {
@@ -6291,7 +6306,8 @@
         ],
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "award consideration"
       }
     },
     "/update/award/{cpid}/{ocid}/{awardId}": {
@@ -6586,7 +6602,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "update award"
       }
     },
     "/do/document/bid/{cpid}/{ocid}/{bidId}": {
@@ -6717,7 +6734,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "update docs of bid"
       }
     },
     "/do/pre-evaluation/award/{cpid}/{ocid}/{awardId}": {
@@ -6810,7 +6828,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "pre-evaluate award"
       }
     },
     "/do/protocol/intermediate/{cpid}/{ocid}/{lotId}": {
@@ -6899,7 +6918,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "intermediate protocol"
       }
     },
     "/do/evaluation/award/{cpid}/{ocid}/{awardId}": {
@@ -7042,7 +7062,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "evaluate award"
       }
     },
     "/do/protocol/{cpid}/{ocid}/{lotId}": {
@@ -7105,7 +7126,8 @@
         ],
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "evaluate protocol for lot"
       }
     },
     "/cancel/can/{cpid}/{ocid}/{canId}": {
@@ -7241,7 +7263,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "cancel can"
       }
     },
     "/do/document/can/{cpid}/{ocid}/{canId}": {
@@ -7354,7 +7377,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "update docs of can"
       }
     },
     "/do/confirmation/can/{cpid}/{ocid}/{canId}": {
@@ -7417,7 +7441,8 @@
         ],
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "confirm negative can"
       }
     },
     "/do/confirmation/{entity}/{cpid}/{ocid}/{entityId}": {
@@ -7674,7 +7699,8 @@
         },
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "create conf.response"
       }
     },
     "/complete/confirmationStage/contract/{cpid}/{ocid}/{contractId}": {
@@ -7750,7 +7776,8 @@
         ],
         "tags": [
           "1.Tenders"
-        ]
+        ],
+        "description": "next confirm step"
       }
     }
   },

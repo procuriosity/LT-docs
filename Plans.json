@@ -1721,7 +1721,7 @@
           },
           "description": ""
         },
-        "description": "",
+        "description": "create pn",
         "tags": [
           "1.Plans"
         ]
@@ -3661,7 +3661,7 @@
             }
           }
         },
-        "description": "",
+        "description": "create pin",
         "tags": [
           "1.Plans"
         ]
@@ -4507,7 +4507,8 @@
         },
         "tags": [
           "1.Plans"
-        ]
+        ],
+        "description": "add answer"
       }
     },
     "/cancel/plan/{cpid}/{ocid}": {

@@ -929,7 +929,8 @@
         ],
         "tags": [
           "1.Budgets"
-        ]
+        ],
+        "description": "Confirm Expenditure Item "
       }
     },
     "/withdraw/ei/{cpid}": {
