@@ -41,7 +41,12 @@
         "cancellationDetails",
         "evaluationReports",
         "shortlistedFirms",
-        "contractGuarantees"
+        "contractGuarantees",
+        "meetingWithTenderersProtocol",
+        "qualificationCriteria",
+        "eligibilityCriteria",
+        "tenderForm",
+        "other"
       ],
       "description": "A classification of the document described"
     },
