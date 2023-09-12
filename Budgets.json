@@ -180,8 +180,7 @@
                                 "addressDetails": {
                                   "type": "object",
                                   "required": [
-                                    "country",
-                                    "region"
+                                    "country"
                                   ],
                                   "properties": {
                                     "country": {
@@ -410,7 +409,6 @@
                       "address": {
                         "type": "object",
                         "required": [
-                          "streetAddress",
                           "addressDetails"
                         ],
                         "properties": {
@@ -425,9 +423,7 @@
                           "addressDetails": {
                             "type": "object",
                             "required": [
-                              "country",
-                              "region",
-                              "locality"
+                              "country"
                             ],
                             "properties": {
                               "country": {
@@ -773,8 +769,7 @@
                                 "addressDetails": {
                                   "type": "object",
                                   "required": [
-                                    "country",
-                                    "region"
+                                    "country"
                                   ],
                                   "properties": {
                                     "country": {
@@ -1042,7 +1037,6 @@
                           "address": {
                             "type": "object",
                             "required": [
-                              "streetAddress",
                               "addressDetails"
                             ],
                             "properties": {
@@ -1057,9 +1051,7 @@
                               "addressDetails": {
                                 "type": "object",
                                 "required": [
-                                  "country",
-                                  "region",
-                                  "locality"
+                                  "country"
                                 ],
                                 "properties": {
                                   "country": {
@@ -1322,7 +1314,6 @@
                       "address": {
                         "type": "object",
                         "required": [
-                          "streetAddress",
                           "addressDetails"
                         ],
                         "properties": {
@@ -1337,9 +1328,7 @@
                           "addressDetails": {
                             "type": "object",
                             "required": [
-                              "country",
-                              "region",
-                              "locality"
+                              "country"
                             ],
                             "properties": {
                               "country": {
@@ -1573,7 +1562,6 @@
                           "address": {
                             "type": "object",
                             "required": [
-                              "streetAddress",
                               "addressDetails"
                             ],
                             "properties": {
@@ -1588,9 +1576,7 @@
                               "addressDetails": {
                                 "type": "object",
                                 "required": [
-                                  "country",
-                                  "region",
-                                  "locality"
+                                  "country"
                                 ],
                                 "properties": {
                                   "country": {
@@ -1853,7 +1839,6 @@
                       "address": {
                         "type": "object",
                         "required": [
-                          "streetAddress",
                           "addressDetails"
                         ],
                         "properties": {
@@ -1868,9 +1853,7 @@
                           "addressDetails": {
                             "type": "object",
                             "required": [
-                              "country",
-                              "region",
-                              "locality"
+                              "country"
                             ],
                             "properties": {
                               "country": {
