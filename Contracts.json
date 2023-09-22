@@ -1635,8 +1635,7 @@
                       "budget": {
                         "type": "object",
                         "required": [
-                          "budgetBreakdown",
-                          "finance"
+                          "budgetBreakdown"
                         ],
                         "properties": {
                           "description": {
@@ -1709,11 +1708,6 @@
                                       "type": "string",
                                       "minLength": 1
                                     },
-                                    "relatedFinance": {
-                                      "type": "string",
-                                      "minLength": 1,
-                                      "description": "ocid FS"
-                                    },
                                     "durationInDays": {
                                       "type": "number"
                                     }
@@ -1724,41 +1718,6 @@
                                 "id",
                                 "amount",
                                 "classifications"
-                              ]
-                            }
-                          },
-                          "finance": {
-                            "type": "array",
-                            "uniqueItems": true,
-                            "minItems": 1,
-                            "items": {
-                              "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "string",
-                                  "minLength": 1,
-                                  "description": "ocid FS"
-                                },
-                                "value": {
-                                  "type": "object",
-                                  "required": [
-                                    "amount",
-                                    "currency"
-                                  ],
-                                  "properties": {
-                                    "amount": {
-                                      "type": "number"
-                                    },
-                                    "currency": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    }
-                                  }
-                                }
-                              },
-                              "required": [
-                                "id",
-                                "value"
                               ]
                             }
                           }
@@ -1854,54 +1813,13 @@
                             "title"
                           ]
                         }
-                      },
-                      "agreedMetrics": {
-                        "type": "array",
-                        "uniqueItems": true,
-                        "minItems": 1,
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "observations": {
-                              "type": "array",
-                              "uniqueItems": true,
-                              "minItems": 1,
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "measure": {
-                                    "type": "string",
-                                    "example": "Can be other types: number, integer, boolean"
-                                  }
-                                },
-                                "required": [
-                                  "id",
-                                  "measure"
-                                ]
-                              }
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "observations"
-                          ]
-                        }
                       }
                     },
                     "required": [
                       "id",
                       "title",
                       "description",
-                      "period",
-                      "agreedMetrics"
+                      "period"
                     ]
                   },
                   "awards": {
@@ -2293,11 +2211,6 @@
                                                 },
                                                 "region": {
                                                   "type": "object",
-                                                  "required": [
-                                                    "id",
-                                                    "description",
-                                                    "scheme"
-                                                  ],
                                                   "properties": {
                                                     "id": {
                                                       "type": "string",
@@ -2311,15 +2224,15 @@
                                                       "type": "string",
                                                       "minLength": 1
                                                     }
-                                                  }
+                                                  },
+                                                  "required": [
+                                                    "id",
+                                                    "description",
+                                                    "scheme"
+                                                  ]
                                                 },
                                                 "locality": {
                                                   "type": "object",
-                                                  "required": [
-                                                    "id",
-                                                    "description",
-                                                    "scheme"
-                                                  ],
                                                   "properties": {
                                                     "id": {
                                                       "type": "string",
@@ -2333,7 +2246,12 @@
                                                       "type": "string",
                                                       "minLength": 1
                                                     }
-                                                  }
+                                                  },
+                                                  "required": [
+                                                    "id",
+                                                    "description",
+                                                    "scheme"
+                                                  ]
                                                 }
                                               }
                                             }
@@ -2604,11 +2522,6 @@
                                       },
                                       "region": {
                                         "type": "object",
-                                        "required": [
-                                          "id",
-                                          "description",
-                                          "scheme"
-                                        ],
                                         "properties": {
                                           "id": {
                                             "type": "string",
@@ -2622,15 +2535,15 @@
                                             "type": "string",
                                             "minLength": 1
                                           }
-                                        }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "description",
+                                          "scheme"
+                                        ]
                                       },
                                       "locality": {
                                         "type": "object",
-                                        "required": [
-                                          "id",
-                                          "description",
-                                          "scheme"
-                                        ],
                                         "properties": {
                                           "id": {
                                             "type": "string",
@@ -2644,7 +2557,12 @@
                                             "type": "string",
                                             "minLength": 1
                                           }
-                                        }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "description",
+                                          "scheme"
+                                        ]
                                       }
                                     }
                                   }
@@ -2943,11 +2861,6 @@
                                         },
                                         "region": {
                                           "type": "object",
-                                          "required": [
-                                            "id",
-                                            "description",
-                                            "scheme"
-                                          ],
                                           "properties": {
                                             "id": {
                                               "type": "string",
@@ -2961,15 +2874,15 @@
                                               "type": "string",
                                               "minLength": 1
                                             }
-                                          }
+                                          },
+                                          "required": [
+                                            "id",
+                                            "description",
+                                            "scheme"
+                                          ]
                                         },
                                         "locality": {
                                           "type": "object",
-                                          "required": [
-                                            "id",
-                                            "description",
-                                            "scheme"
-                                          ],
                                           "properties": {
                                             "id": {
                                               "type": "string",
@@ -2983,7 +2896,12 @@
                                               "type": "string",
                                               "minLength": 1
                                             }
-                                          }
+                                          },
+                                          "required": [
+                                            "id",
+                                            "description",
+                                            "scheme"
+                                          ]
                                         }
                                       }
                                     }
@@ -3254,7 +3172,32 @@
         "tags": [
           "1.Contracts"
         ],
-        "description": "activate contract"
+        "description": "activate contract",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "contract": {
+                    "type": "object",
+                    "required": [
+                      "id"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "contract"
+                ]
+              }
+            }
+          }
+        }
       }
     }
   },
