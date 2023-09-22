@@ -187,8 +187,7 @@
                       "title",
                       "description",
                       "classification",
-                      "legalBasis",
-                      "tenderPeriod"
+                      "legalBasis"
                     ],
                     "properties": {
                       "title": {
@@ -364,11 +363,6 @@
                                   },
                                   "region": {
                                     "type": "object",
-                                    "required": [
-                                      "id",
-                                      "description",
-                                      "scheme"
-                                    ],
                                     "properties": {
                                       "id": {
                                         "type": "string"
@@ -379,15 +373,15 @@
                                       "scheme": {
                                         "type": "string"
                                       }
-                                    }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "description",
+                                      "scheme"
+                                    ]
                                   },
                                   "locality": {
                                     "type": "object",
-                                    "required": [
-                                      "id",
-                                      "description",
-                                      "scheme"
-                                    ],
                                     "properties": {
                                       "id": {
                                         "type": "string"
@@ -398,7 +392,12 @@
                                       "scheme": {
                                         "type": "string"
                                       }
-                                    }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "description",
+                                      "scheme"
+                                    ]
                                   }
                                 }
                               }
@@ -701,11 +700,6 @@
                                         },
                                         "region": {
                                           "type": "object",
-                                          "required": [
-                                            "id",
-                                            "description",
-                                            "scheme"
-                                          ],
                                           "properties": {
                                             "id": {
                                               "type": "string"
@@ -716,15 +710,15 @@
                                             "scheme": {
                                               "type": "string"
                                             }
-                                          }
+                                          },
+                                          "required": [
+                                            "id",
+                                            "description",
+                                            "scheme"
+                                          ]
                                         },
                                         "locality": {
                                           "type": "object",
-                                          "required": [
-                                            "id",
-                                            "description",
-                                            "scheme"
-                                          ],
                                           "properties": {
                                             "id": {
                                               "type": "string"
@@ -735,7 +729,12 @@
                                             "scheme": {
                                               "type": "string"
                                             }
-                                          }
+                                          },
+                                          "required": [
+                                            "id",
+                                            "description",
+                                            "scheme"
+                                          ]
                                         }
                                       }
                                     }
@@ -1055,95 +1054,94 @@
                               }
                             },
                             "electronicWorkflows": {
-                                      "type": "object",
-                                      "properties": {
-                                        "useOrdering": {
-                                          "type": "boolean"
-                                        },
-                                        "acceptInvoicing": {
-                                          "type": "boolean"
-                                        },
-                                        "usePayment": {
-                                          "type": "boolean"
-                                        }
-                                      }
-                                    },
+                              "type": "object",
+                              "properties": {
+                                "useOrdering": {
+                                  "type": "boolean"
+                                },
+                                "acceptInvoicing": {
+                                  "type": "boolean"
+                                },
+                                "usePayment": {
+                                  "type": "boolean"
+                                }
+                              }
+                            },
                             "otherRequirements": {
-                                      "type": "object",
-                                      "properties": {
-                                        "reservedParticipation": {
-                                          "type": "array",
-                                          "items": {
-                                            "type": "string",
-                                            "enum": [
-                                              "shelteredWorkshop",
-                                              "publicServiceMissionOrganization"
-                                            ]
-                                          }
-                                        }
-                                      }
-                                    },
+                              "type": "object",
+                              "properties": {
+                                "reservedParticipation": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "enum": [
+                                      "shelteredWorkshop",
+                                      "publicServiceMissionOrganization"
+                                    ]
+                                  }
+                                }
+                              }
+                            },
                             "subcontractingTerms": {
-                                      "type": "object",
-                                      "properties": {
-                                        "description": {
-                                          "type": "string"
-                                        },
-                                        "minimumPercentage": {
-                                          "type": "number"
-                                        },
-                                        "maximumPercentage": {
-                                          "type": "number"
-                                        }
-                                      }
-                                    },
+                              "type": "object",
+                              "properties": {
+                                "description": {
+                                  "type": "string"
+                                },
+                                "minimumPercentage": {
+                                  "type": "number"
+                                },
+                                "maximumPercentage": {
+                                  "type": "number"
+                                }
+                              }
+                            },
                             "submissionTerms": {
-                                      "type": "object",
-                                      "properties": {
-                                        "languages": {
-                                          "type": "array",
-                                          "items": {
-                                            "type": "string"
-                                          }
-                                        },
-                                        "electronicCataloguePolicy": {
-                                          "type": "string"
-                                        },
-                                        "variantPolicy": {
-                                          "type": "string"
-                                        },
-                                        "bidValidityPeriod": {
-                                          "type": "object",
-                                          "properties": {
-                                            "duration": {
-                                              "type": "string"
-                                            }
-                                          }
-                                        },
-                                        "depositsGuarantees": {
-                                          "type": "string"
-                                        },
-                                        "subcontractingIndication": {
-                                          "type": "string"
-                                        }
-                                      }
-                                    },
-                            "coveredBy": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "string",
-                                        "enum": [
-                                          "GPA"
-                                        ]
-                                      }
+                              "type": "object",
+                              "properties": {
+                                "languages": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                },
+                                "electronicCataloguePolicy": {
+                                  "type": "string"
+                                },
+                                "variantPolicy": {
+                                  "type": "string"
+                                },
+                                "bidValidityPeriod": {
+                                  "type": "object",
+                                  "properties": {
+                                    "duration": {
+                                      "type": "string"
                                     }
+                                  }
+                                },
+                                "depositsGuarantees": {
+                                  "type": "string"
+                                },
+                                "subcontractingIndication": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "coveredBy": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "enum": [
+                                  "GPA"
+                                ]
+                              }
+                            }
                           },
                           "required": [
                             "id",
                             "title",
                             "description",
                             "value",
-                            "contractPeriod",
                             "placeOfPerformance",
                             "contractTerms"
                           ]
@@ -1978,7 +1976,6 @@
                       "legalBasis",
                       "awardCriteria",
                       "awardCriteriaDetails",
-                      "tenderPeriod",
                       "procuringEntity",
                       "lots",
                       "items"
@@ -2076,9 +2073,6 @@
                       },
                       "tenderPeriod": {
                         "type": "object",
-                        "required": [
-                          "startDate"
-                        ],
                         "properties": {
                           "startDate": {
                             "type": "string",
@@ -2086,7 +2080,10 @@
                             "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
                             "example": "2022-07-22T10:01:26Z"
                           }
-                        }
+                        },
+                        "required": [
+                          "startDate"
+                        ]
                       },
                       "enquiryPeriod": {
                         "type": "object",
@@ -2209,11 +2206,6 @@
                                   },
                                   "region": {
                                     "type": "object",
-                                    "required": [
-                                      "id",
-                                      "description",
-                                      "scheme"
-                                    ],
                                     "properties": {
                                       "id": {
                                         "type": "string"
@@ -2224,15 +2216,15 @@
                                       "scheme": {
                                         "type": "string"
                                       }
-                                    }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "description",
+                                      "scheme"
+                                    ]
                                   },
                                   "locality": {
                                     "type": "object",
-                                    "required": [
-                                      "id",
-                                      "description",
-                                      "scheme"
-                                    ],
                                     "properties": {
                                       "id": {
                                         "type": "string"
@@ -2243,7 +2235,12 @@
                                       "scheme": {
                                         "type": "string"
                                       }
-                                    }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "description",
+                                      "scheme"
+                                    ]
                                   }
                                 }
                               }
@@ -2919,11 +2916,6 @@
                                         },
                                         "region": {
                                           "type": "object",
-                                          "required": [
-                                            "id",
-                                            "description",
-                                            "scheme"
-                                          ],
                                           "properties": {
                                             "id": {
                                               "type": "string"
@@ -2934,15 +2926,15 @@
                                             "scheme": {
                                               "type": "string"
                                             }
-                                          }
+                                          },
+                                          "required": [
+                                            "id",
+                                            "description",
+                                            "scheme"
+                                          ]
                                         },
                                         "locality": {
                                           "type": "object",
-                                          "required": [
-                                            "id",
-                                            "description",
-                                            "scheme"
-                                          ],
                                           "properties": {
                                             "id": {
                                               "type": "string"
@@ -2953,7 +2945,12 @@
                                             "scheme": {
                                               "type": "string"
                                             }
-                                          }
+                                          },
+                                          "required": [
+                                            "id",
+                                            "description",
+                                            "scheme"
+                                          ]
                                         }
                                       }
                                     }
@@ -3271,6 +3268,89 @@
                                   }
                                 }
                               }
+                            },
+                            "electronicWorkflows": {
+                              "type": "object",
+                              "properties": {
+                                "useOrdering": {
+                                  "type": "boolean"
+                                },
+                                "acceptInvoicing": {
+                                  "type": "boolean"
+                                },
+                                "usePayment": {
+                                  "type": "boolean"
+                                }
+                              }
+                            },
+                            "otherRequirements": {
+                              "type": "object",
+                              "properties": {
+                                "reservedParticipation": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "enum": [
+                                      "shelteredWorkshop",
+                                      "publicServiceMissionOrganization"
+                                    ]
+                                  }
+                                }
+                              }
+                            },
+                            "subcontractingTerms": {
+                              "type": "object",
+                              "properties": {
+                                "description": {
+                                  "type": "string"
+                                },
+                                "minimumPercentage": {
+                                  "type": "number"
+                                },
+                                "maximumPercentage": {
+                                  "type": "number"
+                                }
+                              }
+                            },
+                            "submissionTerms": {
+                              "type": "object",
+                              "properties": {
+                                "languages": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                },
+                                "electronicCataloguePolicy": {
+                                  "type": "string"
+                                },
+                                "variantPolicy": {
+                                  "type": "string"
+                                },
+                                "bidValidityPeriod": {
+                                  "type": "object",
+                                  "properties": {
+                                    "duration": {
+                                      "type": "string"
+                                    }
+                                  }
+                                },
+                                "depositsGuarantees": {
+                                  "type": "string"
+                                },
+                                "subcontractingIndication": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "coveredBy": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "enum": [
+                                  "GPA"
+                                ]
+                              }
                             }
                           },
                           "required": [
@@ -3278,7 +3358,6 @@
                             "title",
                             "description",
                             "value",
-                            "contractPeriod",
                             "placeOfPerformance"
                           ]
                         }
@@ -3775,7 +3854,7 @@
             "description": "Accepted"
           }
         },
-        "description": "Update PN for pmd =  OT, TEST_OT , SV, TEST_SV, MV, TEST_MV",
+        "description": "Update PN ",
         "parameters": [
           {
             "schema": {
@@ -3814,10 +3893,80 @@
                       },
                       "budget": {
                         "type": "object",
+                        "required": [
+                          "budgetBreakdown"
+                        ],
                         "properties": {
                           "description": {
                             "type": "string",
                             "minLength": 1
+                          },
+                          "budgetBreakdown": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "minItems": 1,
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "format": "uuid"
+                                },
+                                "amount": {
+                                  "type": "object",
+                                  "required": [
+                                    "amount",
+                                    "currency"
+                                  ],
+                                  "properties": {
+                                    "amount": {
+                                      "type": "number"
+                                    },
+                                    "currency": {
+                                      "type": "string",
+                                      "minLength": 1
+                                    }
+                                  }
+                                },
+                                "classifications": {
+                                  "type": "object",
+                                  "required": [
+                                    "ei"
+                                  ],
+                                  "properties": {
+                                    "ei": {
+                                      "type": "string"
+                                    }
+                                  }
+                                },
+                                "isEuropeanUnionFunded": {
+                                  "type": "boolean"
+                                },
+                                "europeanUnionFunding": {
+                                  "type": "object",
+                                  "properties": {
+                                    "projectIdentifier": {
+                                      "type": "string"
+                                    },
+                                    "projectName": {
+                                      "type": "string"
+                                    },
+                                    "uri": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "projectIdentifier"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "amount",
+                                "classifications",
+                                "isEuropeanUnionFunded"
+                              ]
+                            }
                           }
                         }
                       }
@@ -3826,24 +3975,64 @@
                   "tender": {
                     "type": "object",
                     "required": [
-                      "tenderPeriod"
+                      "title",
+                      "description",
+                      "classification",
+                      "legalBasis"
                     ],
                     "properties": {
                       "title": {
-                        "type": "string",
-                        "minLength": 1
+                        "type": "string"
                       },
                       "description": {
+                        "type": "string"
+                      },
+                      "classification": {
+                        "type": "object",
+                        "required": [
+                          "id",
+                          "scheme"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "scheme": {
+                            "type": "string",
+                            "enum": [
+                              "CPV"
+                            ]
+                          }
+                        }
+                      },
+                      "legalBasis": {
                         "type": "string",
-                        "minLength": 1
+                        "enum": [
+                          "32009L0081",
+                          "32014L0023",
+                          "32014L0024",
+                          "32014L0025",
+                          "other"
+                        ]
                       },
                       "procurementMethodRationale": {
-                        "type": "string",
-                        "minLength": 1
+                        "type": "string"
                       },
-                      "procurementMethodAdditionalInfo": {
+                      "awardCriteria": {
                         "type": "string",
-                        "minLength": 1
+                        "enum": [
+                          "priceOnly",
+                          "ratedCriteria",
+                          "qualityOnly",
+                          "costOnly"
+                        ]
+                      },
+                      "awardCriteriaDetails": {
+                        "type": "string",
+                        "enum": [
+                          "automated",
+                          "manual"
+                        ]
                       },
                       "tenderPeriod": {
                         "type": "object",
@@ -3859,28 +4048,367 @@
                           }
                         }
                       },
+                      "enquiryPeriod": {
+                        "type": "object",
+                        "properties": {
+                          "endDate": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                            "example": "2022-07-22T10:01:26Z"
+                          }
+                        },
+                        "required": [
+                          "endDate"
+                        ]
+                      },
+                      "procuringEntity": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "identifier": {
+                            "type": "object",
+                            "required": [
+                              "id",
+                              "legalName",
+                              "scheme"
+                            ],
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "legalName": {
+                                "type": "string"
+                              },
+                              "scheme": {
+                                "type": "string"
+                              },
+                              "uri": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "additionalIdentifiers": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "legalName": {
+                                  "type": "string"
+                                },
+                                "scheme": {
+                                  "type": "string"
+                                },
+                                "uri": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "legalName",
+                                "scheme"
+                              ]
+                            }
+                          },
+                          "address": {
+                            "type": "object",
+                            "required": [
+                              "addressDetails"
+                            ],
+                            "properties": {
+                              "streetAddress": {
+                                "type": "string"
+                              },
+                              "postalCode": {
+                                "type": "string"
+                              },
+                              "addressDetails": {
+                                "type": "object",
+                                "required": [
+                                  "country"
+                                ],
+                                "properties": {
+                                  "country": {
+                                    "type": "object",
+                                    "required": [
+                                      "id",
+                                      "description",
+                                      "scheme"
+                                    ],
+                                    "properties": {
+                                      "id": {
+                                        "type": "string"
+                                      },
+                                      "description": {
+                                        "type": "string"
+                                      },
+                                      "scheme": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  },
+                                  "region": {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string"
+                                      },
+                                      "description": {
+                                        "type": "string"
+                                      },
+                                      "scheme": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "description",
+                                      "scheme"
+                                    ]
+                                  },
+                                  "locality": {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string"
+                                      },
+                                      "description": {
+                                        "type": "string"
+                                      },
+                                      "scheme": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "description",
+                                      "scheme"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "contactPoint": {
+                            "type": "object",
+                            "required": [
+                              "name",
+                              "email",
+                              "telephone"
+                            ],
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "email": {
+                                "type": "string"
+                              },
+                              "telephone": {
+                                "type": "string"
+                              },
+                              "faxNumber": {
+                                "type": "string"
+                              },
+                              "url": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "persones": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "title": {
+                                  "type": "string",
+                                  "enum": [
+                                    "Mr.",
+                                    "Ms.",
+                                    "Mrs."
+                                  ]
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "identifier": {
+                                  "type": "object",
+                                  "required": [
+                                    "scheme",
+                                    "id"
+                                  ],
+                                  "properties": {
+                                    "scheme": {
+                                      "type": "string"
+                                    },
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "uri": {
+                                      "type": "string"
+                                    }
+                                  }
+                                },
+                                "businessFunctions": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string"
+                                      },
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "chairman",
+                                          "contactPoint",
+                                          "technicalOpener",
+                                          "priceOpener",
+                                          "priceEvaluator",
+                                          "technicalEvaluator",
+                                          "procurementOfficer"
+                                        ]
+                                      },
+                                      "jobTitle": {
+                                        "type": "string"
+                                      },
+                                      "period": {
+                                        "type": "object",
+                                        "required": [
+                                          "startDate"
+                                        ],
+                                        "properties": {
+                                          "startDate": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                            "example": "2022-07-22T10:01:26Z"
+                                          }
+                                        }
+                                      },
+                                      "documents": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "string"
+                                            },
+                                            "title": {
+                                              "type": "string"
+                                            },
+                                            "documentType": {
+                                              "type": "string",
+                                              "enum": [
+                                                "regulatoryDocument"
+                                              ]
+                                            },
+                                            "description": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "id",
+                                            "title",
+                                            "documentType"
+                                          ]
+                                        }
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "type",
+                                      "jobTitle",
+                                      "period"
+                                    ]
+                                  }
+                                }
+                              },
+                              "required": [
+                                "title",
+                                "name",
+                                "identifier",
+                                "businessFunctions"
+                              ]
+                            }
+                          },
+                          "details": {
+                            "type": "object",
+                            "properties": {
+                              "typeOfBuyer": {
+                                "type": "string",
+                                "enum": [
+                                  "BODY_PUBLIC",
+                                  "EU_INSTITUTION",
+                                  "MINISTRY",
+                                  "NATIONAL_AGENCY",
+                                  "REGIONAL_AGENCY",
+                                  "REGIONAL_AUTHORITY"
+                                ]
+                              },
+                              "mainGeneralActivity": {
+                                "type": "string",
+                                "enum": [
+                                  "DEFENCE",
+                                  "ECONOMIC_AND_FINANCIAL_AFFAIRS",
+                                  "EDUCATION",
+                                  "ENVIRONMENT",
+                                  "GENERAL_PUBLIC_SERVICES",
+                                  "HEALTH",
+                                  "HOUSING_AND_COMMUNITY_AMENITIES",
+                                  "PUBLIC_ORDER_AND_SAFETY",
+                                  "RECREATION_CULTURE_AND_RELIGION",
+                                  "SOCIAL_PROTECTION"
+                                ]
+                              },
+                              "mainSectoralActivity": {
+                                "type": "string",
+                                "enum": [
+                                  "AIRPORT_RELATED_ACTIVITIES",
+                                  "ELECTRICITY",
+                                  "EXPLORATION_EXTRACTION_COAL_OTHER_SOLID_FUEL",
+                                  "EXPLORATION_EXTRACTION_GAS_OIL",
+                                  "PORT_RELATED_ACTIVITIES",
+                                  "POSTAL_SERVICES",
+                                  "PRODUCTION_TRANSPORT_DISTRIBUTION_GAS_HEAT",
+                                  "RAILWAY_SERVICES",
+                                  "URBAN_RAILWAY_TRAMWAY_TROLLEYBUS_BUS_SERVICES",
+                                  "WATER"
+                                ]
+                              },
+                              "buyerProfile": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "identifier",
+                          "address",
+                          "contactPoint"
+                        ]
+                      },
                       "lots": {
                         "type": "array",
-                        "uniqueItems": true,
-                        "minItems": 1,
                         "items": {
                           "type": "object",
                           "properties": {
                             "id": {
-                              "type": "string",
-                              "minLength": 1
+                              "type": "string"
                             },
                             "internalId": {
-                              "type": "string",
-                              "minLength": 1
+                              "type": "string"
                             },
                             "title": {
-                              "type": "string",
-                              "minLength": 1
+                              "type": "string"
                             },
                             "description": {
-                              "type": "string",
-                              "minLength": 1
+                              "type": "string"
                             },
                             "value": {
                               "type": "object",
@@ -3893,8 +4421,7 @@
                                   "type": "number"
                                 },
                                 "currency": {
-                                  "type": "string",
-                                  "minLength": 1
+                                  "type": "string"
                                 }
                               }
                             },
@@ -3932,12 +4459,10 @@
                                   ],
                                   "properties": {
                                     "streetAddress": {
-                                      "type": "string",
-                                      "minLength": 1
+                                      "type": "string"
                                     },
                                     "postalCode": {
-                                      "type": "string",
-                                      "minLength": 1
+                                      "type": "string"
                                     },
                                     "addressDetails": {
                                       "type": "object",
@@ -3948,53 +4473,458 @@
                                         "country": {
                                           "type": "object",
                                           "required": [
-                                            "id"
+                                            "id",
+                                            "description",
+                                            "scheme"
                                           ],
                                           "properties": {
                                             "id": {
-                                              "type": "string",
-                                              "minLength": 1
+                                              "type": "string"
+                                            },
+                                            "description": {
+                                              "type": "string"
+                                            },
+                                            "scheme": {
+                                              "type": "string"
                                             }
                                           }
                                         },
                                         "region": {
                                           "type": "object",
-                                          "required": [
-                                            "id"
-                                          ],
                                           "properties": {
                                             "id": {
-                                              "type": "string",
-                                              "minLength": 1
+                                              "type": "string"
+                                            },
+                                            "description": {
+                                              "type": "string"
+                                            },
+                                            "scheme": {
+                                              "type": "string"
                                             }
-                                          }
+                                          },
+                                          "required": [
+                                            "id",
+                                            "description",
+                                            "scheme"
+                                          ]
                                         },
                                         "locality": {
                                           "type": "object",
-                                          "required": [
-                                            "id",
-                                            "scheme",
-                                            "description"
-                                          ],
                                           "properties": {
                                             "id": {
-                                              "type": "string",
-                                              "minLength": 1
-                                            },
-                                            "scheme": {
-                                              "type": "string",
-                                              "minLength": 1
+                                              "type": "string"
                                             },
                                             "description": {
-                                              "type": "string",
-                                              "minLength": 1
+                                              "type": "string"
+                                            },
+                                            "scheme": {
+                                              "type": "string"
                                             }
-                                          }
+                                          },
+                                          "required": [
+                                            "id",
+                                            "description",
+                                            "scheme"
+                                          ]
                                         }
                                       }
                                     }
                                   }
+                                },
+                                "description": {
+                                  "type": "string"
                                 }
+                              }
+                            },
+                            "hasOptions": {
+                              "type": "boolean"
+                            },
+                            "options": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "description": {
+                                    "type": "string"
+                                  },
+                                  "period": {
+                                    "type": "object",
+                                    "properties": {
+                                      "durationInDays": {
+                                        "type": "number"
+                                      },
+                                      "startDate": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                        "example": "2022-07-22T10:01:26Z"
+                                      },
+                                      "endDate": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                        "example": "2022-07-22T10:01:26Z"
+                                      },
+                                      "maxExtentDate": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                        "example": "2022-07-22T10:01:26Z"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "hasRecurrence": {
+                              "type": "boolean"
+                            },
+                            "recurrence": {
+                              "type": "object",
+                              "properties": {
+                                "dates": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "startDate": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                        "example": "2022-07-22T10:01:26Z"
+                                      }
+                                    }
+                                  }
+                                },
+                                "description": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "hasRenewal": {
+                              "type": "boolean"
+                            },
+                            "renewal": {
+                              "type": "object",
+                              "properties": {
+                                "description": {
+                                  "type": "string"
+                                },
+                                "minimumRenewals": {
+                                  "type": "number"
+                                },
+                                "maximumRenewals": {
+                                  "type": "number"
+                                },
+                                "period": {
+                                  "type": "object",
+                                  "properties": {
+                                    "durationInDays": {
+                                      "type": "number"
+                                    },
+                                    "startDate": {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                      "example": "2022-07-22T10:01:26Z"
+                                    },
+                                    "endDate": {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                      "example": "2022-07-22T10:01:26Z"
+                                    },
+                                    "maxExtentDate": {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                      "example": "2022-07-22T10:01:26Z"
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "awardCriteria": {
+                              "type": "object",
+                              "properties": {
+                                "weightingDescription": {
+                                  "type": "string",
+                                  "enum": [
+                                    "ISZF",
+                                    "ARGITEK",
+                                    "KUIPER_2"
+                                  ]
+                                },
+                                "criteria": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "quality",
+                                          "cost",
+                                          "price"
+                                        ]
+                                      },
+                                      "numbers": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "properties": {
+                                            "number": {
+                                              "type": "number"
+                                            },
+                                            "weight": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "number",
+                                            "weight"
+                                          ]
+                                        }
+                                      }
+                                    },
+                                    "required": [
+                                      "type",
+                                      "numbers"
+                                    ]
+                                  }
+                                }
+                              },
+                              "required": [
+                                "weightingDescription",
+                                "criteria"
+                              ]
+                            },
+                            "contractTerms": {
+                              "type": "object",
+                              "required": [
+                                "contractType"
+                              ],
+                              "properties": {
+                                "contractType": {
+                                  "type": "string",
+                                  "enum": [
+                                    "fixedRate",
+                                    "fixedPrice",
+                                    "fixedPriceWithRevision",
+                                    "fixedRateWithRevision",
+                                    "variableRate"
+                                  ]
+                                },
+                                "financialTermsDetails": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string"
+                                      },
+                                      "relatesTo": {
+                                        "type": "string"
+                                      },
+                                      "relatedItem": {
+                                        "type": "string"
+                                      },
+                                      "measure": {
+                                        "type": "number"
+                                      },
+                                      "unit": {
+                                        "type": "object",
+                                        "required": [
+                                          "id"
+                                        ],
+                                        "properties": {
+                                          "id": {
+                                            "type": "string"
+                                          }
+                                        }
+                                      },
+                                      "classification": {
+                                        "type": "object",
+                                        "required": [
+                                          "termType"
+                                        ],
+                                        "properties": {
+                                          "termType": {
+                                            "type": "string"
+                                          }
+                                        }
+                                      },
+                                      "relatedRequirementId": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "relatesTo",
+                                      "relatedItem",
+                                      "measure",
+                                      "unit",
+                                      "classification"
+                                    ]
+                                  }
+                                },
+                                "reservedExecution": {
+                                  "type": "boolean"
+                                },
+                                "tendererLegalForm": {
+                                  "type": "string"
+                                },
+                                "performanceTerms": {
+                                  "type": "string"
+                                },
+                                "financialTerms": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "techniques": {
+                              "type": "object",
+                              "properties": {
+                                "hasFrameworkAgreement": {
+                                  "type": "boolean"
+                                },
+                                "frameworkAgreement": {
+                                  "type": "object",
+                                  "properties": {
+                                    "minimumParticipants": {
+                                      "type": "number"
+                                    },
+                                    "maximumParticipants": {
+                                      "type": "number"
+                                    },
+                                    "method": {
+                                      "type": "string",
+                                      "enum": [
+                                        "withoutReopeningCompetition",
+                                        "withReopeningCompetition",
+                                        "withAndWithoutReopeningCompetition"
+                                      ]
+                                    },
+                                    "periodRationale": {
+                                      "type": "string"
+                                    },
+                                    "buyerCategories": {
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "type": "object",
+                                      "properties": {
+                                        "amount": {
+                                          "type": "number"
+                                        },
+                                        "currency": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "amount",
+                                        "currency"
+                                      ]
+                                    },
+                                    "period": {
+                                      "type": "object",
+                                      "properties": {
+                                        "durationInDays": {
+                                          "type": "number"
+                                        }
+                                      },
+                                      "required": [
+                                        "durationInDays"
+                                      ]
+                                    },
+                                    "description": {
+                                      "type": "string"
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "electronicWorkflows": {
+                              "type": "object",
+                              "properties": {
+                                "useOrdering": {
+                                  "type": "boolean"
+                                },
+                                "acceptInvoicing": {
+                                  "type": "boolean"
+                                },
+                                "usePayment": {
+                                  "type": "boolean"
+                                }
+                              }
+                            },
+                            "otherRequirements": {
+                              "type": "object",
+                              "properties": {
+                                "reservedParticipation": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "enum": [
+                                      "shelteredWorkshop",
+                                      "publicServiceMissionOrganization"
+                                    ]
+                                  }
+                                }
+                              }
+                            },
+                            "subcontractingTerms": {
+                              "type": "object",
+                              "properties": {
+                                "description": {
+                                  "type": "string"
+                                },
+                                "minimumPercentage": {
+                                  "type": "number"
+                                },
+                                "maximumPercentage": {
+                                  "type": "number"
+                                }
+                              }
+                            },
+                            "submissionTerms": {
+                              "type": "object",
+                              "properties": {
+                                "languages": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                },
+                                "electronicCataloguePolicy": {
+                                  "type": "string"
+                                },
+                                "variantPolicy": {
+                                  "type": "string"
+                                },
+                                "bidValidityPeriod": {
+                                  "type": "object",
+                                  "properties": {
+                                    "duration": {
+                                      "type": "string"
+                                    }
+                                  }
+                                },
+                                "depositsGuarantees": {
+                                  "type": "string"
+                                },
+                                "subcontractingIndication": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "coveredBy": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "enum": [
+                                  "GPA"
+                                ]
                               }
                             }
                           },
@@ -4003,52 +4933,59 @@
                             "title",
                             "description",
                             "value",
-                            "contractPeriod",
-                            "placeOfPerformance"
+                            "placeOfPerformance",
+                            "contractTerms"
                           ]
                         }
                       },
                       "items": {
                         "type": "array",
-                        "uniqueItems": true,
-                        "minItems": 1,
                         "items": {
                           "type": "object",
                           "properties": {
                             "id": {
-                              "type": "string",
-                              "minLength": 1
+                              "type": "string"
                             },
                             "internalId": {
-                              "type": "string",
-                              "minLength": 1
+                              "type": "string"
                             },
                             "classification": {
                               "type": "object",
                               "required": [
-                                "id"
+                                "id",
+                                "scheme"
                               ],
                               "properties": {
                                 "id": {
+                                  "type": "string"
+                                },
+                                "scheme": {
                                   "type": "string",
-                                  "minLength": 1
+                                  "enum": [
+                                    "CPV"
+                                  ]
                                 }
                               }
                             },
                             "additionalClassifications": {
                               "type": "array",
-                              "uniqueItems": true,
-                              "minItems": 1,
                               "items": {
                                 "type": "object",
                                 "properties": {
                                   "id": {
+                                    "type": "string"
+                                  },
+                                  "scheme": {
                                     "type": "string",
-                                    "minLength": 1
+                                    "enum": [
+                                      "CPVS",
+                                      "CPV"
+                                    ]
                                   }
                                 },
                                 "required": [
-                                  "id"
+                                  "id",
+                                  "scheme"
                                 ]
                               }
                             },
@@ -4057,29 +4994,27 @@
                             },
                             "unit": {
                               "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "string",
-                                  "minLength": 1
-                                }
-                              },
                               "required": [
                                 "id"
-                              ]
+                              ],
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                }
+                              }
                             },
                             "description": {
-                              "type": "string",
-                              "minLength": 1
+                              "type": "string"
                             },
                             "relatedLot": {
-                              "type": "string",
-                              "minLength": 1
+                              "type": "string"
                             }
                           },
                           "required": [
                             "id",
                             "classification",
                             "quantity",
+                            "unit",
                             "description",
                             "relatedLot"
                           ]
@@ -4087,22 +5022,17 @@
                       },
                       "documents": {
                         "type": "array",
-                        "uniqueItems": true,
-                        "minItems": 1,
                         "items": {
                           "type": "object",
                           "properties": {
                             "id": {
-                              "type": "string",
-                              "minLength": 1
+                              "type": "string"
                             },
                             "title": {
-                              "type": "string",
-                              "minLength": 1
+                              "type": "string"
                             },
                             "documentType": {
                               "type": "string",
-                              "minLength": 1,
                               "enum": [
                                 "tenderNotice",
                                 "biddingDocuments",
@@ -4130,8 +5060,7 @@
                               ]
                             },
                             "description": {
-                              "type": "string",
-                              "minLength": 1
+                              "type": "string"
                             },
                             "relatedLots": {
                               "type": "array",
@@ -4144,6 +5073,509 @@
                             "id",
                             "title",
                             "documentType"
+                          ]
+                        }
+                      },
+                      "criteria": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "title": {
+                              "type": "string"
+                            },
+                            "classification": {
+                              "type": "object",
+                              "required": [
+                                "id",
+                                "scheme"
+                              ],
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "scheme": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "source": {
+                              "type": "string",
+                              "enum": [
+                                "procuringEntity"
+                              ]
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "relatesTo": {
+                              "type": "string",
+                              "enum": [
+                                "lot",
+                                "item",
+                                "tender",
+                                "tenderer"
+                              ]
+                            },
+                            "relatedItem": {
+                              "type": "string"
+                            },
+                            "requirementGroups": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "description": {
+                                    "type": "string"
+                                  },
+                                  "requirements": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string"
+                                        },
+                                        "title": {
+                                          "type": "string"
+                                        },
+                                        "dataType": {
+                                          "type": "string",
+                                          "enum": [
+                                            "string",
+                                            "number",
+                                            "integer",
+                                            "boolean"
+                                          ]
+                                        },
+                                        "description": {
+                                          "type": "string"
+                                        },
+                                        "period": {
+                                          "type": "object",
+                                          "properties": {
+                                            "startDate": {
+                                              "type": "string",
+                                              "format": "date-time",
+                                              "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                              "example": "2022-07-22T10:01:26Z"
+                                            },
+                                            "endDate": {
+                                              "type": "string",
+                                              "format": "date-time",
+                                              "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                              "example": "2022-07-22T10:01:26Z"
+                                            }
+                                          },
+                                          "required": [
+                                            "startDate",
+                                            "endDate"
+                                          ]
+                                        },
+                                        "expectedValue": {
+                                          "oneOf": [
+                                            {
+                                              "type": "string"
+                                            },
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "integer"
+                                            },
+                                            {
+                                              "type": "boolean"
+                                            }
+                                          ]
+                                        },
+                                        "minValue": {
+                                          "oneOf": [
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "integer"
+                                            }
+                                          ]
+                                        },
+                                        "maxValue": {
+                                          "oneOf": [
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "integer"
+                                            }
+                                          ]
+                                        },
+                                        "eligibleEvidences": {
+                                          "type": "array",
+                                          "items": {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string"
+                                              },
+                                              "title": {
+                                                "type": "string"
+                                              },
+                                              "description": {
+                                                "type": "string"
+                                              },
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "reference",
+                                                  "document"
+                                                ]
+                                              },
+                                              "relatedDocument": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "id": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "id"
+                                                ]
+                                              }
+                                            },
+                                            "required": [
+                                              "id",
+                                              "title",
+                                              "type"
+                                            ]
+                                          }
+                                        }
+                                      },
+                                      "required": [
+                                        "id",
+                                        "title",
+                                        "dataType"
+                                      ]
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "requirements"
+                                ]
+                              }
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "title",
+                            "classification",
+                            "relatesTo",
+                            "requirementGroups"
+                          ]
+                        }
+                      },
+                      "conversions": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "relatedItem": {
+                              "type": "string"
+                            },
+                            "relatesTo": {
+                              "type": "string",
+                              "enum": [
+                                "requirement"
+                              ]
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "rationale": {
+                              "type": "string"
+                            },
+                            "coefficients": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "value": {
+                                    "oneOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "boolean"
+                                      },
+                                      {
+                                        "type": "integer"
+                                      }
+                                    ]
+                                  },
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "coefficient": {
+                                    "type": "number"
+                                  }
+                                },
+                                "required": [
+                                  "value",
+                                  "id",
+                                  "coefficient"
+                                ]
+                              }
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "relatedItem",
+                            "relatesTo",
+                            "rationale",
+                            "coefficients"
+                          ]
+                        }
+                      },
+                      "targets": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "title": {
+                              "type": "string"
+                            },
+                            "relatesTo": {
+                              "type": "string",
+                              "enum": [
+                                "lot",
+                                "item",
+                                "tender"
+                              ]
+                            },
+                            "relatedItem": {
+                              "type": "string"
+                            },
+                            "observations": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "period": {
+                                    "type": "object",
+                                    "properties": {
+                                      "startDate": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                        "example": "2022-07-22T10:01:26Z"
+                                      },
+                                      "endDate": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                        "example": "2022-07-22T10:01:26Z"
+                                      }
+                                    }
+                                  },
+                                  "measure": {
+                                    "oneOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "integer"
+                                      },
+                                      {
+                                        "type": "boolean"
+                                      }
+                                    ]
+                                  },
+                                  "unit": {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "id"
+                                    ]
+                                  },
+                                  "dimensions": {
+                                    "type": "object",
+                                    "properties": {
+                                      "requirementClassIdPR": {
+                                        "type": "string"
+                                      },
+                                      "metricType": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  },
+                                  "notes": {
+                                    "type": "string"
+                                  },
+                                  "relatedRequirementId": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "measure",
+                                  "notes"
+                                ]
+                              }
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "title",
+                            "relatesTo",
+                            "observations"
+                          ]
+                        }
+                      },
+                      "electronicWorkflows": {
+                        "type": "object",
+                        "properties": {
+                          "useOrdering": {
+                            "type": "boolean"
+                          },
+                          "acceptInvoicing": {
+                            "type": "boolean"
+                          },
+                          "usePayment": {
+                            "type": "boolean"
+                          }
+                        }
+                      },
+                      "framework": {
+                        "type": "object",
+                        "properties": {
+                          "method": {
+                            "type": "string",
+                            "enum": [
+                              "withReopeningCompetition",
+                              "withoutReopeningCompetition",
+                              "withAndWithoutReopeningCompetition"
+                            ]
+                          },
+                          "maximumParticipants": {
+                            "type": "number"
+                          },
+                          "periodRationale": {
+                            "type": "string"
+                          },
+                          "buyerCategories": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "procedure": {
+                        "type": "object",
+                        "properties": {
+                          "features": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "lotDetails": {
+                        "type": "object",
+                        "properties": {
+                          "maximumLotsBidPerSupplier": {
+                            "type": "number"
+                          },
+                          "maximumLotsAwardedPerSupplier": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "otherRequirements": {
+                        "type": "object",
+                        "properties": {
+                          "reservedParticipation": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "enum": [
+                                "shelteredWorkshop",
+                                "publicServiceMissionOrganization"
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "subcontractingTerms": {
+                        "type": "object",
+                        "properties": {
+                          "description": {
+                            "type": "string"
+                          },
+                          "minimumPercentage": {
+                            "type": "number"
+                          },
+                          "maximumPercentage": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "submissionTerms": {
+                        "type": "object",
+                        "properties": {
+                          "languages": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "electronicCataloguePolicy": {
+                            "type": "string"
+                          },
+                          "variantPolicy": {
+                            "type": "string"
+                          },
+                          "bidValidityPeriod": {
+                            "type": "object",
+                            "properties": {
+                              "duration": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "depositsGuarantees": {
+                            "type": "string"
+                          },
+                          "subcontractingIndication": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "coveredBy": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "GPA"
                           ]
                         }
                       }
@@ -4614,7 +6046,7 @@
             "description": "Accepted"
           }
         },
-        "description": "Cancel PN for pmd = OT, TEST_OT , SV, TEST_SV, MV, TEST_MV",
+        "description": "Cancel PN/PIN",
         "parameters": [
           {
             "schema": {
@@ -4637,7 +6069,63 @@
         ],
         "tags": [
           "1.Plans"
-        ]
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "amendment": {
+                    "type": "object",
+                    "required": [
+                      "rationale"
+                    ],
+                    "properties": {
+                      "rationale": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "documents": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "title": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "documentType": {
+                              "type": "string",
+                              "enum": [
+                                "cancellationDetails "
+                              ]
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "title",
+                            "documentType"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "amendment"
+                ]
+              }
+            }
+          }
+        }
       }
     }
   },
