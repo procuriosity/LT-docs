@@ -1,0 +1,92 @@
+{
+  "title": "address",
+  "x-stoplight": {
+    "id": "zzsoy7e8rx3u7"
+  },
+  "type": "object",
+  "properties": {
+    "streetAddress": {
+      "type": "string"
+    },
+    "postalCode": {
+      "type": "string"
+    },
+    "addressDetails": {
+      "type": "object",
+      "required": [
+        "country"
+      ],
+      "properties": {
+        "country": {
+          "type": "object",
+          "required": [
+            "id",
+            "scheme",
+            "description"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "scheme": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "region": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "scheme": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "id",
+            "scheme",
+            "description"
+          ]
+        },
+        "locality": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "scheme": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "id",
+            "scheme",
+            "description"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "addressDetails"
+  ]
+}
