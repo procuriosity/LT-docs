@@ -404,7 +404,6 @@
                                 "contractGuarantees",
                                 "meetingWithTenderersProtocol",
                                 "qualificationCriteria",
-                                "eligibilityCriteria",
                                 "tenderForm",
                                 "other"
                               ]
@@ -473,8 +472,9 @@
           }
         },
         "tags": [
-          "1.Plan"
-        ]
+          "1.Plans"
+        ],
+        "description": "Create Aggregated Plan for pmd = OF, CF"
       }
     },
     "/do/outsourcing/{cpid}/{ocid}": {
@@ -545,8 +545,9 @@
           }
         ],
         "tags": [
-          "1.Plan"
-        ]
+          "1.Plans"
+        ],
+        "description": "Outsourcing PN for pmd = RFQ, MC, DCO"
       }
     },
     "/do/relation/{cpid}/{ocid}": {
@@ -578,7 +579,7 @@
             "description": "Accepted"
           }
         },
-        "description": "",
+        "description": "Relation Aggregated Plan for pmd = OF, CF",
         "parameters": [
           {
             "schema": {
@@ -618,7 +619,7 @@
           }
         ],
         "tags": [
-          "1.Plan"
+          "1.Plans"
         ]
       }
     },
@@ -896,7 +897,6 @@
                                 "contractGuarantees",
                                 "meetingWithTenderersProtocol",
                                 "qualificationCriteria",
-                                "eligibilityCriteria",
                                 "tenderForm",
                                 "other"
                               ]
@@ -951,8 +951,9 @@
           }
         },
         "tags": [
-          "1.Plan"
-        ]
+          "1.Plans"
+        ],
+        "description": "Update Aggregated Plan for pmd = OF, CF"
       }
     },
     "/do/fe/{cpid}/{ocid}": {
@@ -1295,12 +1296,19 @@
                                           "minLength": 1
                                         },
                                         "dataType": {
-                                          "type": "string",
-                                          "enum": [
-                                            "integer",
-                                            "string",
-                                            "boolean",
-                                            "number"
+                                          "oneOf": [
+                                            {
+                                              "type": "integer"
+                                            },
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "string"
+                                            },
+                                            {
+                                              "type": "boolean"
+                                            }
                                           ]
                                         },
                                         "period": {
@@ -1490,7 +1498,6 @@
                                 "contractGuarantees",
                                 "meetingWithTenderersProtocol",
                                 "qualificationCriteria",
-                                "eligibilityCriteria",
                                 "tenderForm",
                                 "other"
                               ]
@@ -1527,8 +1534,9 @@
           }
         },
         "tags": [
-          "2.Tender"
-        ]
+          "2.Tenders"
+        ],
+        "description": "Create Framework Establishment for pmd = OF, CF"
       }
     },
     "/amend/fe/{cpid}/{ocid}": {
@@ -1790,7 +1798,6 @@
                                 "contractGuarantees",
                                 "meetingWithTenderersProtocol",
                                 "qualificationCriteria",
-                                "eligibilityCriteria",
                                 "tenderForm",
                                 "other"
                               ]
@@ -1830,8 +1837,9 @@
           }
         },
         "tags": [
-          "2.Tender"
-        ]
+          "2.Tenders"
+        ],
+        "description": "Amend Framework Establishment for pmd = OF, CF"
       }
     },
     "/do/submission/{cpid}/{ocid}": {
@@ -1898,12 +1906,19 @@
                               "minLength": 1
                             },
                             "value": {
-                              "example": "Can be other types: boolean, number, integer",
-                              "type": [
-                                "number",
-                                "string",
-                                "boolean",
-                                "integer"
+                              "oneOf": [
+                                {
+                                  "type": "integer"
+                                },
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "boolean"
+                                }
                               ]
                             },
                             "requirement": {
@@ -1920,10 +1935,6 @@
                             },
                             "relatedCandidate": {
                               "type": "object",
-                              "required": [
-                                "name",
-                                "identifier"
-                              ],
                               "properties": {
                                 "name": {
                                   "type": "string",
@@ -1946,7 +1957,11 @@
                                     }
                                   }
                                 }
-                              }
+                              },
+                              "required": [
+                                "name",
+                                "identifier"
+                              ]
                             },
                             "evidences": {
                               "type": "array",
@@ -2456,8 +2471,9 @@
           }
         },
         "tags": [
-          "2.Tender"
-        ]
+          "2.Tenders"
+        ],
+        "description": "Create submission for pmd = OF, CF"
       }
     },
     "/cancel/submission/{cpid}/{ocid}/{submissionId}": {
@@ -2519,8 +2535,9 @@
           }
         ],
         "tags": [
-          "2.Tender"
-        ]
+          "2.Tenders"
+        ],
+        "description": "Withdraw submission for pmd = OF, CF"
       }
     },
     "/do/enquiry/{cpid}/{ocid}": {
@@ -2545,7 +2562,7 @@
         }
       ],
       "post": {
-        "summary": "Enquiry",
+        "summary": "Create Enquiry",
         "operationId": "post-do-enquiry-cpid-ocid",
         "responses": {
           "202": {
@@ -2566,7 +2583,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "enquiry": {
@@ -2649,77 +2665,7 @@
                             }
                           },
                           "address": {
-                            "type": "object",
-                            "required": [
-                              "streetAddress",
-                              "addressDetails"
-                            ],
-                            "properties": {
-                              "streetAddress": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "postalCode": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "addressDetails": {
-                                "type": "object",
-                                "required": [
-                                  "country",
-                                  "region",
-                                  "locality"
-                                ],
-                                "properties": {
-                                  "country": {
-                                    "type": "object",
-                                    "required": [
-                                      "id"
-                                    ],
-                                    "properties": {
-                                      "id": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      }
-                                    }
-                                  },
-                                  "region": {
-                                    "type": "object",
-                                    "required": [
-                                      "id"
-                                    ],
-                                    "properties": {
-                                      "id": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      }
-                                    }
-                                  },
-                                  "locality": {
-                                    "type": "object",
-                                    "required": [
-                                      "scheme",
-                                      "id",
-                                      "description"
-                                    ],
-                                    "properties": {
-                                      "scheme": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "id": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "description": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
+                            "$ref": "./Components/addressRequest.json"
                           },
                           "details": {
                             "type": "object",
@@ -2729,7 +2675,12 @@
                             "properties": {
                               "scale": {
                                 "type": "string",
-                                "minLength": 1
+                                "minLength": 1,
+                                "enum": [
+                                  "micro",
+                                  "sme",
+                                  "large"
+                                ]
                               }
                             }
                           },
@@ -2787,8 +2738,9 @@
             }
           }
         },
+        "description": "Create Enquiry for pmd = OF, CF (in Framework Establishment, Pre-award Catalog Request) ",
         "tags": [
-          "2.Tender"
+          "2.Tenders"
         ]
       }
     },
@@ -2823,7 +2775,7 @@
         }
       ],
       "post": {
-        "summary": "Answer",
+        "summary": "Add Answer",
         "operationId": "post-do-enquiry-cpid-ocid-enquiryId",
         "responses": {
           "202": {
@@ -2877,8 +2829,9 @@
             }
           }
         },
+        "description": "Add Answer for pmd = OF, CF (in Framework Establishment, Pre-award Catalog Request)",
         "tags": [
-          "2.Tender"
+          "2.Tenders"
         ]
       }
     },
@@ -2944,7 +2897,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "requirementResponse": {
@@ -2963,8 +2915,20 @@
                         "example": "example: 401651e3-c6d2-4080-a199-d4fefeab0a89"
                       },
                       "value": {
-                        "type": "number",
-                        "description": "Also can be other type: boolean, string, integer"
+                        "oneOf": [
+                          {
+                            "type": "integer"
+                          },
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "boolean"
+                          }
+                        ]
                       },
                       "relatedTenderer": {
                         "type": "object",
@@ -3129,8 +3093,9 @@
             }
           }
         },
+        "description": "Qualification declare non conflict of interest for pmd = OF, CF (in Framework Establishment)",
         "tags": [
-          "2.Tender"
+          "2.Tenders"
         ]
       }
     },
@@ -3192,8 +3157,9 @@
             "required": true
           }
         ],
+        "description": "Qualification Consideration for pmd = OF, CF (in Framework Establishment)",
         "tags": [
-          "2.Tender"
+          "2.Tenders"
         ]
       }
     },
@@ -3330,8 +3296,9 @@
             }
           }
         },
+        "description": "Qualification for pmd = OF, CF (in Framework Establishment)",
         "tags": [
-          "2.Tender"
+          "2.Tenders"
         ]
       }
     },
@@ -3384,8 +3351,9 @@
             "required": true
           }
         ],
+        "description": "Qualification Protocol for pmd = OF, CF (in Framework Establishment)",
         "tags": [
-          "2.Tender"
+          "2.Tenders"
         ]
       }
     },
@@ -3438,9 +3406,9 @@
             "description": "Tender token"
           }
         ],
-        "description": "",
+        "description": "Apply Qualification Protocol for pmd = OF, CF (in Framework Establishment)",
         "tags": [
-          "2.Tender"
+          "2.Tenders"
         ]
       }
     },
@@ -3493,8 +3461,9 @@
             "name": "X-TOKEN"
           }
         ],
+        "description": "Withdraw Qualification Protocol for pmd = OF, CF (in Framework Establishment)",
         "tags": [
-          "2.Tender"
+          "2.Tenders"
         ]
       }
     },
@@ -3547,8 +3516,9 @@
             "description": "Framework Establishment token "
           }
         ],
+        "description": "Complete Qualification for pmd = OF, CF (in Framework Establishment)",
         "tags": [
-          "2.Tender"
+          "2.Tenders"
         ]
       }
     },
@@ -3637,351 +3607,9 @@
             }
           }
         },
+        "description": "Issuing Framework Contract for pmd = OF, CF (in Framework Establishment)",
         "tags": [
-          "2.Tender"
-        ]
-      }
-    },
-    "/do/confirmation/{entity}/{cpid}/{ocid}/{entityId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "entity",
-          "in": "path",
-          "required": true,
-          "description": "Available values : contract"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cpid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Process identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "ocid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Notice identifier "
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "entityId",
-          "in": "path",
-          "required": true,
-          "description": "Entity Identifier "
-        }
-      ],
-      "post": {
-        "summary": "Create Confirmation Response",
-        "operationId": "post-do-confirmation-entity-cpid-ocid-entityId",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-OPERATION-ID",
-            "required": true,
-            "description": "Request identifier"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-TOKEN",
-            "description": "confirmation request group token",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string",
-              "example": "Available values : buyer, invitedCandidate, supplier"
-            },
-            "in": "query",
-            "name": "Role",
-            "description": "Who gives response",
-            "required": true
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "description": "",
-                "type": "object",
-                "properties": {
-                  "confirmationResponse": {
-                    "type": "object",
-                    "required": [
-                      "requestId",
-                      "type",
-                      "value",
-                      "relatedPerson"
-                    ],
-                    "properties": {
-                      "requestId": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "type": {
-                        "type": "string",
-                        "minLength": 1,
-                        "enum": [
-                          "document",
-                          "hash"
-                        ]
-                      },
-                      "value": {
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "relatedPerson": {
-                        "type": "object",
-                        "required": [
-                          "title",
-                          "name",
-                          "identifier",
-                          "businessFunctions"
-                        ],
-                        "properties": {
-                          "title": {
-                            "type": "string",
-                            "minLength": 1,
-                            "enum": [
-                              "Mr.",
-                              "Ms.",
-                              "Mrs."
-                            ]
-                          },
-                          "name": {
-                            "type": "string",
-                            "minLength": 1
-                          },
-                          "identifier": {
-                            "type": "object",
-                            "required": [
-                              "scheme",
-                              "id"
-                            ],
-                            "properties": {
-                              "scheme": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "id": {
-                                "type": "string",
-                                "minLength": 1
-                              },
-                              "uri": {
-                                "type": "string",
-                                "minLength": 1
-                              }
-                            }
-                          },
-                          "businessFunctions": {
-                            "type": "array",
-                            "uniqueItems": true,
-                            "minItems": 1,
-                            "items": {
-                              "type": "object",
-                              "properties": {
-                                "type": {
-                                  "type": "string",
-                                  "minLength": 1,
-                                  "enum": [
-                                    "authority",
-                                    "contactPoint",
-                                    "chairman",
-                                    "procurementOfficer",
-                                    "technicalEvaluator",
-                                    "technicalOpener",
-                                    "priceOpener",
-                                    "priceEvaluator"
-                                  ]
-                                },
-                                "jobTitle": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "period": {
-                                  "type": "object",
-                                  "required": [
-                                    "startDate"
-                                  ],
-                                  "properties": {
-                                    "startDate": {
-                                      "type": "string",
-                                      "format": "date-time",
-                                      "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
-                                      "example": "2022-07-22T10:01:26Z"
-                                    }
-                                  }
-                                },
-                                "documents": {
-                                  "type": "array",
-                                  "uniqueItems": true,
-                                  "minItems": 1,
-                                  "items": {
-                                    "type": "object",
-                                    "properties": {
-                                      "id": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "documentType": {
-                                        "type": "string",
-                                        "minLength": 1,
-                                        "enum": [
-                                          "regulatoryDocument"
-                                        ]
-                                      },
-                                      "title": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      },
-                                      "description": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      }
-                                    },
-                                    "required": [
-                                      "id",
-                                      "documentType",
-                                      "title"
-                                    ]
-                                  }
-                                },
-                                "id": {
-                                  "type": "string",
-                                  "minLength": 1
-                                }
-                              },
-                              "required": [
-                                "type",
-                                "jobTitle",
-                                "period",
-                                "documents",
-                                "id"
-                              ]
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                "required": [
-                  "confirmationResponse"
-                ]
-              }
-            }
-          }
-        },
-        "tags": [
-          "2.Tender"
-        ]
-      }
-    },
-    "/complete/confirmationStage/{entity}/{cpid}/{ocid}/{entityId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string",
-            "enum": [
-              "contract"
-            ]
-          },
-          "name": "entity",
-          "in": "path",
-          "required": true
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cpid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Process identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "ocid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Notice identifier "
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "entityId",
-          "in": "path",
-          "required": true,
-          "description": "Contract  Identifier "
-        }
-      ],
-      "post": {
-        "summary": "Next Confirmation Step",
-        "operationId": "post-complete-confirmationStage-entity-cpid-ocid-entityId",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string",
-              "enum": [
-                "buyer",
-                "InvitedCandidate",
-                "supplier"
-              ]
-            },
-            "in": "query",
-            "name": "role",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "required": true,
-            "name": "X-OPERATION-ID",
-            "description": "Request identifier"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "required": true,
-            "name": "X-TOKEN",
-            "description": "Сontract token"
-          }
-        ],
-        "tags": [
-          "2.Tender"
+          "2.Tenders"
         ]
       }
     },
@@ -4038,7 +3666,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "tender": {
@@ -4047,9 +3674,9 @@
                       "title",
                       "description",
                       "classification",
-                      "lots",
                       "awardCriteria",
-                      "awardCriteriaDetails"
+                      "awardCriteriaDetails",
+                      "lots"
                     ],
                     "properties": {
                       "title": {
@@ -4080,7 +3707,49 @@
                           }
                         }
                       },
-                      "targets": {
+                      "awardCriteria": {
+                        "type": "string",
+                        "minLength": 1,
+                        "enum": [
+                          "priceOnly",
+                          "costOnly",
+                          "qualityOnly",
+                          "ratedCriteria"
+                        ]
+                      },
+                      "awardCriteriaDetails": {
+                        "type": "string",
+                        "minLength": 1,
+                        "enum": [
+                          "automated",
+                          "manual"
+                        ]
+                      },
+                      "tenderPeriod": {
+                        "type": "object",
+                        "properties": {
+                          "endDate": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                            "example": "2022-07-22T10:01:26Z"
+                          }
+                        },
+                        "required": [
+                          "endDate"
+                        ]
+                      },
+                      "procurementMethodModalities": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "requiresElectronicCatalogue",
+                            "electronicAuction"
+                          ]
+                        }
+                      },
+                      "lots": {
                         "type": "array",
                         "uniqueItems": true,
                         "minItems": 1,
@@ -4091,114 +3760,112 @@
                               "type": "string",
                               "minLength": 1
                             },
+                            "internalId": {
+                              "type": "string",
+                              "minLength": 1
+                            },
                             "title": {
                               "type": "string",
                               "minLength": 1
                             },
-                            "relatesTo": {
-                              "type": "string",
-                              "minLength": 1,
-                              "enum": [
-                                "lot",
-                                "item"
-                              ]
-                            },
-                            "relatedItem": {
+                            "description": {
                               "type": "string",
                               "minLength": 1
                             },
-                            "observations": {
-                              "type": "array",
-                              "uniqueItems": true,
-                              "minItems": 1,
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "id": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "period": {
-                                    "type": "object",
-                                    "properties": {
-                                      "startDate": {
-                                        "type": "string",
-                                        "format": "date-time",
-                                        "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
-                                        "example": "2022-07-22T10:01:26Z"
-                                      },
-                                      "endDate": {
-                                        "type": "string",
-                                        "format": "date-time",
-                                        "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
-                                        "example": "2022-07-22T10:01:26Z"
-                                      }
-                                    }
-                                  },
-                                  "measure": {
-                                    "oneOf": [
-                                      {
-                                        "type": "string"
-                                      },
-                                      {
-                                        "type": "number"
-                                      },
-                                      {
-                                        "type": "integer"
-                                      },
-                                      {
-                                        "type": "boolean"
-                                      }
-                                    ]
-                                  },
-                                  "unit": {
-                                    "type": "object",
-                                    "required": [
-                                      "id"
-                                    ],
-                                    "properties": {
-                                      "id": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      }
-                                    }
-                                  },
-                                  "dimensions": {
-                                    "type": "object",
-                                    "properties": {
-                                      "requirementClassIdPR": {
-                                        "type": "string",
-                                        "minLength": 1
-                                      }
-                                    },
-                                    "required": [
-                                      "requirementClassIdPR"
-                                    ]
-                                  },
-                                  "notes": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "relatedRequirementId": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  }
+                            "classification": {
+                              "type": "object",
+                              "required": [
+                                "id",
+                                "scheme"
+                              ],
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "minLength": 1
                                 },
-                                "required": [
-                                  "id",
-                                  "measure",
-                                  "unit",
-                                  "notes"
-                                ]
+                                "scheme": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "enum": [
+                                    "CPV"
+                                  ]
+                                }
                               }
                             }
                           },
                           "required": [
                             "id",
                             "title",
-                            "relatesTo",
-                            "relatedItem",
-                            "observations"
+                            "classification"
+                          ]
+                        }
+                      },
+                      "items": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "minItems": 1,
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "internalId": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "classification": {
+                              "type": "object",
+                              "required": [
+                                "id",
+                                "scheme"
+                              ],
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "scheme": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "enum": [
+                                    "CPV"
+                                  ]
+                                }
+                              }
+                            },
+                            "description": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "quantity": {
+                              "type": "number"
+                            },
+                            "unit": {
+                              "type": "object",
+                              "required": [
+                                "id"
+                              ],
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "minLength": 1
+                                }
+                              }
+                            },
+                            "relatedLot": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "classification",
+                            "description",
+                            "quantity",
+                            "unit",
+                            "relatedLot"
                           ]
                         }
                       },
@@ -4265,13 +3932,13 @@
                                           "minLength": 1
                                         },
                                         "dataType": {
-                                          "type": "string",
                                           "enum": [
                                             "integer",
                                             "string",
                                             "boolean",
                                             "number"
-                                          ]
+                                          ],
+                                          "type": "string"
                                         },
                                         "period": {
                                           "type": "object",
@@ -4423,7 +4090,7 @@
                           ]
                         }
                       },
-                      "lots": {
+                      "targets": {
                         "type": "array",
                         "uniqueItems": true,
                         "minItems": 1,
@@ -4438,245 +4105,110 @@
                               "type": "string",
                               "minLength": 1
                             },
-                            "description": {
+                            "relatesTo": {
+                              "type": "string",
+                              "minLength": 1,
+                              "enum": [
+                                "lot",
+                                "item"
+                              ]
+                            },
+                            "relatedItem": {
                               "type": "string",
                               "minLength": 1
                             },
-                            "internalId": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "classification": {
-                              "type": "object",
-                              "required": [
-                                "id",
-                                "scheme"
-                              ],
-                              "properties": {
-                                "id": {
-                                  "type": "string",
-                                  "minLength": 1
+                            "observations": {
+                              "type": "array",
+                              "uniqueItems": true,
+                              "minItems": 1,
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "period": {
+                                    "type": "object",
+                                    "properties": {
+                                      "startDate": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                        "example": "2022-07-22T10:01:26Z"
+                                      },
+                                      "endDate": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                        "example": "2022-07-22T10:01:26Z"
+                                      }
+                                    }
+                                  },
+                                  "measure": {
+                                    "oneOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "integer"
+                                      },
+                                      {
+                                        "type": "boolean"
+                                      }
+                                    ]
+                                  },
+                                  "unit": {
+                                    "type": "object",
+                                    "required": [
+                                      "id"
+                                    ],
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "minLength": 1
+                                      }
+                                    }
+                                  },
+                                  "dimensions": {
+                                    "type": "object",
+                                    "properties": {
+                                      "requirementClassIdPR": {
+                                        "type": "string",
+                                        "minLength": 1
+                                      }
+                                    },
+                                    "required": [
+                                      "requirementClassIdPR"
+                                    ]
+                                  },
+                                  "notes": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  },
+                                  "relatedRequirementId": {
+                                    "type": "string",
+                                    "minLength": 1
+                                  }
                                 },
-                                "scheme": {
-                                  "type": "string",
-                                  "minLength": 1,
-                                  "enum": [
-                                    "CPV"
-                                  ]
-                                }
+                                "required": [
+                                  "id",
+                                  "measure",
+                                  "unit",
+                                  "notes"
+                                ]
                               }
                             }
                           },
                           "required": [
                             "id",
                             "title",
-                            "classification"
-                          ]
-                        }
-                      },
-                      "items": {
-                        "type": "array",
-                        "uniqueItems": true,
-                        "minItems": 1,
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "classification": {
-                              "type": "object",
-                              "required": [
-                                "id",
-                                "scheme"
-                              ],
-                              "properties": {
-                                "id": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "scheme": {
-                                  "type": "string",
-                                  "minLength": 1,
-                                  "enum": [
-                                    "CPV"
-                                  ]
-                                }
-                              }
-                            },
-                            "description": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "quantity": {
-                              "type": "number"
-                            },
-                            "unit": {
-                              "type": "object",
-                              "required": [
-                                "id"
-                              ],
-                              "properties": {
-                                "id": {
-                                  "type": "string",
-                                  "minLength": 1
-                                }
-                              }
-                            },
-                            "relatedLot": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "internalId": {
-                              "type": "string",
-                              "minLength": 1
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "classification",
-                            "description",
-                            "quantity",
-                            "unit",
-                            "relatedLot"
-                          ]
-                        }
-                      },
-                      "tenderPeriod": {
-                        "type": "object",
-                        "properties": {
-                          "endDate": {
-                            "type": "string",
-                            "format": "date-time",
-                            "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
-                            "example": "2022-07-22T10:01:26Z"
-                          }
-                        },
-                        "required": [
-                          "endDate"
-                        ]
-                      },
-                      "documents": {
-                        "type": "array",
-                        "uniqueItems": true,
-                        "minItems": 1,
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "documentType": {
-                              "type": "string",
-                              "minLength": 1,
-                              "enum": [
-                                "tenderNotice",
-                                "biddingDocuments",
-                                "technicalSpecifications",
-                                "evaluationCriteria",
-                                "clarifications",
-                                "eligibilityCriteria",
-                                "riskProvisions",
-                                "billOfQuantity",
-                                "conflictOfInterest",
-                                "procurementPlan",
-                                "contractDraft",
-                                "complaints",
-                                "illustration",
-                                "cancellationDetails",
-                                "evaluationReports",
-                                "shortlistedFirms",
-                                "contractArrangements",
-                                "contractGuarantees"
-                              ]
-                            },
-                            "title": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "description": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "relatedLots": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "required": [
-                            "id",
-                            "documentType",
-                            "title"
-                          ]
-                        }
-                      },
-                      "electronicAuctions": {
-                        "type": "object",
-                        "properties": {
-                          "details": {
-                            "type": "array",
-                            "uniqueItems": true,
-                            "minItems": 1,
-                            "items": {
-                              "type": "object",
-                              "properties": {
-                                "id": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "relatedLot": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "electronicAuctionModalities": {
-                                  "type": "array",
-                                  "uniqueItems": true,
-                                  "minItems": 1,
-                                  "items": {
-                                    "type": "object",
-                                    "properties": {
-                                      "eligibleMinimumDifference": {
-                                        "type": "object",
-                                        "required": [
-                                          "currency"
-                                        ],
-                                        "properties": {
-                                          "currency": {
-                                            "type": "string",
-                                            "minLength": 1
-                                          }
-                                        }
-                                      }
-                                    },
-                                    "required": [
-                                      "eligibleMinimumDifference"
-                                    ]
-                                  }
-                                }
-                              },
-                              "required": [
-                                "id",
-                                "relatedLot",
-                                "electronicAuctionModalities"
-                              ]
-                            }
-                          }
-                        },
-                        "required": [
-                          "details"
-                        ]
-                      },
-                      "procurementMethodModalities": {
-                        "type": "array",
-                        "items": {
-                          "type": "string",
-                          "enum": [
-                            "requiresElectronicCatalogue",
-                            "electronicAuction"
+                            "relatesTo",
+                            "relatedItem",
+                            "observations"
                           ]
                         }
                       },
@@ -4733,8 +4265,7 @@
                                         "type": "integer"
                                       },
                                       {
-                                        "type": "string",
-                                        "properties": {}
+                                        "type": "string"
                                       }
                                     ]
                                   },
@@ -4759,23 +4290,66 @@
                           ]
                         }
                       },
-                      "awardCriteria": {
-                        "type": "string",
-                        "minLength": 1,
-                        "enum": [
-                          "priceOnly",
-                          "costOnly",
-                          "qualityOnly",
-                          "ratedCriteria"
-                        ]
-                      },
-                      "awardCriteriaDetails": {
-                        "type": "string",
-                        "minLength": 1,
-                        "enum": [
-                          "automated",
-                          "manual"
-                        ]
+                      "documents": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "minItems": 1,
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "documentType": {
+                              "type": "string",
+                              "minLength": 1,
+                              "enum": [
+                                "tenderNotice",
+                                "biddingDocuments",
+                                "technicalSpecifications",
+                                "evaluationCriteria",
+                                "clarifications",
+                                "eligibilityCriteria",
+                                "riskProvisions",
+                                "billOfQuantity",
+                                "conflictOfInterest",
+                                "procurementPlan",
+                                "contractDraft",
+                                "complaints",
+                                "illustration",
+                                "cancellationDetails",
+                                "evaluationReports",
+                                "shortlistedFirms",
+                                "contractArrangements",
+                                "contractGuarantees",
+                                "meetingWithTenderersProtocol",
+                                "qualificationCriteria",
+                                "tenderForm",
+                                "other"
+                              ]
+                            },
+                            "title": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "description": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "relatedLots": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "documentType",
+                            "title"
+                          ]
+                        }
                       }
                     }
                   }
@@ -4787,8 +4361,9 @@
             }
           }
         },
+        "description": "Create Pre-award Catalog Request for pmd = OF, CF ",
         "tags": [
-          "2.Tender"
+          "2.Tenders"
         ]
       }
     },
@@ -4821,7 +4396,7 @@
             "description": "Accepted"
           }
         },
-        "description": "",
+        "description": "Submit Bid for pmd = OF, CF (in Pre-award Catalog Request)",
         "parameters": [
           {
             "schema": {
@@ -4837,7 +4412,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "bid": {
@@ -4903,34 +4477,25 @@
                                 }
                               }
                             },
-                            "relatedTenderer": {
+                            "period": {
                               "type": "object",
                               "properties": {
-                                "name": {
+                                "startDate": {
                                   "type": "string",
-                                  "minLength": 1
+                                  "format": "date-time",
+                                  "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                  "example": "2022-07-22T10:01:26Z"
                                 },
-                                "identifier": {
-                                  "type": "object",
-                                  "required": [
-                                    "id",
-                                    "scheme"
-                                  ],
-                                  "properties": {
-                                    "id": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    },
-                                    "scheme": {
-                                      "type": "string",
-                                      "minLength": 1
-                                    }
-                                  }
+                                "endDate": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                  "example": "2022-07-22T10:01:26Z"
                                 }
                               },
                               "required": [
-                                "name",
-                                "identifier"
+                                "startDate",
+                                "endDate"
                               ]
                             },
                             "evidences": {
@@ -4970,27 +4535,6 @@
                                   "title"
                                 ]
                               }
-                            },
-                            "period": {
-                              "type": "object",
-                              "properties": {
-                                "startDate": {
-                                  "type": "string",
-                                  "format": "date-time",
-                                  "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
-                                  "example": "2022-07-22T10:01:26Z"
-                                },
-                                "endDate": {
-                                  "type": "string",
-                                  "format": "date-time",
-                                  "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
-                                  "example": "2022-07-22T10:01:26Z"
-                                }
-                              },
-                              "required": [
-                                "startDate",
-                                "endDate"
-                              ]
                             },
                             "relatedItem": {
                               "type": "string"
@@ -5087,80 +4631,7 @@
                                   "minLength": 1
                                 },
                                 "addressDetails": {
-                                  "type": "object",
-                                  "required": [
-                                    "country",
-                                    "region",
-                                    "locality"
-                                  ],
-                                  "properties": {
-                                    "country": {
-                                      "type": "object",
-                                      "required": [
-                                        "id",
-                                        "description",
-                                        "scheme"
-                                      ],
-                                      "properties": {
-                                        "id": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "description": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "scheme": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        }
-                                      }
-                                    },
-                                    "region": {
-                                      "type": "object",
-                                      "required": [
-                                        "id",
-                                        "description",
-                                        "scheme"
-                                      ],
-                                      "properties": {
-                                        "id": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "description": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "scheme": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        }
-                                      }
-                                    },
-                                    "locality": {
-                                      "type": "object",
-                                      "required": [
-                                        "id",
-                                        "description",
-                                        "scheme"
-                                      ],
-                                      "properties": {
-                                        "id": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "description": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "scheme": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        }
-                                      }
-                                    }
-                                  }
+                                  "$ref": "./Components/addressRequest.json"
                                 }
                               }
                             },
@@ -5484,97 +4955,7 @@
                                         "minLength": 1
                                       },
                                       "address": {
-                                        "type": "object",
-                                        "required": [
-                                          "streetAddress",
-                                          "addressDetails"
-                                        ],
-                                        "properties": {
-                                          "streetAddress": {
-                                            "type": "string",
-                                            "minLength": 1
-                                          },
-                                          "postalCode": {
-                                            "type": "string",
-                                            "minLength": 1
-                                          },
-                                          "addressDetails": {
-                                            "type": "object",
-                                            "required": [
-                                              "country",
-                                              "region",
-                                              "locality"
-                                            ],
-                                            "properties": {
-                                              "country": {
-                                                "type": "object",
-                                                "required": [
-                                                  "id",
-                                                  "description",
-                                                  "scheme"
-                                                ],
-                                                "properties": {
-                                                  "id": {
-                                                    "type": "string",
-                                                    "minLength": 1
-                                                  },
-                                                  "description": {
-                                                    "type": "string",
-                                                    "minLength": 1
-                                                  },
-                                                  "scheme": {
-                                                    "type": "string",
-                                                    "minLength": 1
-                                                  }
-                                                }
-                                              },
-                                              "region": {
-                                                "type": "object",
-                                                "required": [
-                                                  "id",
-                                                  "description",
-                                                  "scheme"
-                                                ],
-                                                "properties": {
-                                                  "id": {
-                                                    "type": "string",
-                                                    "minLength": 1
-                                                  },
-                                                  "description": {
-                                                    "type": "string",
-                                                    "minLength": 1
-                                                  },
-                                                  "scheme": {
-                                                    "type": "string",
-                                                    "minLength": 1
-                                                  }
-                                                }
-                                              },
-                                              "locality": {
-                                                "type": "object",
-                                                "required": [
-                                                  "id",
-                                                  "description",
-                                                  "scheme"
-                                                ],
-                                                "properties": {
-                                                  "id": {
-                                                    "type": "string",
-                                                    "minLength": 1
-                                                  },
-                                                  "description": {
-                                                    "type": "string",
-                                                    "minLength": 1
-                                                  },
-                                                  "scheme": {
-                                                    "type": "string",
-                                                    "minLength": 1
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
+                                        "$ref": "./Components/addressRequest.json"
                                       },
                                       "identifier": {
                                         "type": "object",
@@ -5719,7 +5100,8 @@
                                 "submissionDocuments",
                                 "x_qualificationDocuments",
                                 "x_eligibilityDocuments",
-                                "x_technicalDocuments"
+                                "x_technicalDocuments",
+                                "x_commercialOffer"
                               ]
                             }
                           },
@@ -5816,7 +5198,7 @@
           }
         },
         "tags": [
-          "2.Tender"
+          "2.Tenders"
         ]
       }
     },
@@ -5878,8 +5260,9 @@
             "required": true
           }
         ],
+        "description": "Withdraw Bid for pmd = OF, CF (in Pre-award Catalog Request)",
         "tags": [
-          "2.Tender"
+          "2.Tenders"
         ]
       }
     },
@@ -5941,8 +5324,9 @@
             "required": true
           }
         ],
+        "description": "Award Consideration for pmd = OF, CF (in Pre-award Catalog Request)",
         "tags": [
-          "2.Tender"
+          "2.Tenders"
         ]
       }
     },
@@ -5984,7 +5368,7 @@
             "description": "Accepted"
           }
         },
-        "description": "",
+        "description": "Update Award for pmd = OF, CF (in Pre-award Catalog Request)",
         "parameters": [
           {
             "schema": {
@@ -6096,7 +5480,7 @@
           }
         },
         "tags": [
-          "2.Tender"
+          "2.Tenders"
         ]
       }
     },
@@ -6162,7 +5546,6 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "",
                 "type": "object",
                 "properties": {
                   "award": {
@@ -6219,12 +5602,6 @@
                             "description": {
                               "type": "string",
                               "minLength": 1
-                            },
-                            "relatedLots": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              }
                             }
                           },
                           "required": [
@@ -6244,8 +5621,9 @@
             }
           }
         },
+        "description": "Evaluate Award for pmd = OF, CF (in Pre-award Catalog Request)",
         "tags": [
-          "2.Tender"
+          "2.Tenders"
         ]
       }
     },
@@ -6280,7 +5658,7 @@
         }
       ],
       "post": {
-        "summary": "Create Pre-award Catalog Protocol",
+        "summary": "Create Pre-award Catalog Request Protocol",
         "operationId": "post-do-protocol-pcr-cpid-ocid-lotId",
         "responses": {
           "202": {
@@ -6307,8 +5685,9 @@
             "description": "PCR token "
           }
         ],
+        "description": "Create Pre-award Catalog Protocol for pmd = OF, CF (in Pre-award Catalog Request)",
         "tags": [
-          "2.Tender"
+          "2.Tenders"
         ]
       }
     },
@@ -6343,7 +5722,7 @@
         }
       ],
       "post": {
-        "summary": "Withdraw Create Pre-award Catalog Protocol",
+        "summary": "Withdraw Pre-award Catalog Request Protocol",
         "operationId": "post-cancel-protocol-pcr-cpid-ocid-lotId",
         "responses": {
           "202": {
@@ -6370,8 +5749,9 @@
             "description": "PCR token "
           }
         ],
+        "description": "Withdraw Pre-award Catalog Protocol for pmd = OF, CF (in Pre-award Catalog Request)",
         "tags": [
-          "2.Tender"
+          "2.Tenders"
         ]
       }
     },
@@ -6379,7 +5759,10 @@
       "parameters": [
         {
           "schema": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "contract"
+            ]
           },
           "name": "entity",
           "in": "path",
@@ -6411,7 +5794,7 @@
           "name": "entityId",
           "in": "path",
           "required": true,
-          "description": "Pre-award Catalog identifier"
+          "description": "Post-Award Catalog identifier"
         }
       ],
       "post": {
@@ -6422,8 +5805,9 @@
             "description": "Accepted"
           }
         },
+        "description": "Apply Confirmations for PAC for pmd = OF, CF (in Pre-award Catalog Request)",
         "tags": [
-          "2.Tender"
+          "2.Tenders"
         ]
       }
     },
@@ -6847,8 +6231,9 @@
           }
         },
         "tags": [
-          "2.Tender"
-        ]
+          "2.Tenders"
+        ],
+        "description": "Create RFQ"
       }
     },
     "/do/mc/{cpid}/{ocid}": {
@@ -7771,8 +7156,9 @@
           }
         },
         "tags": [
-          "2.Tender"
-        ]
+          "2.Tenders"
+        ],
+        "description": "Create MC"
       }
     },
     "/do/dco/{cpid}/{ocid}": {
@@ -8369,8 +7755,9 @@
           }
         },
         "tags": [
-          "2.Tender"
-        ]
+          "2.Tenders"
+        ],
+        "description": "Create DCO"
       }
     },
     "/cancel/tender/{cpid}/{ocid}": {
@@ -8499,8 +7886,9 @@
           }
         },
         "tags": [
-          "2.Tender"
-        ]
+          "2.Tenders"
+        ],
+        "description": "Cancel Tender"
       }
     },
     "/confirm/amendment/{cpid}/{ocid}/{amendment}": {
@@ -8562,8 +7950,9 @@
           }
         ],
         "tags": [
-          "2.Tender"
-        ]
+          "2.Tenders"
+        ],
+        "description": "Tender or lot amendment confirmation"
       }
     },
     "/cancel/amendment/{cpid}/{ocid}/{amendment}": {
@@ -8625,8 +8014,9 @@
           }
         ],
         "tags": [
-          "2.Tender"
-        ]
+          "2.Tenders"
+        ],
+        "description": "Tender or lot amendment cancellation"
       }
     },
     "/do/protocol/{cpid}/{ocid}/{lotId}": {
@@ -8688,8 +8078,9 @@
           }
         ],
         "tags": [
-          "2.Tender"
-        ]
+          "2.Tenders"
+        ],
+        "description": "Awarding Complete "
       }
     },
     "/cancel/can/{cpid}/{ocid}/{canId}": {
@@ -8824,8 +8215,9 @@
           }
         },
         "tags": [
-          "2.Tender"
-        ]
+          "2.Tenders"
+        ],
+        "description": "CAN Cancellation"
       }
     },
     "/do/document/bid/{cpid}/{ocid}/{bidId}": {
@@ -8954,8 +8346,9 @@
           }
         },
         "tags": [
-          "2.Tender"
-        ]
+          "2.Tenders"
+        ],
+        "description": "Update Bid Documents"
       }
     },
     "/do/document/can/{cpid}/{ocid}/{canId}": {
@@ -9072,8 +8465,9 @@
           }
         },
         "tags": [
-          "2.Tender"
-        ]
+          "2.Tenders"
+        ],
+        "description": "Update CAN Documents"
       }
     },
     "/do/contract/{cpid}/{ocid}": {
@@ -9157,8 +8551,9 @@
           }
         },
         "tags": [
-          "3.Contract"
-        ]
+          "3.Contracts"
+        ],
+        "description": "Create Contract"
       }
     },
     "/do/contract/{cpid}/{ocidContract}": {
@@ -10706,8 +10101,9 @@
           }
         ],
         "tags": [
-          "3.Contract"
-        ]
+          "3.Contracts"
+        ],
+        "description": "Update Contract"
       }
     },
     "/issue/contract/{cpid}/{ocid}": {
@@ -10789,331 +10185,9 @@
           }
         ],
         "tags": [
-          "3.Contract"
-        ]
-      }
-    },
-    "/do/confirmation/contract/{cpid}/{ocid}/{contractId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cpid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Process identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "ocid",
-          "in": "path",
-          "required": true,
-          "description": "Purchase Order identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "contractId",
-          "in": "path",
-          "required": true,
-          "description": "Contract identifier"
-        }
-      ],
-      "post": {
-        "summary": "Create Confirmation Response",
-        "operationId": "post-do-confirmation-contract-cpid-ocid-contractId",
-        "responses": {
-          "202": {
-            "description": "Accepted",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "description": "",
-                  "type": "object",
-                  "properties": {
-                    "confirmationResponse": {
-                      "type": "object",
-                      "required": [
-                        "requestId",
-                        "type",
-                        "value",
-                        "relatedPerson"
-                      ],
-                      "properties": {
-                        "requestId": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "type": {
-                          "type": "string",
-                          "minLength": 1,
-                          "enum": [
-                            "document",
-                            "hash"
-                          ]
-                        },
-                        "value": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "relatedPerson": {
-                          "type": "object",
-                          "required": [
-                            "title",
-                            "name",
-                            "identifier",
-                            "businessFunctions"
-                          ],
-                          "properties": {
-                            "title": {
-                              "type": "string",
-                              "minLength": 1,
-                              "enum": [
-                                "Mr.",
-                                "Ms.",
-                                "Mrs."
-                              ]
-                            },
-                            "name": {
-                              "type": "string",
-                              "minLength": 1
-                            },
-                            "identifier": {
-                              "type": "object",
-                              "required": [
-                                "scheme",
-                                "id"
-                              ],
-                              "properties": {
-                                "scheme": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "id": {
-                                  "type": "string",
-                                  "minLength": 1
-                                },
-                                "uri": {
-                                  "type": "string",
-                                  "minLength": 1
-                                }
-                              }
-                            },
-                            "businessFunctions": {
-                              "type": "array",
-                              "uniqueItems": true,
-                              "minItems": 1,
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "type": {
-                                    "type": "string",
-                                    "minLength": 1,
-                                    "enum": [
-                                      "authority",
-                                      "contactPoint",
-                                      "chairman",
-                                      "procurementOfficer",
-                                      "technicalEvaluator",
-                                      "technicalOpener",
-                                      "priceOpener",
-                                      "priceEvaluator"
-                                    ]
-                                  },
-                                  "jobTitle": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  },
-                                  "period": {
-                                    "type": "object",
-                                    "required": [
-                                      "startDate"
-                                    ],
-                                    "properties": {
-                                      "startDate": {
-                                        "type": "string",
-                                        "format": "date-time",
-                                        "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
-                                        "example": "2022-07-22T10:01:26Z"
-                                      }
-                                    }
-                                  },
-                                  "documents": {
-                                    "type": "array",
-                                    "uniqueItems": true,
-                                    "minItems": 1,
-                                    "items": {
-                                      "type": "object",
-                                      "properties": {
-                                        "id": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "documentType": {
-                                          "type": "string",
-                                          "minLength": 1,
-                                          "enum": [
-                                            "regulatoryDocument"
-                                          ]
-                                        },
-                                        "title": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        },
-                                        "description": {
-                                          "type": "string",
-                                          "minLength": 1
-                                        }
-                                      },
-                                      "required": [
-                                        "id",
-                                        "documentType",
-                                        "title"
-                                      ]
-                                    }
-                                  },
-                                  "id": {
-                                    "type": "string",
-                                    "minLength": 1
-                                  }
-                                },
-                                "required": [
-                                  "type",
-                                  "jobTitle",
-                                  "period",
-                                  "id"
-                                ]
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "required": [
-                    "confirmationResponse"
-                  ]
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-OPERATION-ID",
-            "description": "Request identifier",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "required": true,
-            "name": "X-TOKEN",
-            "description": "Confirmation request group token"
-          },
-          {
-            "schema": {
-              "type": "string",
-              "enum": [
-                "buyer",
-                "supplier"
-              ]
-            },
-            "in": "query",
-            "name": "role",
-            "required": true,
-            "description": "Who gives response"
-          }
+          "3.Contracts"
         ],
-        "tags": [
-          "3.Contract"
-        ]
-      }
-    },
-    "/complete/confirmationStage/contract/{cpid}/{ocid}/{contractId}": {
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "cpid",
-          "in": "path",
-          "required": true,
-          "description": "Contract Process identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "ocid",
-          "in": "path",
-          "required": true,
-          "description": "Purchase Order identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "contractId",
-          "in": "path",
-          "required": true,
-          "description": "Contract identifier"
-        }
-      ],
-      "post": {
-        "summary": "Next Confirmation Step",
-        "operationId": "post-complete-confirmationStage-contract-cpid-ocid-contractId",
-        "responses": {
-          "202": {
-            "description": "Accepted"
-          }
-        },
-        "parameters": [
-          {
-            "schema": {
-              "type": "string",
-              "enum": [
-                "buyer",
-                "supplier"
-              ]
-            },
-            "in": "query",
-            "name": "role",
-            "required": true,
-            "description": "Who gives response"
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-OPERATION-ID",
-            "description": "Request identifier",
-            "required": true
-          },
-          {
-            "schema": {
-              "type": "string"
-            },
-            "in": "header",
-            "name": "X-TOKEN",
-            "required": true,
-            "description": "Contract token"
-          }
-        ],
-        "tags": [
-          "3.Contract"
-        ]
+        "description": "Issuing Contract"
       }
     },
     "/launch/contract/{cpid}/{ocid}": {
@@ -11166,8 +10240,9 @@
           }
         ],
         "tags": [
-          "3.Contract"
-        ]
+          "3.Contracts"
+        ],
+        "description": "Contract Activation"
       }
     }
   },
