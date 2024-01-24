@@ -97,7 +97,7 @@
         "tags": [
           "1.Contracts"
         ],
-        "description": "create contract"
+        "description": "Create Contract for:\n1. pmd = OT, SV, MV (open procedures - OpenTender)\n2. pmd = GPA, RT (selective procedures - RestrictedTender)\n3. pmd = DA, NP, CD, DC, IP (negotiation procedures - NegotiationTender)\n4. pmd = RFQ, MC, DCO (in SSC procedures - Framework)\n"
       }
     },
     "/do/contract/{cpid}/{ocidContract}": {
@@ -118,7 +118,7 @@
           "name": "ocidContract",
           "in": "path",
           "required": true,
-          "description": "Awarded Contract identifier"
+          "description": "Awarded/Purchase Contract identifier"
         }
       ],
       "post": {
@@ -340,7 +340,8 @@
                                   "contractGuarantees",
                                   "subContract",
                                   "illustration",
-                                  "contractSummary"
+                                  "contractSummary",
+                                  "contractSigned"
                                 ]
                               },
                               "title": {
@@ -3014,7 +3015,7 @@
         "tags": [
           "1.Contracts"
         ],
-        "description": "update contract"
+        "description": "Update Contract for:\n1. pmd = OT, SV, MV (open procedures - OpenTender)\n2. pmd = GPA, RT (selective procedures - RestrictedTender)\n3. pmd = DA, NP, CD, DC, IP (negotiation procedures - NegotiationTender)\n4. pmd = RFQ, MC, DCO (in SSC procedures - Framework)"
       }
     },
     "/issue/contract/{cpid}/{ocid}": {
@@ -3035,7 +3036,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "Awarded Contract identifier"
+          "description": "Awarded/Purchase Contract identifier"
         }
       ],
       "post": {
@@ -3099,7 +3100,172 @@
         "tags": [
           "1.Contracts"
         ],
-        "description": "issue contract"
+        "description": "Issue Contract for:\n1. pmd = OT, SV, MV (open procedures - OpenTender)\n2. pmd = GPA, RT (selective procedures - RestrictedTender)\n3. pmd = DA, NP, CD, DC, IP (negotiation procedures - NegotiationTender)\n4. pmd = RFQ, MC, DCO (in SSC procedures - Framework)"
+      }
+    },
+    "/cancel/contract/{cpid}/{ocid}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Awarded/Purchase Contract identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "X-OPERATION-ID",
+          "description": "Request identifier",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "X-TOKEN",
+          "description": "Contract token",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "Cancel Contract",
+        "operationId": "post-launch-contract-cpid-ocid",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "required": true,
+            "description": "Request identifier"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "required": true,
+            "description": "Contract token"
+          }
+        ],
+        "tags": [
+          "1.Contracts"
+        ],
+        "description": "Cancel Contract for:\n1. pmd = OT, SV, MV (open procedures - OpenTender)\n2. pmd = GPA, RT (selective procedures - RestrictedTender)\n3. pmd = DA, NP, CD, DC, IP (negotiation procedures - NegotiationTender)\n4. pmd = RFQ, MC, DCO (in SSC procedures - Framework)",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "contract": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "statusDetails"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "statusDetails": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "2fvrsy6lw5t6l"
+                        },
+                        "enum": [
+                          "1",
+                          "2",
+                          "3"
+                        ]
+                      },
+                      "justificationDetails": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "yac1j0jno13l8"
+                        }
+                      },
+                      "documents": {
+                        "type": "array",
+                        "x-stoplight": {
+                          "id": "ltmqu9b9j4wof"
+                        },
+                        "items": {
+                          "x-stoplight": {
+                            "id": "xhxow31c4th3n"
+                          },
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "zkg6dz0wgvzr4"
+                              }
+                            },
+                            "title": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "gjyi1irbq2ad8"
+                              }
+                            },
+                            "documentType": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "1v3tt6a5vcagd"
+                              },
+                              "enum": [
+                                "cancellationDetails"
+                              ]
+                            },
+                            "description": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "do8tyclb0roje"
+                              }
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "title",
+                            "documentType"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "contract"
+                ]
+              }
+            }
+          }
+        }
       }
     },
     "/launch/contract/{cpid}/{ocid}": {
@@ -3138,7 +3304,7 @@
           "name": "ocid",
           "in": "path",
           "required": true,
-          "description": "Awarded Contract identifier"
+          "description": "Awarded/Purchase Contract identifier"
         }
       ],
       "post": {
@@ -3172,7 +3338,7 @@
         "tags": [
           "1.Contracts"
         ],
-        "description": "activate contract",
+        "description": "Activate Contract for:\n1. pmd = OT, SV, MV (open procedures - OpenTender)\n2. pmd = GPA, RT (selective procedures - RestrictedTender)\n3. pmd = DA, NP, CD, DC, IP (negotiation procedures - NegotiationTender)\n4. pmd = RFQ, MC, DCO (in SSC procedures - Framework)",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3187,6 +3353,447 @@
                     "properties": {
                       "id": {
                         "type": "string"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "contract"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/complete/contract/{cpid}/{ocid}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Awarded/Purchase Contract identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "X-OPERATION-ID",
+          "description": "Request identifier",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "X-TOKEN",
+          "description": "Contract token",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "Complete Contract",
+        "operationId": "post-launch-contract-cpid-ocid",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "required": true,
+            "description": "Request identifier"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "required": true,
+            "description": "Contract token"
+          }
+        ],
+        "tags": [
+          "1.Contracts"
+        ],
+        "description": "Complete Contract for:\n1. pmd = OT, SV, MV (open procedures - OpenTender)\n2. pmd = GPA, RT (selective procedures - RestrictedTender)\n3. pmd = DA, NP, CD, DC, IP (negotiation procedures - NegotiationTender)\n4. pmd = RFQ, MC, DCO (in SSC procedures - Framework)",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "contract": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "statusDetails",
+                      "implementation"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "statusDetails": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "gc39orjldhjfk"
+                        },
+                        "enum": [
+                          "partiallyComplete",
+                          "complete"
+                        ]
+                      },
+                      "implementation": {
+                        "type": "object",
+                        "x-stoplight": {
+                          "id": "qgt192z8fjnjk"
+                        },
+                        "required": [
+                          "endDate"
+                        ],
+                        "properties": {
+                          "endDate": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "g3v1cdj4mfriq"
+                            },
+                            "format": "date-time"
+                          },
+                          "endDateDetails": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "kuj6d3xi8mpu1"
+                            }
+                          },
+                          "finalValue": {
+                            "type": "object",
+                            "x-stoplight": {
+                              "id": "fj9q3pz74zlds"
+                            },
+                            "properties": {
+                              "amount": {
+                                "type": "number",
+                                "x-stoplight": {
+                                  "id": "cbqgjhmbu0tac"
+                                }
+                              },
+                              "currency": {
+                                "type": "string",
+                                "x-stoplight": {
+                                  "id": "bfhab5azexipi"
+                                }
+                              }
+                            },
+                            "required": [
+                              "amount",
+                              "currency"
+                            ]
+                          },
+                          "finalValueDetails": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "72o8cmgo1h5ln"
+                            }
+                          }
+                        }
+                      },
+                      "documents": {
+                        "type": "array",
+                        "x-stoplight": {
+                          "id": "zps973gwjq1ng"
+                        },
+                        "items": {
+                          "x-stoplight": {
+                            "id": "bpk5gkt78uxuv"
+                          },
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "32h5x1qds0u4n"
+                              }
+                            },
+                            "title": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "ijldx9v9022wy"
+                              }
+                            },
+                            "documentType": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "0vamo5xi3ihvq"
+                              },
+                              "enum": [
+                                "cancellationDetails"
+                              ]
+                            },
+                            "description": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "x8ls0v8exm3ow"
+                              }
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "title",
+                            "documentType"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "contract"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/terminate/contract/{cpid}/{ocid}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Awarded/Purchase Contract identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "X-OPERATION-ID",
+          "description": "Request identifier",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "X-TOKEN",
+          "description": "Contract token",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "Terminate Contract",
+        "operationId": "post-launch-contract-cpid-ocid",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "required": true,
+            "description": "Request identifier"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "required": true,
+            "description": "Contract token"
+          }
+        ],
+        "tags": [
+          "1.Contracts"
+        ],
+        "description": "Terminate Contract for:\n1. pmd = OT, SV, MV (open procedures - OpenTender)\n2. pmd = GPA, RT (selective procedures - RestrictedTender)\n3. pmd = DA, NP, CD, DC, IP (negotiation procedures - NegotiationTender)\n4. pmd = RFQ, MC, DCO (in SSC procedures - Framework)",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "contract": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "statusDetails",
+                      "implementation",
+                      "justification"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "statusDetails": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "2fvrsy6lw5t6l"
+                        },
+                        "enum": [
+                          "partiallyComplete",
+                          "notComplete"
+                        ]
+                      },
+                      "implementation": {
+                        "type": "object",
+                        "x-stoplight": {
+                          "id": "czw6jwnihup9f"
+                        },
+                        "required": [
+                          "endDate"
+                        ],
+                        "properties": {
+                          "endDate": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "mrttu5m3mwnf1"
+                            },
+                            "format": "date-time"
+                          },
+                          "endDateDetails": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "kb1vvpj8kn8rd"
+                            }
+                          },
+                          "finalValue": {
+                            "type": "object",
+                            "x-stoplight": {
+                              "id": "iz4l7oqypridm"
+                            },
+                            "properties": {
+                              "amount": {
+                                "type": "number",
+                                "x-stoplight": {
+                                  "id": "taw6c8sb7kuqp"
+                                }
+                              },
+                              "currency": {
+                                "type": "string",
+                                "x-stoplight": {
+                                  "id": "zq56ye4shy7fj"
+                                }
+                              }
+                            },
+                            "required": [
+                              "amount",
+                              "currency"
+                            ]
+                          },
+                          "finalValueDetails": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "8rzgrrbrqksl2"
+                            }
+                          }
+                        }
+                      },
+                      "justification": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "qx0jmdr57b23a"
+                        },
+                        "enum": [
+                          "1",
+                          "2",
+                          "3"
+                        ]
+                      },
+                      "justificationDetails": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "yac1j0jno13l8"
+                        }
+                      },
+                      "documents": {
+                        "type": "array",
+                        "x-stoplight": {
+                          "id": "ltmqu9b9j4wof"
+                        },
+                        "items": {
+                          "x-stoplight": {
+                            "id": "xhxow31c4th3n"
+                          },
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "zkg6dz0wgvzr4"
+                              }
+                            },
+                            "title": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "gjyi1irbq2ad8"
+                              }
+                            },
+                            "documentType": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "1v3tt6a5vcagd"
+                              },
+                              "enum": [
+                                "cancellationDetails"
+                              ]
+                            },
+                            "description": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "do8tyclb0roje"
+                              }
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "title",
+                            "documentType"
+                          ]
+                        }
                       }
                     }
                   }
