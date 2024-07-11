@@ -97,10 +97,10 @@
         "tags": [
           "1.Contracts"
         ],
-        "description": "Create Contract for:\n1. pmd = OT, SV, MV (open procedures - OpenTender)\n2. pmd = GPA, RT (selective procedures - RestrictedTender)\n3. pmd = DA, NP, CD, DC, IP (negotiation procedures - NegotiationTender)\n4. pmd = RFQ, MC, DCO (in SSC procedures - Framework)\n"
+        "description": "Create Contract for:\n1. pmd = OT, SV, MV, EN, ENI, EDC, EIP, ECI, EDE (open procedures - OpenTender)\n2. pmd = GPA, RT (selective procedures - RestrictedTender)\n3. pmd = DA, NP, CD, DC, IP (negotiation procedures - NegotiationTender)\n4. pmd = RFQ, MC, DCO (in SSC procedures - Framework)\n"
       }
     },
-    "/do/contract/{cpid}/{ocidContract}": {
+    "/update/contract/{cpid}/{ocid}": {
       "parameters": [
         {
           "schema": {
@@ -115,7 +115,7 @@
           "schema": {
             "type": "string"
           },
-          "name": "ocidContract",
+          "name": "ocid",
           "in": "path",
           "required": true,
           "description": "Awarded/Purchase Contract identifier"
@@ -123,7 +123,7 @@
       ],
       "post": {
         "summary": "Update Contract",
-        "operationId": "post-do-contract-cpid-ocid-update",
+        "operationId": "post-update-contract-cpid-ocid",
         "responses": {
           "202": {
             "description": "Accepted",
@@ -1710,7 +1710,7 @@
                                       "minLength": 1
                                     },
                                     "durationInDays": {
-                                      "type": "number"
+                                      "type": "integer"
                                     }
                                   }
                                 }
@@ -3015,7 +3015,7 @@
         "tags": [
           "1.Contracts"
         ],
-        "description": "Update Contract for:\n1. pmd = OT, SV, MV (open procedures - OpenTender)\n2. pmd = GPA, RT (selective procedures - RestrictedTender)\n3. pmd = DA, NP, CD, DC, IP (negotiation procedures - NegotiationTender)\n4. pmd = RFQ, MC, DCO (in SSC procedures - Framework)"
+        "description": "Update Contract for:\n1. pmd = OT, SV, MV, EN, ENI, EDC, EIP, ECI, EDE (open procedures - OpenTender)\n2. pmd = GPA, RT (selective procedures - RestrictedTender)\n3. pmd = DA, NP, CD, DC, IP (negotiation procedures - NegotiationTender)\n4. pmd = RFQ, MC, DCO (in SSC procedures - Framework)"
       }
     },
     "/issue/contract/{cpid}/{ocid}": {
@@ -3100,7 +3100,7 @@
         "tags": [
           "1.Contracts"
         ],
-        "description": "Issue Contract for:\n1. pmd = OT, SV, MV (open procedures - OpenTender)\n2. pmd = GPA, RT (selective procedures - RestrictedTender)\n3. pmd = DA, NP, CD, DC, IP (negotiation procedures - NegotiationTender)\n4. pmd = RFQ, MC, DCO (in SSC procedures - Framework)"
+        "description": "Issue Contract for:\n1. pmd = OT, SV, MV, EN, ENI, EDC, EIP, ECI, EDE (open procedures - OpenTender)\n2. pmd = GPA, RT (selective procedures - RestrictedTender)\n3. pmd = DA, NP, CD, DC, IP (negotiation procedures - NegotiationTender)\n4. pmd = RFQ, MC, DCO (in SSC procedures - Framework)"
       }
     },
     "/cancel/contract/{cpid}/{ocid}": {
@@ -3144,13 +3144,10 @@
       ],
       "post": {
         "summary": "Cancel Contract",
-        "operationId": "post-launch-contract-cpid-ocid",
+        "operationId": "post-cancel-contract-cpid-ocid",
         "responses": {
           "202": {
             "description": "Accepted"
-          },
-          "": {
-            "description": ""
           }
         },
         "parameters": [
@@ -3176,7 +3173,7 @@
         "tags": [
           "1.Contracts"
         ],
-        "description": "Cancel Contract for:\n1. pmd = OT, SV, MV (open procedures - OpenTender)\n2. pmd = GPA, RT (selective procedures - RestrictedTender)\n3. pmd = DA, NP, CD, DC, IP (negotiation procedures - NegotiationTender)\n4. pmd = RFQ, MC, DCO (in SSC procedures - Framework)",
+        "description": "Cancel Contract for:\n1. pmd = OT, SV, MV, EN, ENI, EDC, EIP, ECI, EDE (open procedures - OpenTender)\n2. pmd = GPA, RT (selective procedures - RestrictedTender)\n3. pmd = DA, NP, CD, DC, IP (negotiation procedures - NegotiationTender)\n4. pmd = RFQ, MC, DCO (in SSC procedures - Framework)",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3338,7 +3335,7 @@
         "tags": [
           "1.Contracts"
         ],
-        "description": "Activate Contract for:\n1. pmd = OT, SV, MV (open procedures - OpenTender)\n2. pmd = GPA, RT (selective procedures - RestrictedTender)\n3. pmd = DA, NP, CD, DC, IP (negotiation procedures - NegotiationTender)\n4. pmd = RFQ, MC, DCO (in SSC procedures - Framework)",
+        "description": "Activate Contract for:\n1. pmd = OT, SV, MV, EN, ENI, EDC, EIP, ECI, EDE (open procedures - OpenTender)\n2. pmd = GPA, RT (selective procedures - RestrictedTender)\n3. pmd = DA, NP, CD, DC, IP (negotiation procedures - NegotiationTender)\n4. pmd = RFQ, MC, DCO (in SSC procedures - Framework)",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3407,7 +3404,7 @@
       ],
       "post": {
         "summary": "Complete Contract",
-        "operationId": "post-launch-contract-cpid-ocid",
+        "operationId": "post-complete-contract-cpid-ocid",
         "responses": {
           "202": {
             "description": "Accepted"
@@ -3436,7 +3433,7 @@
         "tags": [
           "1.Contracts"
         ],
-        "description": "Complete Contract for:\n1. pmd = OT, SV, MV (open procedures - OpenTender)\n2. pmd = GPA, RT (selective procedures - RestrictedTender)\n3. pmd = DA, NP, CD, DC, IP (negotiation procedures - NegotiationTender)\n4. pmd = RFQ, MC, DCO (in SSC procedures - Framework)",
+        "description": "Complete Contract for:\n1. pmd = OT, SV, MV, EN, ENI, EDC, EIP, ECI, EDE (open procedures - OpenTender)\n2. pmd = GPA, RT (selective procedures - RestrictedTender)\n3. pmd = DA, NP, CD, DC, IP (negotiation procedures - NegotiationTender)\n4. pmd = RFQ, MC, DCO (in SSC procedures - Framework)",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3617,13 +3614,10 @@
       ],
       "post": {
         "summary": "Terminate Contract",
-        "operationId": "post-launch-contract-cpid-ocid",
+        "operationId": "post-terminate-contract-cpid-ocid",
         "responses": {
           "202": {
             "description": "Accepted"
-          },
-          "": {
-            "description": ""
           }
         },
         "parameters": [
@@ -3649,7 +3643,7 @@
         "tags": [
           "1.Contracts"
         ],
-        "description": "Terminate Contract for:\n1. pmd = OT, SV, MV (open procedures - OpenTender)\n2. pmd = GPA, RT (selective procedures - RestrictedTender)\n3. pmd = DA, NP, CD, DC, IP (negotiation procedures - NegotiationTender)\n4. pmd = RFQ, MC, DCO (in SSC procedures - Framework)",
+        "description": "Terminate Contract for:\n1. pmd = OT, SV, MV, EN, ENI, EDC, EIP, ECI, EDE (open procedures - OpenTender)\n2. pmd = GPA, RT (selective procedures - RestrictedTender)\n3. pmd = DA, NP, CD, DC, IP (negotiation procedures - NegotiationTender)\n4. pmd = RFQ, MC, DCO (in SSC procedures - Framework)",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3795,6 +3789,600 @@
                           ]
                         }
                       }
+                    }
+                  }
+                },
+                "required": [
+                  "contract"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/amend/contract/{cpid}/{ocid}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Awarded/Purchase Contract identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "X-OPERATION-ID",
+          "description": "Request identifier",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "X-TOKEN",
+          "description": "Contract token",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "Amend Contract",
+        "operationId": "post-amend-contract-cpid-ocid",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "required": true,
+            "description": "Request identifier"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "required": true,
+            "description": "Contract token"
+          }
+        ],
+        "tags": [
+          "1.Contracts"
+        ],
+        "description": "Amend Contract for:\n1. pmd = OT, SV, MV, EN, ENI, EDC, EIP, ECI, EDE (open procedures - OpenTender)\n2. pmd = GPA, RT (selective procedures - RestrictedTender)\n3. pmd = DA, NP, CD, DC, IP (negotiation procedures - NegotiationTender)\n4. pmd = RFQ, MC, DCO (in SSC procedures - Framework)",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "contract": {
+                    "type": "object",
+                    "required": [
+                      "id",
+                      "amendment"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "amendment": {
+                        "type": "object",
+                        "x-stoplight": {
+                          "id": "bacjbcaqgwox3"
+                        },
+                        "required": [
+                          "rationale"
+                        ],
+                        "properties": {
+                          "rationale": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "ygriafhkln6ki"
+                            },
+                            "enum": [
+                              "volumeCuts",
+                              "itemPriceVariation",
+                              "qualityImprovement",
+                              "durationExtension",
+                              "priceReduction",
+                              "taxRate",
+                              "thirdParty",
+                              "multiple"
+                            ]
+                          },
+                          "rationaleDetails": {
+                            "type": "array",
+                            "x-stoplight": {
+                              "id": "cchl10qoyqj9k"
+                            },
+                            "items": {
+                              "x-stoplight": {
+                                "id": "ebnbkmgcgdid4"
+                              },
+                              "type": "string",
+                              "enum": [
+                                "volumeCuts",
+                                "itemPriceVariation",
+                                "qualityImprovement",
+                                "durationExtension",
+                                "priceReduction",
+                                "taxRate",
+                                "thirdParty"
+                              ]
+                            }
+                          },
+                          "description": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "c2qvq38yambkv"
+                            }
+                          },
+                          "documents": {
+                            "type": "array",
+                            "x-stoplight": {
+                              "id": "x1zldwpxqyd1f"
+                            },
+                            "items": {
+                              "x-stoplight": {
+                                "id": "waixlh2p7bowr"
+                              },
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "q20c36ikcbuul"
+                                  }
+                                },
+                                "title": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "hxgde1qon47m1"
+                                  }
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "vh4escmgcvgyn"
+                                  }
+                                },
+                                "documentType": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "e8ofu1gsbbt2i"
+                                  },
+                                  "enum": [
+                                    "contractArrangements",
+                                    "contractSchedule",
+                                    "environmentalImpact",
+                                    "contractAnnexe",
+                                    "contractGuarantees",
+                                    "subContract",
+                                    "contractSummary",
+                                    "contractSigned"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "title",
+                                "documentType"
+                              ]
+                            }
+                          }
+                        }
+                      },
+                      "period": {
+                        "type": "object",
+                        "x-stoplight": {
+                          "id": "anrvwsctssbic"
+                        },
+                        "properties": {
+                          "endDate": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "3ybj5e21pgfq8"
+                            },
+                            "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+                          }
+                        },
+                        "required": [
+                          "endDate"
+                        ]
+                      },
+                      "documents": {
+                        "type": "array",
+                        "x-stoplight": {
+                          "id": "ltmqu9b9j4wof"
+                        },
+                        "items": {
+                          "x-stoplight": {
+                            "id": "xhxow31c4th3n"
+                          },
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "zkg6dz0wgvzr4"
+                              }
+                            },
+                            "title": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "gjyi1irbq2ad8"
+                              }
+                            },
+                            "documentType": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "1v3tt6a5vcagd"
+                              },
+                              "enum": [
+                                "contractNotice",
+                                "completionCertificate",
+                                "contractDraft",
+                                "contractArrangements",
+                                "contractSchedule",
+                                "environmentalImpact",
+                                "contractAnnexe",
+                                "contractGuarantees",
+                                "subContract",
+                                "illustration",
+                                "contractSummary",
+                                "contractSigned"
+                              ]
+                            },
+                            "description": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "do8tyclb0roje"
+                              }
+                            },
+                            "relatedLots": {
+                              "type": "string",
+                              "x-stoplight": {
+                                "id": "tlb2e536rrqer"
+                              }
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "title",
+                            "documentType"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "awards": {
+                    "type": "array",
+                    "x-stoplight": {
+                      "id": "uce4e9rwra5dx"
+                    },
+                    "items": {
+                      "x-stoplight": {
+                        "id": "i5khh9055wlru"
+                      },
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "x-stoplight": {
+                            "id": "bl8hu2s70i86k"
+                          }
+                        },
+                        "value": {
+                          "type": "object",
+                          "x-stoplight": {
+                            "id": "mrmirviwrceyd"
+                          },
+                          "properties": {
+                            "amount": {
+                              "type": "number",
+                              "x-stoplight": {
+                                "id": "l9vf8dgf94pap"
+                              }
+                            },
+                            "amountNet": {
+                              "type": "number",
+                              "x-stoplight": {
+                                "id": "yy5b3gqs7k5js"
+                              }
+                            },
+                            "valueAddedTaxIncluded": {
+                              "type": "boolean",
+                              "x-stoplight": {
+                                "id": "gpgd88kstynld"
+                              }
+                            }
+                          },
+                          "required": [
+                            "amount",
+                            "amountNet",
+                            "valueAddedTaxIncluded"
+                          ]
+                        },
+                        "items": {
+                          "type": "array",
+                          "x-stoplight": {
+                            "id": "ckjtx1fgx6vl0"
+                          },
+                          "items": {
+                            "x-stoplight": {
+                              "id": "xspjusajzdhtw"
+                            },
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "x-stoplight": {
+                                  "id": "pw6ysfcv4gn0f"
+                                }
+                              },
+                              "quantity": {
+                                "type": "integer",
+                                "x-stoplight": {
+                                  "id": "7bdf92qbnwev4"
+                                }
+                              },
+                              "unit": {
+                                "type": "object",
+                                "x-stoplight": {
+                                  "id": "45jo9i212rocw"
+                                },
+                                "properties": {
+                                  "value": {
+                                    "type": "object",
+                                    "x-stoplight": {
+                                      "id": "wyukp26z8llhk"
+                                    },
+                                    "required": [
+                                      "amount",
+                                      "amountNet",
+                                      "valueAddedTaxIncluded"
+                                    ],
+                                    "properties": {
+                                      "amount": {
+                                        "type": "number",
+                                        "x-stoplight": {
+                                          "id": "53r0imqvd4xli"
+                                        }
+                                      },
+                                      "amountNet": {
+                                        "type": "number",
+                                        "x-stoplight": {
+                                          "id": "eggb79fn4v5s6"
+                                        }
+                                      },
+                                      "valueAddedTaxIncluded": {
+                                        "type": "boolean",
+                                        "x-stoplight": {
+                                          "id": "zbihdmicuofvv"
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "value"
+                                ]
+                              },
+                              "deliveryAddress": {
+                                "type": "object",
+                                "x-stoplight": {
+                                  "id": "kifjjroh1s6ra"
+                                },
+                                "properties": {
+                                  "streetAddress": {
+                                    "type": "string",
+                                    "x-stoplight": {
+                                      "id": "2kgmizza49wyz"
+                                    }
+                                  },
+                                  "postalCode": {
+                                    "type": "string",
+                                    "x-stoplight": {
+                                      "id": "b47y7lgmxv0xe"
+                                    }
+                                  },
+                                  "addressDetails": {
+                                    "type": "object",
+                                    "x-stoplight": {
+                                      "id": "qimzq7exrgz9q"
+                                    },
+                                    "required": [
+                                      "country"
+                                    ],
+                                    "properties": {
+                                      "country": {
+                                        "type": "object",
+                                        "x-stoplight": {
+                                          "id": "ajk0yi3im44kt"
+                                        },
+                                        "required": [
+                                          "id",
+                                          "description",
+                                          "scheme"
+                                        ],
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "x-stoplight": {
+                                              "id": "sfbuj8rv4zc3p"
+                                            }
+                                          },
+                                          "description": {
+                                            "type": "string",
+                                            "x-stoplight": {
+                                              "id": "u4tqh1c4a3sia"
+                                            }
+                                          },
+                                          "scheme": {
+                                            "type": "string",
+                                            "x-stoplight": {
+                                              "id": "kr9y2rbfhu6bn"
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "region": {
+                                        "type": "object",
+                                        "x-stoplight": {
+                                          "id": "b045p60qryo72"
+                                        },
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "x-stoplight": {
+                                              "id": "5334c60jr3wps"
+                                            }
+                                          },
+                                          "description": {
+                                            "type": "string",
+                                            "x-stoplight": {
+                                              "id": "04e7xvb7r2oej"
+                                            }
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "description"
+                                        ]
+                                      },
+                                      "locality": {
+                                        "type": "object",
+                                        "x-stoplight": {
+                                          "id": "bdo5cizd3vccb"
+                                        },
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "x-stoplight": {
+                                              "id": "ipze7kpopf8dk"
+                                            }
+                                          },
+                                          "description": {
+                                            "type": "string",
+                                            "x-stoplight": {
+                                              "id": "g1d6wyokwm8h2"
+                                            }
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "description"
+                                        ]
+                                      }
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "addressDetails"
+                                ]
+                              },
+                              "documents": {
+                                "type": "array",
+                                "x-stoplight": {
+                                  "id": "7574diowxxxsc"
+                                },
+                                "items": {
+                                  "x-stoplight": {
+                                    "id": "7i5vtevcx6duk"
+                                  },
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "x-stoplight": {
+                                        "id": "403iu5ycdzq8v"
+                                      }
+                                    },
+                                    "documentType": {
+                                      "type": "string",
+                                      "x-stoplight": {
+                                        "id": "7o3ic6edwvldg"
+                                      },
+                                      "enum": [
+                                        "awardNotice",
+                                        "evaluationReports",
+                                        "contractDraft",
+                                        "winningBid",
+                                        "complaints",
+                                        "bidders",
+                                        "conflictOfInterest",
+                                        "cancellationDetails",
+                                        "submissionDocuments", 
+                                        "contractArrangements",
+                                        "contractSchedule",
+                                        "shortlistedFirms"                                                                                                                      
+                                      ]
+                                    },
+                                    "title": {
+                                      "type": "string",
+                                      "x-stoplight": {
+                                        "id": "v9p7t7ph25kuy"
+                                      }
+                                    },
+                                    "description": {
+                                      "type": "string",
+                                      "x-stoplight": {
+                                        "id": "298suuvvaxfub"
+                                      }
+                                    },
+                                    "relatedLots": {
+                                      "type": "array",
+                                      "x-stoplight": {
+                                        "id": "4y4ve18vde38c"
+                                      },
+                                      "items": {
+                                        "x-stoplight": {
+                                          "id": "4iio35lz4ysbs"
+                                        },
+                                        "type": "string"
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "documentType",
+                                    "title"
+                                  ]
+                                }
+                              }
+                            },
+                            "required": [
+                              "id"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "id"
+                      ]
                     }
                   }
                 },
