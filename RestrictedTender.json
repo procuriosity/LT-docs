@@ -5179,6 +5179,15 @@
             "name": "X-TOKEN",
             "description": "Submission token",
             "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "requirementResponseId",
+            "required": true,
+            "description": "Requirement response identifier"
           }
         ],
         "requestBody": {

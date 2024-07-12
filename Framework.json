@@ -1842,6 +1842,422 @@
         "description": "Amend Framework Establishment for pmd = OF, CF"
       }
     },
+    "/do/update/criteria/{cpid}/{ocid}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Notice identifier"
+        }
+      ],
+      "post": {
+        "summary": "Modify Criteria",
+        "operationId": "post-do-update-criteria-cpid-ocid",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "required": true,
+            "description": "Request identifier"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "required": true,
+            "description": "Tender token "
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "criteria": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "title": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "classification": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "scheme": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "scheme"
+                          ]
+                        },
+                        "description": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "relatesTo": {
+                          "type": "string",
+                          "minLength": 1,
+                          "enum": [
+                            "lot",
+                            "item",
+                            "tender",
+                            "tenderer"
+                          ]
+                        },
+                        "relatedItem": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "requirementGroups": {
+                          "type": "array",
+                          "uniqueItems": true,
+                          "minItems": 1,
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "description": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "requirements": {
+                                "type": "array",
+                                "uniqueItems": true,
+                                "minItems": 1,
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "minLength": 1
+                                    },
+                                    "title": {
+                                      "type": "string",
+                                      "minLength": 1
+                                    },
+                                    "dataType": {
+                                      "type": "string",
+                                      "enum": [
+                                        "string",
+                                        "number",
+                                        "integer",
+                                        "boolean"
+                                      ]
+                                    },
+                                    "description": {
+                                      "type": "string",
+                                      "minLength": 1
+                                    },
+                                    "period": {
+                                      "type": "object",
+                                      "properties": {
+                                        "startDate": {
+                                          "type": "string",
+                                          "format": "date-time",
+                                          "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                          "example": "2022-07-22T10:01:26Z"
+                                        },
+                                        "endDate": {
+                                          "type": "string",
+                                          "format": "date-time",
+                                          "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                          "example": "2022-07-22T10:01:26Z"
+                                        }
+                                      },
+                                      "required": [
+                                        "startDate",
+                                        "endDate"
+                                      ]
+                                    },
+                                    "expectedValue": {
+                                      "oneOf": [
+                                        {
+                                          "type": "string"
+                                        },
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "integer"
+                                        },
+                                        {
+                                          "type": "boolean"
+                                        }
+                                      ]
+                                    },
+                                    "minValue": {
+                                      "oneOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "integer"
+                                        }
+                                      ]
+                                    },
+                                    "maxValue": {
+                                      "oneOf": [
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "type": "integer"
+                                        }
+                                      ]
+                                    },
+                                    "eligibleEvidences": {
+                                      "type": "array",
+                                      "uniqueItems": true,
+                                      "minItems": 1,
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "string",
+                                            "minLength": 1
+                                          },
+                                          "title": {
+                                            "type": "string",
+                                            "minLength": 1
+                                          },
+                                          "description": {
+                                            "type": "string",
+                                            "minLength": 1
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "minLength": 1,
+                                            "enum": [
+                                              "reference",
+                                              "document"
+                                            ]
+                                          },
+                                          "relatedDocument": {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "string",
+                                                "minLength": 1
+                                              }
+                                            },
+                                            "required": [
+                                              "id"
+                                            ]
+                                          }
+                                        },
+                                        "required": [
+                                          "id",
+                                          "title",
+                                          "type"
+                                        ]
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "title",
+                                    "dataType"
+                                  ]
+                                }
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "requirements"
+                            ]
+                          }
+                        },
+                        "source": {
+                          "type": "string",
+                          "enum": [
+                            "procuringEntity"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "requirementGroups"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "criteria"
+                ]
+              }
+            }
+          }
+        },
+        "tags": [
+          "2.Tenders"
+        ],
+        "description": "Modify Criteria for:\npmd = OF, CF (FE) \n\npmd = MC, DCO (Second Stage Competition procedures)"
+      }
+    },
+    "/cancel/requirements/{cpid}/{ocid}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Notice identifier"
+        }
+      ],
+      "post": {
+        "summary": "Cancel Requirements",
+        "operationId": "post-cancel-requirements-cpid-ocid",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "required": true,
+            "description": "Request identifier"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "required": true,
+            "description": "Tender token "
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "criteria": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "requirementGroups": {
+                          "type": "array",
+                          "uniqueItems": true,
+                          "minItems": 1,
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "requirements": {
+                                "type": "array",
+                                "uniqueItems": true,
+                                "minItems": 1,
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "minLength": 1
+                                    }
+                                  },
+                                  "required": [
+                                    "id"
+                                  ]
+                                }
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "requirements"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "requirementGroups"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "criteria"
+                ]
+              }
+            }
+          }
+        },
+        "tags": [
+          "2.Tenders"
+        ],
+        "description": "Cancel Requirements for:\npmd = OF, CF (FE) \n\npmd = MC, DCO (Second Stage Competition procedures)"
+      }
+    },
     "/do/submission/{cpid}/{ocid}": {
       "parameters": [
         {
@@ -1993,11 +2409,19 @@
                                     "required": [
                                       "id"
                                     ]
+                                  },
+                                  "date": {
+                                    "type": "string",
+                                    "x-stoplight": {
+                                      "id": "bw88mcq9j2wu0"
+                                    },
+                                    "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
                                   }
                                 },
                                 "required": [
                                   "id",
-                                  "title"
+                                  "title",
+                                  "date"
                                 ]
                               }
                             }
@@ -3302,6 +3726,275 @@
         ]
       }
     },
+    "/add/document/submission/{cpid}/{ocid}/{submissionId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Framework Establishment identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "submissionId",
+          "in": "path",
+          "required": true,
+          "description": "Submission identifier"
+        }
+      ],
+      "post": {
+        "summary": "Update Submission Documents",
+        "operationId": "post-add-document-submission-cpid-ocid-submissionId",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "required": true,
+            "description": "Request identifier"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "required": true,
+            "description": "Submission token"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "submission": {
+                    "type": "object",
+                    "required": [
+                      "documents"
+                    ],
+                    "x-stoplight": {
+                      "id": "9g6snm0kq3d65"
+                    },
+                    "properties": {
+                      "documents": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "minItems": 1,
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "documentType": {
+                              "type": "string",
+                              "minLength": 1,
+                              "enum": [
+                                "submissionDocuments",
+                                "illustration",
+                                "x_qualificationDocuments",
+                                "x_eligibilityDocuments",
+                                "x_technicalDocuments"
+                              ]
+                            },
+                            "title": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "description": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "documentType",
+                            "title"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "submission"
+                ]
+              }
+            }
+          }
+        },
+        "description": "Update Submission Documents for pmd = OF, CF (in Framework Establishment)",
+        "tags": [
+          "2.Tenders"
+        ]
+      }
+    },
+    "/add/evidence/submission/{cpid}/{ocid}/{submissionId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Framework Establishment identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "submissionId",
+          "in": "path",
+          "required": true,
+          "description": "Submission identifier"
+        }
+      ],
+      "post": {
+        "summary": "Submit evidence for submission",
+        "operationId": "post-add-evidence-submission-cpid-ocid-submissionId",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "required": true,
+            "description": "Request identifier"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "required": true,
+            "description": "qualification token"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "requirementResponseId",
+            "required": true,
+            "description": "requirement response identifier"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "evidence": {
+                    "type": "object",
+                    "x-stoplight": {
+                      "id": "ulkuj5rvtqorl"
+                    },
+                    "required": [
+                      "id",
+                      "title",
+                      "date"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "mg15org351vva"
+                        }
+                      },
+                      "title": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "4el0fbd8j00o1"
+                        }
+                      },
+                      "description": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "t6bhykplcdiwu"
+                        }
+                      },
+                      "relatedDocument": {
+                        "type": "object",
+                        "x-stoplight": {
+                          "id": "gci36kbt13ryf"
+                        },
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "6xfn9xvyi281w"
+                            }
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ]
+                      },
+                      "date": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "c7pjfz3b96wcx"
+                        },
+                        "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "evidence"
+                ]
+              }
+            }
+          }
+        },
+        "description": "Submit evidence for submission for pmd = OF, CF (in Framework Establishment)",
+        "tags": [
+          "2.Tenders"
+        ]
+      }
+    },
     "/do/protocol/qualification/{cpid}/{ocid}": {
       "parameters": [
         {
@@ -4528,11 +5221,19 @@
                                     "required": [
                                       "id"
                                     ]
+                                  },
+                                  "date": {
+                                    "type": "string",
+                                    "x-stoplight": {
+                                      "id": "ltrrez1nesrxz"
+                                    },
+                                    "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
                                   }
                                 },
                                 "required": [
                                   "id",
-                                  "title"
+                                  "title",
+                                  "date"
                                 ]
                               }
                             },
@@ -5806,6 +6507,50 @@
           }
         },
         "description": "Apply Confirmations for PAC for pmd = OF, CF (in Pre-award Catalog Request)",
+        "tags": [
+          "2.Tenders"
+        ]
+      }
+    },
+    "/cancel/pac/{cpid}/{ocid}/{pacId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Notice identifier "
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "pacId",
+          "in": "path",
+          "required": true,
+          "description": "PAC identifier"
+        }
+      ],
+      "post": {
+        "summary": "Cancel PAC",
+        "operationId": "post-cancel-pac-cpid-ocid-pacId",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "description": "Cancel PAC for pmd = OF, CF (in Pre-award Catalog Request)",
         "tags": [
           "2.Tenders"
         ]
@@ -8718,11 +9463,19 @@
                                     "required": [
                                       "id"
                                     ]
+                                  },
+                                  "date": {
+                                    "type": "string",
+                                    "x-stoplight": {
+                                      "id": "sbmo3u0jin072"
+                                    },
+                                    "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
                                   }
                                 },
                                 "required": [
                                   "id",
-                                  "title"
+                                  "title",
+                                  "date"
                                 ]
                               }
                             },
@@ -9400,7 +10153,7 @@
       ],
       "post": {
         "summary": "Update Bid Documents",
-        "operationId": "post-update-award-cpid-ocid-awardId",
+        "operationId": "post-do-document-bid-cpid-ocid-bidId",
         "responses": {
           "202": {
             "description": "Accepted"
@@ -9508,6 +10261,148 @@
         ]
       }
     },
+    "/add/evidence/bid/{cpid}/{ocid}/{bidId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Notice identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "bidId",
+          "in": "path",
+          "required": true,
+          "description": "bid identifier"
+        }
+      ],
+      "post": {
+        "summary": "Submit evidence for bid",
+        "operationId": "post-add-evidence-bid-cpid-ocid-bidId",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "description": "Submit evidence for bid for pmd = RFQ, MC, DCO (in SSC procedures)",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "description": "award token",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "required": true,
+            "name": "X-OPERATION-ID",
+            "description": "Request identifier"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "requirementResponseId",
+            "required": true,
+            "description": "Requirement response identifier"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "evidence": {
+                    "type": "object",
+                    "x-stoplight": {
+                      "id": "wo303fn0tysyo"
+                    },
+                    "required": [
+                      "id",
+                      "title",
+                      "date"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "k0vr1yhvuhomu"
+                        }
+                      },
+                      "title": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "qgd30i8mn8t6t"
+                        }
+                      },
+                      "description": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "knrs604c8dl43"
+                        }
+                      },
+                      "relatedDocument": {
+                        "type": "object",
+                        "x-stoplight": {
+                          "id": "mwwzfztefwgek"
+                        },
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "sef81ncutgi8z"
+                            }
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ]
+                      },
+                      "date": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "08sgssccem4no"
+                        },
+                        "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "evidence"
+                ]
+              }
+            }
+          }
+        },
+        "tags": [
+          "2.Tenders"
+        ]
+      }
+    },
     "/update/award/{cpid}/{ocid}/{awardId} - MC": {
       "parameters": [
         {
@@ -9540,7 +10435,7 @@
       ],
       "post": {
         "summary": "Update Award",
-        "operationId": "post-do-bid-cpid-ocid",
+        "operationId": "post-update-award-cpid-ocid-awardId",
         "responses": {
           "202": {
             "description": "Accepted"
@@ -9684,7 +10579,7 @@
       ],
       "post": {
         "summary": "Pre-evaluate award",
-        "operationId": "post-do-award-cpid-ocid-awardId",
+        "operationId": "post-pre-evaluate-award-cpid-ocid-awardId",
         "responses": {
           "202": {
             "description": "Accepted"
@@ -9778,7 +10673,7 @@
       ],
       "post": {
         "summary": "Intermediate protocol",
-        "operationId": "post-do-award-cpid-ocid-awardId",
+        "operationId": "post-do-protocol-intermediate-cpid-ocid-lotId",
         "responses": {
           "202": {
             "description": "Accepted"
@@ -9874,7 +10769,7 @@
         }
       ],
       "post": {
-        "summary": "Awarding Complete",
+        "summary": "Awarding Complete (Protocol)",
         "operationId": "post-do-protocol-cpid-ocid-lotId",
         "responses": {
           "202": {
@@ -10226,7 +11121,7 @@
       ],
       "post": {
         "summary": "Confirm CAN",
-        "operationId": "post-do-document-can-cpid-ocid-canId",
+        "operationId": "post-do-confirmation-can-cpid-ocid-canId",
         "responses": {
           "202": {
             "description": "Accepted"
@@ -10259,6 +11154,261 @@
           "2.Tenders"
         ],
         "description": "Confirm negative CAN for pmd = RFQ, MC, DCO (in SSC procedures)"
+      }
+    },
+    "/do/confirmation/{entity}/{cpid}/{ocid}/{entityId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "cpid",
+          "in": "path",
+          "required": true,
+          "description": "Contract Process identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "ocid",
+          "in": "path",
+          "required": true,
+          "description": "Awarded Contract identifier"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "entity",
+          "in": "path",
+          "required": true,
+          "description": "entity on which the confirmation response is given"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "entityId",
+          "in": "path",
+          "required": true,
+          "description": "entity identifier on which the confirmation response is given"
+        }
+      ],
+      "post": {
+        "summary": "Create Confirmation Response",
+        "operationId": "post-do-confirmation-contract-cpid-ocid-contractId",
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-OPERATION-ID",
+            "description": "Request identifier",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "X-TOKEN",
+            "description": "Confirmation request group token",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "role",
+            "required": true,
+            "description": "Who gives response"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "confirmationResponse": {
+                    "type": "object",
+                    "required": [
+                      "requestId",
+                      "type",
+                      "value",
+                      "relatedPerson"
+                    ],
+                    "properties": {
+                      "requestId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "type": {
+                        "type": "string",
+                        "minLength": 1,
+                        "enum": [
+                          "document",
+                          "hash",
+                          "statement"
+                        ]
+                      },
+                      "value": {
+                        "type": "string",
+                        "description": "Also can be other type: boolean"
+                      },
+                      "relatedPerson": {
+                        "type": "object",
+                        "required": [
+                          "title",
+                          "name",
+                          "identifier",
+                          "businessFunctions"
+                        ],
+                        "properties": {
+                          "title": {
+                            "type": "string",
+                            "minLength": 1,
+                            "enum": [
+                              "Mr.",
+                              "Ms.",
+                              "Mrs."
+                            ]
+                          },
+                          "name": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "identifier": {
+                            "type": "object",
+                            "required": [
+                              "scheme",
+                              "id"
+                            ],
+                            "properties": {
+                              "scheme": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "id": {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              "uri": {
+                                "type": "string",
+                                "minLength": 1
+                              }
+                            }
+                          },
+                          "businessFunctions": {
+                            "type": "array",
+                            "uniqueItems": true,
+                            "minItems": 1,
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "enum": [
+                                    "authority",
+                                    "contactPoint",
+                                    "chairman",
+                                    "procurementOfficer",
+                                    "technicalEvaluator",
+                                    "technicalOpener",
+                                    "priceOpener",
+                                    "priceEvaluator"
+                                  ]
+                                },
+                                "jobTitle": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "period": {
+                                  "type": "object",
+                                  "required": [
+                                    "startDate"
+                                  ],
+                                  "properties": {
+                                    "startDate": {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
+                                      "example": "2022-07-22T10:01:26Z"
+                                    }
+                                  }
+                                },
+                                "documents": {
+                                  "type": "array",
+                                  "uniqueItems": true,
+                                  "minItems": 1,
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "string",
+                                        "minLength": 1
+                                      },
+                                      "documentType": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "enum": [
+                                          "regulatoryDocument"
+                                        ]
+                                      },
+                                      "title": {
+                                        "type": "string",
+                                        "minLength": 1
+                                      },
+                                      "description": {
+                                        "type": "string",
+                                        "minLength": 1
+                                      }
+                                    },
+                                    "required": [
+                                      "id",
+                                      "documentType",
+                                      "title"
+                                    ]
+                                  }
+                                },
+                                "id": {
+                                  "type": "string",
+                                  "minLength": 1
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "jobTitle",
+                                "period",
+                                "id"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "confirmationResponse"
+                ]
+              }
+            }
+          }
+        },
+        "tags": [
+          "2.Tenders"
+        ],
+        "description": "Create Confirmation Response for pmd = RFQ, MC, DCO (in SSC procedures)"
       }
     }
   },
