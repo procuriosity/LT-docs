@@ -1,0 +1,430 @@
+{
+  "openapi": "3.0.0",
+  "x-stoplight": {
+    "id": "wrxbmb2icjssw"
+  },
+  "info": {
+    "title": "Directory",
+    "version": "1.0",
+    "contact": {
+      "name": "uStudio"
+    },
+    "description": "description of the directory endpoints"
+  },
+  "servers": [
+    {
+      "url": "http://{host}:8900/api/v1"
+    }
+  ],
+  "paths": {
+    "/standardCriteria": {
+      "get": {
+        "summary": "Get Standard Criteria",
+        "operationId": "get-standard-criteria",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Get Standard Criteria",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "lang ",
+            "required": true,
+            "description": "language"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "country ",
+            "description": "country code from ISO-ALPHA2",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "goods",
+                "services",
+                "works"
+              ]
+            },
+            "in": "query",
+            "name": "mainProcurementCategory"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "selection",
+                "other",
+                "exclusion"
+              ]
+            },
+            "in": "query",
+            "name": "criteriaCategory"
+          }
+        ]
+      },
+      "parameters": []
+    },
+    "/organization/schemes": {
+      "get": {
+        "summary": "Get Organization Schemes",
+        "operationId": "get-organization-schemes",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Get Organization Schemes",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "countryId ",
+            "description": "country code from ISO-ALPHA2",
+            "required": true
+          }
+        ]
+      }
+    },
+    "/languages": {
+      "get": {
+        "summary": "Get Languages",
+        "operationId": "get-languages",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Get Languages",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "countryId ",
+            "description": "country code from ISO-ALPHA2",
+            "required": true
+          }
+        ]
+      },
+      "parameters": []
+    },
+    "/currencies": {
+      "get": {
+        "summary": "Get Currencies",
+        "operationId": "get-currencies",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Get Currencies",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "country",
+            "description": "country code from ISO-ALPHA2",
+            "required": true
+          }
+        ]
+      },
+      "parameters": []
+    },
+    "/addresses/countries": {
+      "get": {
+        "summary": "Get Countries",
+        "operationId": "get-addresses-countries",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Get Сountries",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "lang ",
+            "description": "language",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "scheme",
+            "description": "country scheme"
+          }
+        ]
+      },
+      "parameters": []
+    },
+    "/addresses/countries/{countryId}/regions": {
+      "get": {
+        "summary": "Get Regions",
+        "operationId": "get-addresses-countries-regions",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Get Regions",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "lang ",
+            "description": "language",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "scheme",
+            "description": "region scheme"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "countryId",
+          "in": "path",
+          "required": true,
+          "description": "country code"
+        }
+      ]
+    },
+    "/addresses/countries/{countryId}/regions/{regionId}/localities": {
+      "get": {
+        "summary": "Get Localities",
+        "operationId": "get-addresses-countries-regions-localities",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Get Localities",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "lang ",
+            "description": "language",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "scheme",
+            "description": "locality scheme"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "countryId",
+          "in": "path",
+          "required": true,
+          "description": "country code"
+        },
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "regionId",
+          "in": "path",
+          "required": true,
+          "description": "region code"
+        }
+      ]
+    },
+    "/pmds": {
+      "get": {
+        "summary": "Get Procurement Method Details",
+        "operationId": "get-pmds",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Get Procurement Method Details",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "lang ",
+            "description": "language",
+            "required": true
+          }
+        ]
+      },
+      "parameters": []
+    },
+    "/schemes": {
+      "get": {
+        "summary": "Get Schemes",
+        "operationId": "get-schemes",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Get Schemes",
+        "parameters": []
+      },
+      "parameters": []
+    },
+    "/unitClasses": {
+      "get": {
+        "summary": "Get Unit classes",
+        "operationId": "get-unitClasses",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Get Unit classes",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "lang",
+            "description": "language",
+            "required": true
+          }
+        ]
+      },
+      "parameters": []
+    },
+    "/units": {
+      "get": {
+        "summary": "Get Units",
+        "operationId": "get-units",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Get Units",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "lang",
+            "description": "language",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "unitClass",
+            "description": "unit class",
+            "required": true
+          }
+        ]
+      },
+      "parameters": []
+    },
+    "/addresses/classifications/{scheme}": {
+      "get": {
+        "summary": "Get Classifications",
+        "operationId": "get-addresses-classifications",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Get Classifications",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "lang",
+            "description": "language",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "parent",
+            "description": "classifications parent"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "scheme",
+          "in": "path",
+          "required": true,
+          "description": "scheme"
+        }
+      ]
+    }
+  },
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "accessToken": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [
+    {
+      "accessToken": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "1.Budgets"
+    }
+  ]
+}
