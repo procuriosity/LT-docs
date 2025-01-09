@@ -2516,6 +2516,8 @@
                       "description",
                       "awardCriteria",
                       "awardCriteriaDetails",
+                      "legalBasis",
+                      "classification",
                       "tenderPeriod",
                       "lots",
                       "items"
@@ -2550,6 +2552,47 @@
                           "automated",
                           "manual"
                         ]
+                      },
+                      "legalBasis": {
+                        "type": "string",
+                        "x-stoplight": {
+                          "id": "9fej62it8io19"
+                        },
+                        "enum": [
+                          "DIRECTIVE_2014_23_EU",
+                          "DIRECTIVE_2014_24_EU",
+                          "DIRECTIVE_2014_25_EU",
+                          "REGULATION_966_2012",
+                          "NATIONAL_PROCUREMENT_LAW",
+                          "DIRECTIVE_2009_81_EC"
+                        ]
+                      },
+                      "classification": {
+                        "type": "object",
+                        "x-stoplight": {
+                          "id": "p7b09qbeqxm88"
+                        },
+                        "required": [
+                          "id",
+                          "scheme"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "o6gs3zqios6j2"
+                            }
+                          },
+                          "scheme": {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "b9fd324g7a06o"
+                            },
+                            "enum": [
+                              "CPV"
+                            ]
+                          }
+                        }
                       },
                       "tenderPeriod": {
                         "type": "object",
@@ -3415,10 +3458,6 @@
                             },
                             "awardCriteria": {
                               "type": "object",
-                              "required": [
-                                "weightingDescription",
-                                "criteria"
-                              ],
                               "properties": {
                                 "weightingDescription": {
                                   "type": "string",
@@ -3466,7 +3505,11 @@
                                     ]
                                   }
                                 }
-                              }
+                              },
+                              "required": [
+                                "weightingDescription",
+                                "criteria"
+                              ]
                             },
                             "contractTerms": {
                               "type": "object",
