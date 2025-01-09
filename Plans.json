@@ -74,14 +74,6 @@
             "in": "query",
             "name": "testMode",
             "description": "Test entity creation flag"
-          },
-          {
-            "schema": {
-              "type": "boolean"
-            },
-            "in": "query",
-            "name": "ted",
-            "description": "indication of the need to send a tender for publication to TED"
           }
         ],
         "requestBody": {
@@ -245,9 +237,6 @@
                       },
                       "tenderPeriod": {
                         "type": "object",
-                        "required": [
-                          "startDate"
-                        ],
                         "properties": {
                           "startDate": {
                             "type": "string",
@@ -255,7 +244,10 @@
                             "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
                             "example": "2022-07-22T10:01:26Z"
                           }
-                        }
+                        },
+                        "required": [
+                          "startDate"
+                        ]
                       },
                       "enquiryPeriod": {
                         "type": "object",
@@ -544,55 +536,6 @@
                                 "businessFunctions"
                               ]
                             }
-                          },
-                          "details": {
-                            "type": "object",
-                            "properties": {
-                              "typeOfBuyer": {
-                                "type": "string",
-                                "enum": [
-                                  "BODY_PUBLIC",
-                                  "EU_INSTITUTION",
-                                  "MINISTRY",
-                                  "NATIONAL_AGENCY",
-                                  "REGIONAL_AGENCY",
-                                  "REGIONAL_AUTHORITY"
-                                ]
-                              },
-                              "mainGeneralActivity": {
-                                "type": "string",
-                                "enum": [
-                                  "DEFENCE",
-                                  "ECONOMIC_AND_FINANCIAL_AFFAIRS",
-                                  "EDUCATION",
-                                  "ENVIRONMENT",
-                                  "GENERAL_PUBLIC_SERVICES",
-                                  "HEALTH",
-                                  "HOUSING_AND_COMMUNITY_AMENITIES",
-                                  "PUBLIC_ORDER_AND_SAFETY",
-                                  "RECREATION_CULTURE_AND_RELIGION",
-                                  "SOCIAL_PROTECTION"
-                                ]
-                              },
-                              "mainSectoralActivity": {
-                                "type": "string",
-                                "enum": [
-                                  "AIRPORT_RELATED_ACTIVITIES",
-                                  "ELECTRICITY",
-                                  "EXPLORATION_EXTRACTION_COAL_OTHER_SOLID_FUEL",
-                                  "EXPLORATION_EXTRACTION_GAS_OIL",
-                                  "PORT_RELATED_ACTIVITIES",
-                                  "POSTAL_SERVICES",
-                                  "PRODUCTION_TRANSPORT_DISTRIBUTION_GAS_HEAT",
-                                  "RAILWAY_SERVICES",
-                                  "URBAN_RAILWAY_TRAMWAY_TROLLEYBUS_BUS_SERVICES",
-                                  "WATER"
-                                ]
-                              },
-                              "buyerProfile": {
-                                "type": "string"
-                              }
-                            }
                           }
                         },
                         "required": [
@@ -636,10 +579,6 @@
                             },
                             "contractPeriod": {
                               "type": "object",
-                              "required": [
-                                "startDate",
-                                "endDate"
-                              ],
                               "properties": {
                                 "startDate": {
                                   "type": "string",
@@ -653,7 +592,11 @@
                                   "description": "{YYYY}-{MM}-{DD}T{HH}:{MM}:{SS}Z",
                                   "example": "2022-07-22T10:01:26Z"
                                 }
-                              }
+                              },
+                              "required": [
+                                "startDate",
+                                "endDate"
+                              ]
                             },
                             "placeOfPerformance": {
                               "type": "object",
@@ -1135,6 +1078,24 @@
                                   "GPA"
                                 ]
                               }
+                            },
+                            "tenderPeriod": {
+                              "type": "object",
+                              "x-stoplight": {
+                                "id": "f0d2xyxyd2o1s"
+                              },
+                              "properties": {
+                                "startDate": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "y9dlzpyqp7he1"
+                                  },
+                                  "format": "date-time"
+                                }
+                              },
+                              "required": [
+                                "startDate"
+                              ]
                             }
                           },
                           "required": [
@@ -6039,14 +6000,14 @@
         }
       ],
       "post": {
-        "summary": "Cancel Plan",
+        "summary": "Cancel Plan (not implemented)",
         "operationId": "post-cancel-plan-cpid-ocid",
         "responses": {
           "202": {
             "description": "Accepted"
           }
         },
-        "description": "Cancel PN/PIN",
+        "description": "Cancel PN/PIN ",
         "parameters": [
           {
             "schema": {
