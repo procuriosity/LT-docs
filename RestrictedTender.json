@@ -122,6 +122,18 @@
                           },
                           "maximumCandidates": {
                             "type": "number"
+                          },
+                          "successiveReduction": {
+                            "type": "boolean",
+                            "x-stoplight": {
+                              "id": "haou3xq7cjz6t"
+                            }
+                          },
+                          "noNegotiationNecessary": {
+                            "type": "boolean",
+                            "x-stoplight": {
+                              "id": "oqq3s3l4s1n7s"
+                            }
                           }
                         }
                       },

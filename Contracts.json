@@ -1790,7 +1790,8 @@
                                 "contractGuarantees",
                                 "subContract",
                                 "illustration",
-                                "contractSummary"
+                                "contractSummary",
+                                "contractSigned"
                               ]
                             },
                             "title": {
@@ -3010,7 +3011,8 @@
                 }
               }
             }
-          }
+          },
+          "description": ""
         },
         "tags": [
           "1.Contracts"
@@ -4335,10 +4337,10 @@
                                         "bidders",
                                         "conflictOfInterest",
                                         "cancellationDetails",
-                                        "submissionDocuments", 
+                                        "submissionDocuments",
                                         "contractArrangements",
                                         "contractSchedule",
-                                        "shortlistedFirms"                                                                                                                      
+                                        "shortlistedFirms"
                                       ]
                                     },
                                     "title": {

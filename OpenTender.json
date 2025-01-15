@@ -6248,7 +6248,7 @@
         "description": "update cn"
       }
     },
-    "/do/update/criteria/{cpid}/{ocid}": {
+    "/update/criteria/{cpid}/{ocid}": {
       "parameters": [
         {
           "schema": {
@@ -8942,20 +8942,38 @@
                 "properties": {
                   "requirementResponse": {
                     "type": "object",
-                    "required": [
-                      "id",
-                      "value",
-                      "relatedTenderer",
-                      "responder",
-                      "requirement"
-                    ],
                     "properties": {
                       "id": {
                         "type": "string",
                         "minLength": 1
                       },
                       "value": {
-                        "type": "boolean"
+                        "anyOf": [
+                          {
+                            "type": "boolean",
+                            "x-stoplight": {
+                              "id": "yiq4497qmcml9"
+                            }
+                          },
+                          {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "v4kfuwfsmzxfy"
+                            }
+                          },
+                          {
+                            "type": "number",
+                            "x-stoplight": {
+                              "id": "95godagc2kbfm"
+                            }
+                          },
+                          {
+                            "type": "integer",
+                            "x-stoplight": {
+                              "id": "gse6tonq8oydc"
+                            }
+                          }
+                        ]
                       },
                       "relatedTenderer": {
                         "type": "object",
@@ -9020,7 +9038,16 @@
                                 },
                                 "type": {
                                   "type": "string",
-                                  "minLength": 1
+                                  "minLength": 1,
+                                  "enum": [
+                                    "chairman",
+                                    "procurmentOfficer",
+                                    "contactPoint",
+                                    "technicalEvaluator",
+                                    "technicalOpener",
+                                    "priceOpener",
+                                    "priceEvaluator"
+                                  ]
                                 },
                                 "jobTitle": {
                                   "type": "string",
@@ -9097,7 +9124,14 @@
                           }
                         }
                       }
-                    }
+                    },
+                    "required": [
+                      "id",
+                      "value",
+                      "relatedTenderer",
+                      "responder",
+                      "requirement"
+                    ]
                   }
                 }
               }
@@ -9380,7 +9414,11 @@
                                         "enum": [
                                           "chairman",
                                           "contactPoint",
-                                          "technicalEvaluator"
+                                          "technicalEvaluator",
+                                          "technicalOpener",
+                                          "priceOpener",
+                                          "priceEvaluator",
+                                          "procurementOfficer"
                                         ]
                                       },
                                       "jobTitle": {
@@ -10369,7 +10407,7 @@
         "description": "cancel can for pmd = OT, SV, MV, EN, ENI, EDC, EIP, ECI, EDE "
       }
     },
-    "/do/confirmation/can/{cpid}/{ocid}/{canId}": {
+    "confirm/can/{cpid}/{ocid}/{canId}": {
       "parameters": [
         {
           "schema": {
