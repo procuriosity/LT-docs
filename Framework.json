@@ -1842,7 +1842,7 @@
         "description": "Amend Framework Establishment for pmd = OF, CF"
       }
     },
-    "/do/update/criteria/{cpid}/{ocid}": {
+    "/update/criteria/{cpid}/{ocid}": {
       "parameters": [
         {
           "schema": {
@@ -3199,7 +3199,7 @@
         }
       ],
       "post": {
-        "summary": "Add Answer",
+        "summary": "Answer",
         "operationId": "post-do-enquiry-cpid-ocid-enquiryId",
         "responses": {
           "202": {
@@ -4105,7 +4105,7 @@
         ]
       }
     },
-    "/cancel/protocol/{cpid}/{ocid}": {
+    "/cancel/protocol/qualification/{cpid}/{ocid}": {
       "parameters": [
         {
           "schema": {
@@ -5043,6 +5043,82 @@
                             "title"
                           ]
                         }
+                      },
+                      "electronicAuctions": {
+                        "type": "object",
+                        "x-stoplight": {
+                          "id": "d34r19wpqvsts"
+                        },
+                        "properties": {
+                          "details": {
+                            "type": "array",
+                            "x-stoplight": {
+                              "id": "fqkkuht5ktik3"
+                            },
+                            "items": {
+                              "x-stoplight": {
+                                "id": "2pp568z7zf3ev"
+                              },
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "z05d7i0e4mpvo"
+                                  }
+                                },
+                                "relatedLot": {
+                                  "type": "string",
+                                  "x-stoplight": {
+                                    "id": "f88xlnx1fjsqn"
+                                  }
+                                },
+                                "electronicAuctionModalities": {
+                                  "type": "array",
+                                  "x-stoplight": {
+                                    "id": "yud5o15hpyv30"
+                                  },
+                                  "items": {
+                                    "x-stoplight": {
+                                      "id": "cz4n6eqhyili5"
+                                    },
+                                    "type": "object",
+                                    "properties": {
+                                      "eligibleMinimumDifference": {
+                                        "type": "object",
+                                        "x-stoplight": {
+                                          "id": "dbe85ul8sdc8w"
+                                        },
+                                        "required": [
+                                          "currency"
+                                        ],
+                                        "properties": {
+                                          "currency": {
+                                            "type": "string",
+                                            "x-stoplight": {
+                                              "id": "bh1hwu5a4xlcm"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "required": [
+                                      "eligibleMinimumDifference"
+                                    ]
+                                  }
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "relatedLot",
+                                "electronicAuctionModalities"
+                              ]
+                            }
+                          }
+                        },
+                        "required": [
+                          "details"
+                        ]
                       }
                     }
                   }
@@ -5052,7 +5128,8 @@
                 ]
               }
             }
-          }
+          },
+          "description": ""
         },
         "description": "Create Pre-award Catalog Request for pmd = OF, CF ",
         "tags": [
@@ -6185,7 +6262,7 @@
         ]
       }
     },
-    "/do/award/{cpid}/{ocid}/{awardId}": {
+    "/do/evaluation/award/{cpid}/{ocid}/{awardId}": {
       "parameters": [
         {
           "schema": {
@@ -6715,10 +6792,6 @@
                             },
                             "contractPeriod": {
                               "type": "object",
-                              "required": [
-                                "startDate",
-                                "endDate"
-                              ],
                               "properties": {
                                 "startDate": {
                                   "type": "string",
@@ -6754,7 +6827,6 @@
                             "id",
                             "title",
                             "value",
-                            "contractPeriod",
                             "placeOfPerformance"
                           ]
                         }
@@ -7274,10 +7346,6 @@
                             },
                             "contractPeriod": {
                               "type": "object",
-                              "required": [
-                                "startDate",
-                                "endDate"
-                              ],
                               "properties": {
                                 "startDate": {
                                   "type": "string",
@@ -7482,7 +7550,6 @@
                             "id",
                             "title",
                             "value",
-                            "contractPeriod",
                             "placeOfPerformance"
                           ]
                         }
@@ -9478,9 +9545,6 @@
                                   "date"
                                 ]
                               }
-                            },
-                            "relatedItem": {
-                              "type": "string"
                             }
                           },
                           "required": [
@@ -11261,8 +11325,20 @@
                         ]
                       },
                       "value": {
-                        "type": "string",
-                        "description": "Also can be other type: boolean"
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "792w7cqz7a1w1"
+                            }
+                          },
+                          {
+                            "type": "boolean",
+                            "x-stoplight": {
+                              "id": "anj5pzy2f17hg"
+                            }
+                          }
+                        ]
                       },
                       "relatedPerson": {
                         "type": "object",

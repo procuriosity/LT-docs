@@ -2275,7 +2275,7 @@
         "description": "update cn"
       }
     },
-    "/do/update/criteria/{cpid}/{ocid}": {
+    "/update/criteria/{cpid}/{ocid}": {
       "parameters": [
         {
           "schema": {
@@ -5332,7 +5332,7 @@
         "description": "qualification protocol"
       }
     },
-    "/cancel/protocol/{cpid}/{ocid}": {
+    "/cancel/protocol/qualification/{cpid}/{ocid}": {
       "parameters": [
         {
           "schema": {
@@ -7022,7 +7022,7 @@
         "description": "Weight value for awards"
       }
     },
-    "/do/document/bid/{cpid}/{ocid}/{bidId}": {
+    "/add/document/bid/{cpid}/{ocid}/{bidId}": {
       "parameters": [
         {
           "schema": {
@@ -7828,7 +7828,12 @@
                         "type": "string",
                         "x-stoplight": {
                           "id": "1aysqb4ed7x7r"
-                        }
+                        },
+                        "enum": [
+                          "lackOfEvidences",
+                          "reviewDecision",
+                          "nonSigningContract"
+                        ]
                       },
                       "description": {
                         "type": "string",
@@ -7898,7 +7903,7 @@
         "description": "cancel can"
       }
     },
-    "/do/document/can/{cpid}/{ocid}/{canId}": {
+    "/add/document/can/{cpid}/{ocid}/{canId}": {
       "parameters": [
         {
           "schema": {
@@ -7934,6 +7939,9 @@
         "responses": {
           "202": {
             "description": "Accepted"
+          },
+          "": {
+            "description": ""
           }
         },
         "parameters": [
@@ -8012,7 +8020,7 @@
         "description": "update docs of can"
       }
     },
-    "/do/confirmation/can/{cpid}/{ocid}/{canId}": {
+    "/confirm/can/{cpid}/{ocid}/{canId}": {
       "parameters": [
         {
           "schema": {
@@ -8185,8 +8193,20 @@
                         ]
                       },
                       "value": {
-                        "type": "string",
-                        "description": "Also can be other type: boolean"
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "f8mkpr68mauby"
+                            }
+                          },
+                          {
+                            "type": "boolean",
+                            "x-stoplight": {
+                              "id": "xcplht07v6005"
+                            }
+                          }
+                        ]
                       },
                       "relatedPerson": {
                         "type": "object",

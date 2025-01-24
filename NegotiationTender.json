@@ -88,9 +88,6 @@
                 "properties": {
                   "tender": {
                     "type": "object",
-                    "required": [
-                      "awardCriteria"
-                    ],
                     "properties": {
                       "awardCriteria": {
                         "type": "string",
@@ -112,6 +109,18 @@
                           },
                           "maximumCandidates": {
                             "type": "number"
+                          },
+                          "successiveReduction": {
+                            "type": "boolean",
+                            "x-stoplight": {
+                              "id": "m3gk4lu1slh1l"
+                            }
+                          },
+                          "noNegotiationNecessary": {
+                            "type": "boolean",
+                            "x-stoplight": {
+                              "id": "izhno3grb5yey"
+                            }
                           }
                         }
                       },
@@ -1452,10 +1461,7 @@
                       }
                     }
                   }
-                },
-                "required": [
-                  "tender"
-                ]
+                }
               }
             }
           }
@@ -1873,7 +1879,7 @@
         ]
       }
     },
-    "/do/update/criteria/{cpid}/{ocid}": {
+    "/update/criteria/{cpid}/{ocid}": {
       "parameters": [
         {
           "schema": {
@@ -2876,7 +2882,7 @@
         "description": "cancellation of the created amendment to cancel the tender/lot/CAN"
       }
     },
-    "/do/award/{cpid}/{ocid}/{lotId}": {
+    "/do/award/{cpid}/{ocid}": {
       "parameters": [
         {
           "schema": {
@@ -2895,15 +2901,6 @@
           "in": "path",
           "required": true,
           "description": "Contract Notice identifier"
-        },
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "lotId",
-          "in": "path",
-          "required": true,
-          "description": "lot identifier"
         }
       ],
       "post": {
@@ -5014,7 +5011,7 @@
         "description": "confirm negative can"
       }
     },
-    "/do/document/can/{cpid}/{ocid}/{canId}": {
+    "/add/document/can/{cpid}/{ocid}/{canId}": {
       "parameters": [
         {
           "schema": {
@@ -5240,8 +5237,20 @@
                         ]
                       },
                       "value": {
-                        "type": "string",
-                        "description": "Also can be other type: boolean"
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "x-stoplight": {
+                              "id": "n3d8uh58d2e8s"
+                            }
+                          },
+                          {
+                            "type": "boolean",
+                            "x-stoplight": {
+                              "id": "9fxxmixqek668"
+                            }
+                          }
+                        ]
                       },
                       "relatedPerson": {
                         "type": "object",

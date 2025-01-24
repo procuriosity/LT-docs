@@ -9575,7 +9575,7 @@
         "description": "Weight value for awards"
       }
     },
-    "/do/document/bid/{cpid}/{ocid}/{bidId}": {
+    "/add/document/bid/{cpid}/{ocid}/{bidId}": {
       "parameters": [
         {
           "schema": {
